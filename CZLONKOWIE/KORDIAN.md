@@ -118,3 +118,4 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — rozdzielenie działów i utrzymanie niezależnego toru MultiQuant.
 - [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — odzyskiwanie historii i brak zakłócania RC1.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — źródła V10/S10 i zależności MultiQuant/LEGO.
+- [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — wkład MultiQuant/V10/S10 i zależności działów; nie przejęcie tożsamości Łukasza.
