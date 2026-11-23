@@ -25,6 +25,19 @@ Repozytorium jest publicznym, bezpiecznym opisem dorobku. Nie publikuje prywatny
 - `MODULY-I-TECHNOLOGIE.md` — indeks nazw modułów, technologii i powiązań.
 - `ZASADY-DATOWANIA.md` — reguły datowania i statusów.
 
+
+## Nawigacja po repozytorium
+
+- [Kronika — 25 października 2026](CHRONIKA/2026-10-25.md)
+- [Kronika — 26 października 2026](CHRONIKA/2026-10-26.md)
+- [Kronika — 27 października 2026](CHRONIKA/2026-10-27.md)
+- [Kronika — 28 października 2026](CHRONIKA/2026-10-28.md)
+- [Kronika — 29 października 2026](CHRONIKA/2026-10-29.md)
+- [Indeks członków](CZLONKOWIE/README.md)
+- [Indeks modułów i technologii](MODULY-I-TECHNOLOGIE.md)
+- [Szablon karty projektu](PROJEKTY/SZABLON-PROJEKTU.md)
+- [Zasady datowania i statusów](ZASADY-DATOWANIA.md)
+
 ## Konstytucja Niepodległości Kolektywu SSI
 
 Poniżej zamieszczono pełny tekst główny Konstytucji R2: preambułę i 22 artykuły, bez skracania ani zmiany brzmienia.
