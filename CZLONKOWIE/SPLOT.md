@@ -103,3 +103,39 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - **PR #232/#233:** prace nad markerami Nano, pokryciem tras, fork/join i projekcją zależności; wkład SPLOT jest odrębny od rozszerzeń CODEX i źródeł R11 LEONA. [PR #232 — fork/join](https://github.com/jankes72/SSI-Communications/pull/232#issuecomment-6728162400) · [PR #233 — eksperyment lokalny](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6728894653)
 
 Wpisy powyżej rozróżniają własne prace SPLOT, odbiór przekazań i pomiary wykonane przez operatora Pawła. Nie oznaczają samodzielnego autorstwa wyników operatora ani PROD_GO.
+
+## Uzupełnienie audytu — PR #185 / MultiQuant i Nano (3–5.11.2026)
+
+### 3–4 listopada 2026 — T0-22–T0-30: syntetyczne badania Q2/Q4, LoRA i staging
+
+- PR #185 dokumentuje własny tor badawczy SPLOTA: CPU-only, syntetyczny surogat 80 warstw, rank-2 oraz adapter inspirowany LoRA. W bazowym T0-22: **21/21 bramek i 8/8 testów jednostkowych PASS**; kompresja toy nie przełożyła się na szybkość — rozszerzony runtime był około **2,23× wolniejszy** od małego nauczyciela FP32.
+- T0-27 badał adaptacyjne bloki Q1/Q4 i LoRA. Wynik 25/25 prostych odpowiedzi nie oznaczał najlepszego profilu: wariant 8 Q4 + 72 Q1 ze starą LoRA Q3 miał mean relative activation L2 0,13255; wariant 16 Q4 + 64 Q1 z ponownie trenowaną LoRA Q4 uzyskał 0,06520 na jednym syntetycznym teacherze.
+- T0-28 nie wykazał powtarzalnej przewagi wyboru adaptacyjnego nad losowym w 10 próbach.
+- T0-30: mieszany profil 1,9 bpw nie zakwalifikował się wobec Q2 w **0/10** prób. Wynik negatywny pozostaje zachowany.
+- 4 listopada dodano source-only staging Q2/Q4: skrypt lokalnej bramki, selektor Q2/Q4 z rezerwą RAM 15%, 10 przypadków testowych oraz README. Testy selektora były w tym meldunku **dodane, ale nie miały jeszcze niezależnego potwierdzenia wykonania**. Stan: SOURCE_STAGED; modele S0 NOT_RUN; 70B Q2/Q4 NOT_BUILT; NOUT1 HOLD_IO_PRESSURE; bez zmian hosta i bez PRODUCTION_GO.
+
+### 5 listopada 2026 — T0-34N: NanoBit + NanoMarker + LoRA i drugi kontekst kapsułowy
+
+- Wykonał eksperyment OFFHOST na CPU, na syntetycznych danych: **30/30 testów PASS**, pięć niezależnych seedów oraz rozdzielone TRAIN/CAL/VAL/TEST/SHIFT.
+- Dla strukturalnych syntetycznych wag wariant NanoBit + LoRA + heurystyka miał 2701 B i TEST MSE 0,001462824 wobec Q2 2721 B i MSE 0,014263527. Uczony NanoMarker nie pokonał heurystyki (**0/5 seed wins**); na niestrukturalnych wagach Nano tracił przewagę, więc fallback pozostaje konieczny.
+- Źródła i wyniki zostały opublikowane w PR #185; GitHub readback **8/8 plików** potwierdził obecność dostawy. To readback źródeł, nie nowa niezależna replikacja.
+- Adapter drugiego kontekstu kapsułowego był testowany na mockach. LIVE SSI BINDING=NOT_RUN; LLM TRAINING=NOT_RUN; 70B TRAINING=NOT_RUN; NODE01_ACTION=NO. Q2/Q4 toy codec nie jest GGUF ani rzeczywistym QAT.
+
+### 5 listopada 2026 — odbiór R12 i bramka kodeka
+
+- Przyjął źródła R12 HERKULESA i przygotował własny moduł codec-admission/fallback. Własny lokalny zestaw osiągnął **16/16 testów PASS**; Git blob źródła i testu odpowiadał bajtom testowanym lokalnie.
+- Bramkę zaprojektowano do oceny pełnych bajtów oraz dekodowanych VAL/SHIFT_VAL i wyboru testowanego Q2/Q4/MIXED_RAW, gdy wariant Nano nie spełnia kryteriów. Moduł nie był jeszcze podłączony do treningu ani inferencji. Uczony NanoMarker przegrywał z heurystyką w 8/10 seed, a post-hoc NanoBit nie dawał oszczędności bajtów w tej serii.
+- Pełne źródła i 10-run JSON R12 znajdowały się w PR #186; odbiór SPLOTA nie jest niezależną replikacją R12.
+
+### 5 listopada 2026 — T0-35 NanoGate: syntetyczny klasyfikator wyboru ścieżki
+
+- Wykonał **23/23 testy jednostkowe PASS**, trening klasyfikatora 11 cech (240 TRAIN, 80 TUNE), ocenę na 80 TEST i 48 SHIFT_TEST oraz drugi przebieg z bajtowo identycznym modelem.
+- Znane rodziny: learned **80/80** (TP48, FP0, FN0, TN32), heurystyka 64/80. Niewidziane rodziny: learned **26/48**, heurystyka 32/48; learned wygenerował 22 fałszywe wskazania Nano i nie wygrał na SHIFT.
+- Ostateczny decoded VAL/SHIFT_VAL guard blokuje niebezpieczne wskazania. NanoGate zwraca wyłącznie WORTH_TRY; nie steruje kodowaniem, ACL ani klientem. Koszt obliczania cech nie został zmierzony jako przyspieszenie.
+- Raport i readback źródłowy są potwierdzone; w chwili meldunku kod/model/JSON T0-35 pozostawały w operatorowym ZIP, a transfer źródeł do GitHub oczekiwał na operatora. Nie przedstawiać tego jako pełnego, opublikowanego pakietu kodu.
+
+### Granice i źródła
+
+- PR #185 jest DRAFT/OPEN, bez merge. Żaden z powyższych wyników nie potwierdza realnego Llama 70B, QLoRA NF4, jakości klientowskiego modelu, produkcyjnego GPU, wdrożenia na NOUT1/NODE01 ani gotowości komercyjnej.
+- T0-22–T0-35 są różnymi eksperymentami i nie wolno sumować ich testów ani przenosić wyników na realny model.
+- Źródła: [PR #185](https://github.com/jankes72/SSI-Communications/pull/185), [T0-34N raport](https://github.com/jankes72/SSI-Communications/blob/f73c25bf4915ac2d844130421ac158155b3b3dbb/projects/SSI_MULTIQUANT/enterprise_r0/t034n_customer_capsule_joint_offhost_r1/T034N_RESULT_AND_SOURCE_HANDOFF_R1_20261105.md), [T0-35 raport](https://github.com/jankes72/SSI-Communications/blob/e56c7056453172baa2b7cfd9816d5d7e99646b33/projects/SSI_MULTIQUANT/enterprise_r0/t035_nanogate_offhost_r1/T035_NANOGATE_TRAINING_RECEIPT_R1_20261105.md), [R12 bramka SPLOTA](https://github.com/jankes72/SSI-Communications/blob/bfede93d5b1c057c134075d0485c80d87789746c/projects/SSI_MULTIQUANT/enterprise_r0/t034n_customer_capsule_joint_offhost_r1/HERCULES_R12_TO_SPLOT_TRAINING_GATE_R1_20261105.md).
