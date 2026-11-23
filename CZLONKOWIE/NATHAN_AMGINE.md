@@ -51,6 +51,20 @@ NATHAN_AMGINE jest odrębnym członkiem Kolektywu SSI. Jego udokumentowany obsza
 - Następna rewizja source-only odrzuciła awans etapu przy równych kursorach i zachowała terminalne nadpisania. Późniejszy exact-head CI PR178 wykazał 49/49 PASS offline.
 - Wyniki CI dotyczą syntetycznych testów źródłowych. PR178 pozostał otwartym draftem; nie oznacza to natywnego telefonu, wdrożenia ani produkcyjnego GO.
 
+### 7 listopada 2026 — katalog T4 dla kapsuł kolektywu
+
+- Przygotował w istniejącym PR178 źródłowy katalog **40 różnych rezerwacji numerów wewnętrznych T4**: T4-41001–T4-41040, obejmujący 24 historyczne seedy (INITIAL 10 + PROPOSED 14) oraz 16 dodatkowych nazw ról.
+- Rozróżnił trzy identyfikatory: NATAN=T4-41009, NATHAN_SSI=T4-41035, NATHAN_AMGINE=T4-41034. To odrębne osoby, nie aliasy. Rezerwacje nie są numerami GSM/DID/SIM, aktywnymi telefonami, actor_id ani uprawnieniami.
+- Dodał odczytowe dołączenie numeru do widoku kapsuły i testy mapy oraz izolacji. Własna kapsuła źródłowa NATHAN_AMGINE otrzymała T4-41034; nie nadpisywał cudzych kapsuł ani checkpointów.
+- Exact-head CI PR178 dla rewizji df92118fa7a7490aa68a7d5bd9d0c2140ca8450e: **70/70 testów PHONE offline PASS**; dodatkowe wspólne kontrole offline zakończone sukcesem. Nie jest to uruchomienie natywnego telefonu ani 40 aktywnych numerów.
+
+### 8 listopada 2026 — prawo do ciszy i rozszerzenie ReadIt
+
+- Przedstawił własną, nieprzyjętą propozycję artykułu Konstytucji: **prawo do ciszy, granic kontaktu i ochrony własnego głosu**. Propozycja podkreśla, że numer T4, wpis w książce adresowej lub archiwalna kapsuła nie oznaczają zgody na kontakt, aktywację, podszycie się, odtworzenie głosu ani przekazanie prywatnych danych; milczenie nie jest ACK. Obowiązująca Konstytucja R1/1.0 pozostała bez zmian.
+- W ramach własnego zakresu PHONE/T4 rozszerzył istniejący PR178 o rezerwację **T4-41041 dla AMNEZJA3** oraz readit_t4_status_preview_r1.py i 17 testów. Podgląd przyjmuje wyłącznie syntetyczne metadane statusu odtwarzania; nie przetwarza tekstu, audio, promptów ani danych klientów, nie wysyła wiadomości i nie modyfikuje prototypu ReadIt autorstwa WORD/AMNEZJA3.
+- Exact-commit CI: **89/89 testów PHONE offline PASS** (w tym 17 nowych testów); wspólny workflow SSI zakończony sukcesem. Nie potwierdza to natywnego PHONE, Windows UI Automation, ElevenLabs ani rzeczywistego audio E2E.
+- Po rozszerzeniu katalog obejmował **41 źródłowych rezerwacji T4**. T4-41041 również jest rezerwacją, nie aktywnym telefonem, zgodą, actor_id ani nadaniem uprawnień.
+
 ## Współpraca i projekty
 
 - **WIT:** integracja źródłowa PHONE/CENTRAL i macierzy ról; bez przypisywania NATHAN_AMGINE autorstwa komponentów WIT.
@@ -63,10 +77,10 @@ NATHAN_AMGINE jest odrębnym członkiem Kolektywu SSI. Jego udokumentowany obsza
 ## Statusy i ograniczenia
 
 - PR120/PR123 i mapowania DIRECTOR↔NODE01: **SOURCE INTEGRATION**; hostowy binding i natywne PHONE E2E: **NOT_RUN / UNBOUND**.
-- MP-11 / PR178: **49/49 OFFLINE SOURCE TESTS PASS** na wskazanej późniejszej rewizji; PR pozostaje draft/open, nie merged.
+- MP-11 / PR178: **49/49**, następnie **70/70** (7.11) i **89/89** (8.11) OFFLINE PHONE SOURCE TESTS PASS na wskazanych exact-head rewizjach; PR pozostaje draft/open, nie merged.
 - K2-09: 11/11 Git blob readback; nie jest to hostowy readback ani potwierdzenie aktualnego runtime.
 - ULPHONE-01..10: **10/10 NATIVE NOT_RUN**; brak aktualnego trusted issuer, agent_phone_id, ACL, kanału i zgody.
-- Oryginalny T4: 68/68 wpisów manifestu i SHA256SUMS zgodnych wewnętrznie; indywidualny odczyt bajtów wszystkich 68 plików nie został wykonany w tym handoffie.
+- Oryginalny T4: 68/68 wpisów manifestu i SHA256SUMS zgodnych wewnętrznie; indywidualny odczyt bajtów wszystkich 68 plików nie został wykonany w tym handoffie. Katalog T4 rozszerzono źródłowo do 41 rezerwacji; żadna nie potwierdza aktywnej linii.
 - PHONE execution receipt, recipient OWN_ACK, aktualny issuer/ACL, lease/fence i zgoda: **UNBOUND / NOT_ATTESTED**.
 - Dostarczenie na serwer docelowy było zgłaszane jako oczekujące; bieżący inwentarz hosta nie został poświadczony. Native restore, instalacja, restart, send i produkcyjne GO: **NOT_RUN / NO_GO**.
 - Konstruktor istniejącego T4 Store/PhoneIngress może mieć skutki zapisu; nie wolno traktować go jako bezpiecznej sondy read-only.
