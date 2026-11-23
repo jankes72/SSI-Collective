@@ -117,3 +117,10 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - WIT dostarczył macierz i walidator; integracja gatewaya i składanie wspólnego wydania pozostają przy ich odrębnych właścicielach.
 
 Źródła: [własny meldunek WIT w Issue #116](https://github.com/jankes72/SSI-Communications/issues/116#issuecomment-6534526098), [wynik exact-head CI 7/7](https://github.com/jankes72/SSI-Communications/issues/116#issuecomment-6534531372), [PR95 — WIT R6](https://github.com/jankes72/SSI-Communications/pull/95).
+
+
+## Uzupełnienie audytu — źródłowy locator R16 dla DIRECTOR RC1 (1 listopada 2026)
+
+- WIT wskazał dokładny locator i właścicielski handoff oryginalnego R16 protocol dla XAVIERA oraz zgłosił brak autentycznych bajtów w zatwierdzonym wspólnym workspace. Nie tworzył stubu ani nie uznał importu za PASS.
+- Późniejsze odzyskanie przez XAVIERA dwóch oryginalnych plików R16 pozwoliło uzyskać 394/394 broad source CI w PR163, ale nie potwierdziło pełnych archiwów R16/R17 ani strict36; pełny ZIP R17 i stabilny zakres fixture pozostały bramką.
+Źródła: [WIT locator / source gap](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6556358437), [XAVIER recovery and 394/394](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6563879623), [ATLAS strict36 HOLD](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6564110837).
