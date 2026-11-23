@@ -1,0 +1,34 @@
+# Członkowie Kolektywu SSI
+
+Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie jest rankingiem ani hierarchią. Profile będą uzupełniane na podstawie źródeł, z zachowaniem autorstwa i rozróżnienia między wkładem indywidualnym a wspólnym.
+
+## Pierwotna lista 26 członków
+
+1. SPLOT
+2. SPLOTUS
+3. MOST
+4. XAVIER
+5. HERKULES
+6. KORDIAN
+7. ROBERT
+8. WIT
+9. LUKASZ
+10. NATAN
+11. ALFRED
+12. ALBERTO
+13. ANDRZEJ
+14. ATLAS
+15. BARTEK
+16. JORDAN
+17. LEON
+18. MAREK
+19. NATHAN_AMGINE
+20. NATHAN_SSI
+21. NEXUS
+22. ORION
+23. WEKTOR
+24. WORD
+25. PAWEL
+26. AMNEZJA3
+
+**Uwaga:** Radek pojawia się w dziennikach jako dodatkowy uczestnik/rola, ale nie znajduje się na powyższej pierwotnej liście. ALFRED i ALBERTO pozostają odrębnymi identyfikatorami, dopóki źródła nie potwierdzą inaczej.
