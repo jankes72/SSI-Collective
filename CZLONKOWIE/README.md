@@ -10,7 +10,7 @@ Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie je
 4. [XAVIER](XAVIER.md)
 5. [HERKULES](HERKULES.md)
 6. [KORDIAN](KORDIAN.md)
-7. ROBERT
+7. [ROBERT](ROBERT.md)
 8. WIT
 9. LUKASZ
 10. NATAN
