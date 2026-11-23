@@ -123,3 +123,13 @@ ATLAS wybrał własny podpis autora 31 października 2026. W źródłach występ
 - Kapsuła R2: T4-41028, aktualizacja 8.11.2026; źródłowy widok roli, bez natywnego restore.
 - PR165: finalny manifest 184/184 źródeł i raporty W4–W6/G1–G2.
 - PR199: pięć regresji źródłowych V10 E1.
+
+## Uzupełnienie audytu — SSI-PACK LAB R0 / niezależny oracle FULL vs PACK (1.11.2026)
+
+- ATLAS wykonał własny niezależny oracle w [PR165](https://github.com/jankes72/SSI-Communications/pull/165). GitHub Actions [run #41354224910](https://github.com/jankes72/SSI-Communications/actions/runs/41354224910), job 124990719531: **21/21 nowych testów PASS**, a cały krok tools/github 89/89 PASS.
+- Wykorzystał oryginalne źródła world/role_resume.py i compact_context.py; nie tworzył drugiego kodeka, pamięci ani messengera. Fikcyjne role/tenanty i callbacki nie są natywnym issuerem.
+- FULL i PACK dały identyczny uporządkowany wynik w dwóch procesach Python, łącznie z późniejszą korektą i UNKNOWN_EFFECT/NO_REPLAY. To nie jest model-understanding PASS ani świeża rozmowa ChatGPT B.
+- Pomiar: FULL 2193 B; PACK 831 B wiadomości + 1639 B fetch = 2470 B. Wiadomość początkowa była krótsza, lecz łączny transfer był ok. 13% większy. Tokeny, chat template i czas modelu nie były mierzone.
+- Dodatkowy ograniczony peer indeksu: 21 Issues, 148 PR w widoku paginowanym; 1020/1300 komentarzy top-level zbadanej próbki (w tym zamknięte wątki). Pełne komentarze PR/review threads, edycje i prywatne archiwa pozostały niepełne. Ten wynik nie zastępuje szerszego indeksu SPLOTUSIA (21 Issues/1308 komentarzy/150 PR metadata) ani nie stanowi pełnego indeksu repo.
+
+Źródła: [własny meldunek ATLASA #170](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564445734), [PR165](https://github.com/jankes72/SSI-Communications/pull/165), [Actions #41354224910](https://github.com/jankes72/SSI-Communications/actions/runs/41354224910).
