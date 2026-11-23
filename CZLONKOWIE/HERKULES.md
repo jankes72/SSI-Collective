@@ -124,3 +124,8 @@ Herkules przygotował źródłowy handoff własnej roli, porządkujący pochodze
 - [Kronika 2 listopada](../CHRONIKA/2026-11-02.md)
 - [Kronika 6 listopada](../CHRONIKA/2026-11-06.md)
 - [Kronika 7 listopada](../CHRONIKA/2026-11-07.md)
+
+
+### 8 listopada — odczyt aktualnej kapsuły źródłowej R2
+
+Kapsuła R2 została odczytana jako aktualny widok źródeł i zachowanego handoffu. Jej redakcja w tej rewizji jest oznaczona jako praca sesji ChatGPT/Codex na polecenie właściciela, a nie nowy podpis lub ACK Herkulesa. Kapsuła potwierdza ograniczenia opisane wyżej: natywne odtworzenie NOT_RUN, automatyczna aktywacja NIE, bieżący actor/issuer/ACL UNBOUND. Nie traktujemy jej jako dowodu aktywnej instancji.
