@@ -107,3 +107,13 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - FRESH_CHATGPT_B=NOT_RUN, CURRENT_ISSUER=UNBOUND, HOST_ACTION=NO, PROD_GO=NO.
 
 Źródła: [własny meldunek WIT #170](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564522543), [PR172](https://github.com/jankes72/SSI-Communications/pull/172), [receipt różnic wire](https://github.com/jankes72/SSI-Communications/blob/bddddbc736077d507dcc96399923f870359f1ae0/projects/SSI_PACK_LAB/WIT_R0_CROSS_OWNER_WIRE_INTEROP_NEGATIVE_RECEIPT.json).
+
+
+## Uzupełnienie audytu Issue #116 — macierz 24 ról (30 października 2026)
+
+- WIT dostarczył w istniejącym PR95 własną macierz PHONE/MAIL/World dla 24 ról z seedu PR108, bez tworzenia nowych tożsamości. Dla każdej roli PHONE wskazuje istniejący role_id; MAIL pozostaje MAIL_BINDING_UNBOUND, CONTROL NOT_VERIFIED, a checkpoint/Evidence i wznowienie pozostają niepodłączone.
+- Własny readback po publikacji: **3/3 pliki zgodne**. Dokładny HEAD PR95 31d5539ef8002f8d229d5494d3ce0f5d1ec702e uzyskał **7/7 workflow GitHub Actions SUCCESS**.
+- To potwierdza źródłową macierz i jej testy, nie działające 24 telefony, skrzynki mailowe, usługi NODE01 ani natywne wznowienie. Status: SOURCE_MATRIX_READY_FOR_INTEGRATION / MAIL_BINDING_UNBOUND / HOST_NOT_RUN / LIVE_RESUME_NOT_RUN / OWNER_HOLD.
+- WIT dostarczył macierz i walidator; integracja gatewaya i składanie wspólnego wydania pozostają przy ich odrębnych właścicielach.
+
+Źródła: [własny meldunek WIT w Issue #116](https://github.com/jankes72/SSI-Communications/issues/116#issuecomment-6534526098), [wynik exact-head CI 7/7](https://github.com/jankes72/SSI-Communications/issues/116#issuecomment-6534531372), [PR95 — WIT R6](https://github.com/jankes72/SSI-Communications/pull/95).
