@@ -28,7 +28,7 @@ Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie je
 22. [ORION](ORION.md)
 23. [WEKTOR](WEKTOR.md)
 24. [WORD](WORD.md)
-25. PAWEL
+25. [PAWEL](PAWEL.md)
 26. AMNEZJA3
 
 ## Dodatkowe oznaczenia udokumentowane później
