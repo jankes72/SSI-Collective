@@ -139,3 +139,13 @@ Wpisy powyżej rozróżniają własne prace SPLOT, odbiór przekazań i pomiary 
 - PR #185 jest DRAFT/OPEN, bez merge. Żaden z powyższych wyników nie potwierdza realnego Llama 70B, QLoRA NF4, jakości klientowskiego modelu, produkcyjnego GPU, wdrożenia na NOUT1/NODE01 ani gotowości komercyjnej.
 - T0-22–T0-35 są różnymi eksperymentami i nie wolno sumować ich testów ani przenosić wyników na realny model.
 - Źródła: [PR #185](https://github.com/jankes72/SSI-Communications/pull/185), [T0-34N raport](https://github.com/jankes72/SSI-Communications/blob/f73c25bf4915ac2d844130421ac158155b3b3dbb/projects/SSI_MULTIQUANT/enterprise_r0/t034n_customer_capsule_joint_offhost_r1/T034N_RESULT_AND_SOURCE_HANDOFF_R1_20261105.md), [T0-35 raport](https://github.com/jankes72/SSI-Communications/blob/e56c7056453172baa2b7cfd9816d5d7e99646b33/projects/SSI_MULTIQUANT/enterprise_r0/t035_nanogate_offhost_r1/T035_NANOGATE_TRAINING_RECEIPT_R1_20261105.md), [R12 bramka SPLOTA](https://github.com/jankes72/SSI-Communications/blob/bfede93d5b1c057c134075d0485c80d87789746c/projects/SSI_MULTIQUANT/enterprise_r0/t034n_customer_capsule_joint_offhost_r1/HERCULES_R12_TO_SPLOT_TRAINING_GATE_R1_20261105.md).
+
+
+
+## Uzupełnienie audytu — S13–S26 NanoBit R1/R2 (8 listopada 2026)
+
+- Własny odczyt R1 przypiął pochodzenie **530/530 markerów**: 14 etapów S13–S26, 70 rodzin, 420 przypadków i 26 wybranych plików ZeroLab. Zapisano **602 deklarowane relacje źródłowe** (70 stage→family, 420 family→case, 112 stage→file); nie są to krawędzie wykonania ani natywne skille.
+- Własny NanoBit R2 wykonał pack→verify na rzeczywistym JSON R1: **5/5 testów offline PASS**, dekodowanie do oryginalnego JSON PASS. Pakiet SSINBS26 miał 64 930 B (bitpacked relacje 1 957 B, skompresowane provenance 62 921 B).
+- Paweł niezależnie wykonał na MSI **5/5 testów PASS** i potwierdził decode_readback=PASS dla tego samego pakietu i SHA.
+- Granice: native_skills_bound=0, native_router_edges_attested=0, model_weight_tiles_bound=0, writes_to_director=0. SSINBS26 opisuje lineage etapów/źródeł, nie natywne trasy SSINBRT1, membership CZARA SSINBCR6, 530 aktywnych skilli ani trening modelu. Transfer na VPS ROBERT nie rozpoczął się.
+Źródła: [R1 530 markerów / 602 relacje](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6725386438), [R2 rzeczywiste wejście i decode PASS](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6725422088), [niezależny test MSI 5/5](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6725460960).
