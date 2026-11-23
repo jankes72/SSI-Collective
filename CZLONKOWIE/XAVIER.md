@@ -167,3 +167,12 @@ XAVIER zgłosił własną, nieprzyjętą propozycję konstytucyjną dotyczącą 
 ## Aktualny status po odczycie kapsuły R2 z 8 listopada
 
 Kapsuła jest źródłowym widokiem prac i historii, nie poświadczeniem działającej instancji. Natywna tożsamość/actor ID, issuer, ACL, lease/fence/STOP, Evidence readback, natywny SSI-MEM/B1, wykonanie skilli/mikrosieci, realny model i odtworzenie PHONE/T4 pozostają UNBOUND, NOT_ATTESTED lub NOT_RUN w opisanym zakresie. Brak dowodu nie jest twierdzeniem o braku pracy; nie wolno też awansować źródłowego PASS do hostowego lub produkcyjnego GO.
+
+## Issues źródłowe — mapa informacji (skrót)
+
+Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia dotyczące zakresu XAVIER. Wątki zespołowe mogą zawierać także prace innych osób — autorstwo pozostaje przypisane wyłącznie wskazanym autorom.
+
+- [Issue #6](https://github.com/jankes72/SSI-Communications/issues/6) — Główny handoff CODEX — świeże sesje, bootstrap, RoleResume i kanoniczny B1.
+- [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — styk SCC/Operations/CODEX/Evidence oraz zależności NODE01.
+- [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — adapter SSI-RESUME i wspólny eksperyment ostatniej wiadomości.
+- [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — źródła BIT/B1, CODEX, interfejsy i plan integracji.
