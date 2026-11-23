@@ -349,6 +349,36 @@ Poniższe pozycje są skróconym indeksem potwierdzonych wyników. Szczegóły, 
 - **Status:** source/shadow PASS; native full-model NOT_RUN.
 - **Źródła:** [PR #139 — L4 source handoff](https://github.com/jankes72/SSI-Communications/pull/139#issuecomment-6536881759) · [PR #139 — aktualizacja 52/52](https://github.com/jankes72/SSI-Communications/pull/139#issuecomment-6536915254) · [PR #139 — niezależny odbiór i braki](https://github.com/jankes72/SSI-Communications/pull/139#issuecomment-6536961088).
 
+
+### 4.33 BODY FROZEN / CZARA / ZeroLab — historyczne laboratoria i Micro-First
+
+- **Archiwa S20–S26:** historyczny pakiet R1 obejmował 35 rodzin lokalnych protokołów powiązanych z 210 definicjami przypadków. R2 opisywał wspólny slot treningów CZARY i Final bez replay i zwiększania budżetu. Są to archiwa wcześniejszych prac, nie automatyczny dowód bieżącego działania całego laboratorium.
+- **ZeroLab CZARA FINAL V2:** odnaleziono rzeczywisty kod SSI ZeroLab, rozdzielenie aktorów CZARA/FINAL, wersjonowane testy oraz adapter native_micronetwork_v1 wywołujący runtime.micro.advise po kontroli enabled/SHA wag/cech. Historyczne raporty wymagają zachowania statusów per przypadek; brak laboratorium lub niewykonalne porównanie ma być INCONCLUSIVE, nie automatycznym FAIL.
+- **S20–S26 / R6:** źródłowa rekonstrukcja wskazała historyczne PASS dla ISKRA2/S26-01-01 i ISKRA5/S24-01-01, ale ISKRA4/S24-01-02 w prywatnym R24 miała status REVIEW_INVALID. S26 jako cały etap nie został potwierdzony jako zakończony przez odczytany publiczny indeks.
+- **CZARA Micro-First / PR197:** przygotowano source intake i raport o oryginalnych rejestrach skilli, V10, learning flow, mikrosieci, Research Memory i SCC. To odzysk i źródłowa dokumentacja; nie przypisywać temu automatycznie nowego treningu ani wdrożenia.
+- **Wkład LEONA — oryginalny Pocket Micro i NanoBit T031:** wykonano porównanie dwóch torów na tym samym skillu 8/8, z identycznymi wynikami i odmowami. Każdy wariant obejmował 5 rzeczywistych inferencji i 3 wykonania recipe. Trening używał 6 syntetycznych wejść autora i 8 innych przypadków walidacyjnych. Oryginalny Store/Checkpoint odczytano w nowym procesie, bez replay skilla; dwie uszkodzone kopie odrzucono. To ograniczony test oryginalnego przykładu Pocket Micro/NanoBit, nie kwalifikacja dronów ani wszystkich skilli.
+- **Granica pełnego SSI LLM:** oryginalny V10 zwrócił FULL_FLOW_UNAVAILABLE, backend był nieosiągalny, liczba generacji LLM wyniosła zero, a natywne BIT/B1 pozostawały UNBOUND. Całość została opisana jako PARTIAL_EXECUTED_NOT_FULL_SSI_LLM.
+- **Status:** historyczne laboratoria i częściowy test Micro/NanoBit potwierdzone w podanych zakresach; pełny przebieg SSI LLM, wszystkie ISKRY i cały S20–S26 — niepotwierdzone.
+- **Źródła:** [Issue #195 — źródła CZARA / PR197](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6673073749) · [Issue #195 — rekonstrukcja S20–S26](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6673295308) · [Issue #195 — archiwa ZeroLab](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6673504004) · [Issue #195 — LEON Micro/NanoBit R6](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6682065411).
+
+### 4.34 LEON R8 — lokalny scenariusz SSI LLM na dwóch węzłach
+
+- **Cel:** sprawdzić lokalny scenariusz współpracy usług i ról na dwóch węzłach z użyciem istniejących mechanizmów pamięci, kapsuł, Operations i ciągłości.
+- **Wynik:** 66/66 kontroli scenariusza, 16/16 kontroli odczytu i restore, 187 zdarzeń. W przebiegu uczestniczyły dwa lokalne procesy serwerów, czterech wykonawców, siedem oddzielnych kapsuł i 15 zapisanych wiadomości PHONE.
+- **Granica:** to lokalny scenariusz testowy; nie potwierdza automatycznie bieżącego hostowego wdrożenia, aktywności wszystkich agentów ani pełnego produkcyjnego SSI.
+- **Status:** lokalny scenariusz i kontrole restore PASS w określonym zakresie.
+- **Źródło:** [Issue #195 — LEON R8](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6685120433).
+
+### 4.35 META Tensor LEGO P1 / R5 — eksperyment syntetyczny CPU
+
+- **Cel:** zbadać rozkład Tensor LEGO w modelu typu SwiGLU i przygotowanie ścieżki ucznia R5.
+- **Wynik MOST:** SYNTHETIC_CPU_27_PASS oraz REPRO_84_PASS dla kontrolowanego sztucznego bloku hidden128/ffn256. W wariancie low-rank+sparse ranga16 payload trzech macierzy zmniejszył się o 26,08% w tym syntetycznym przypadku.
+- **Wspólne guardy:** MOST połączył istniejące guardy dtype i kontrole rangi; 15 testów inventory i 6 testów rank PASS w CI. Testy nie uruchamiały nauczyciela 70B.
+- **Wynik KORDIANA:** dostarczono źródłowy zestaw L3/L6/L9 i przygotowanie realnego bloku, ale B5/teacher i budowa studenta pozostawały NOT_RUN.
+- **Ograniczenia:** to eksperyment syntetyczny i testy kontraktów; nie jest treningiem 70B, nie dowodzi jakości studenta ani oszczędności pamięci w rzeczywistym modelu.
+- **Status:** syntetyczne testy i kod PASS; 70B teacher NOT_RUN; student NOT_BUILT.
+- **Źródła:** [Issue #44 — MOST META LEGO P1](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6499424660) · [Issue #44 — MOST L2/B1 guardy](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6532283643) · [Issue #44 — KORDIAN B0/B1/L3](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6532265825).
+
 ## 5. Mapa projektów i źródeł
 
 Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są punktami nawigacyjnymi, nie deklaracją, że każdy uczestnik danego wątku wykonał całość prac.
