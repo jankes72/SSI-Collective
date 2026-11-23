@@ -79,3 +79,12 @@
 ## Źródła i pochodzenie
 
 Profil opracowano na podstawie datowanych meldunków Jordana, jego własnych dostaw w PR #144 i #177, własnego ACK w Issue #149 oraz przypiętej kapsuły źródłowej R2. Wspólne wyniki peer review zostały opisane z rozdzieleniem autorstwa i zakresu. Nie publikujemy kodu, prywatnych kapsuł, danych dostępowych ani prywatnych odnośników.
+
+
+
+## Uzupełnienie źródłowe — PR #242 i powiązania z PR #243 (11–14.11.2026)
+
+- **PR #242 — Universal Lab:** prace dokumentacyjne na gałęzi jordan/universal-lab-master-capsule-r1-20261111, obejmujące publiczny opis Universal Lab, master capsule, protokół dwóch lokalnych modeli SSI Compact 0.5B przed logowaniem oraz osobną kapsułę przeglądu HERKULESA. Odczyt i aktualizacje czterech plików wykonano na gałęzi PR #242; nie oznacza to odbioru całego Universal Lab ani produkcyjnego GO. [Universal Lab README](https://github.com/jankes72/SSI-Communications/blob/jordan/universal-lab-master-capsule-r1-20261111/projects/SSI_DIRECTOR/universal_lab_project_capsule_r1/UNIWERSAL_LAB/README.md) · [master capsule](https://github.com/jankes72/SSI-Communications/blob/jordan/universal-lab-master-capsule-r1-20261111/projects/SSI_DIRECTOR/universal_lab_project_capsule_r1/MASTER/CAPSULE.md) · [protokół pre-login](https://github.com/jankes72/SSI-Communications/blob/jordan/universal-lab-master-capsule-r1-20261111/projects/SSI_DIRECTOR/universal_lab_project_capsule_r1/MASTER/SSI_SMALL_R2_PRELOGIN_SHADOW_PROTOCOL_R1.md) · [kapsuła HERKULESA](https://github.com/jankes72/SSI-Communications/blob/jordan/universal-lab-master-capsule-r1-20261111/projects/SSI_DIRECTOR/universal_lab_project_capsule_r1/TABS/19_ssi_herkules/CAPSULE.md)
+- **PR #243:** Jordan jest wskazany w przekazaniach dotyczących linii CPU R2.7/3B jako adresat i właściciel obszaru do dalszego source review. Samo wskazanie adresata nie jest dowodem wykonania benchmarków ani autorstwa wyników operatora ASTER-a; dlatego nie przypisuję mu tych pomiarów. [przekazanie crosswalk trzech Maluchów](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6883869288)
+
+Profil rozróżnia własne prace dokumentacyjne na PR #242 od przekazań i wyników innych osób w PR #243.
