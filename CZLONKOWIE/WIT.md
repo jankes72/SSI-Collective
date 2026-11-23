@@ -97,3 +97,13 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — wspólny kontekst wznowienia i kontrola dostawy.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — SCC/R16/R17, interfejsy i zależności PHONE/UL.
 - [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — PHONE/CENTRAL, SSI World, UI, klienty i odbiory źródłowe.
+
+## Uzupełnienie audytu — SSI-PACK LAB R0 / niezależny oracle i blokada wire (1.11.2026)
+
+- WIT przygotował własny offline oracle w [PR172](https://github.com/jankes72/SSI-Communications/pull/172), wykorzystujący syntetyczne, fikcyjne źródła. GitHub Actions [run #41354983853](https://github.com/jankes72/SSI-Communications/actions/runs/41354983853), job 124993031257: **56/56 testów PASS**; cały istniejący krok tools/github 77/77 PASS.
+- Dwa odrębne procesy OS Python odtworzyły siedem wymaganych pól z identycznym wynikiem w wariancie FULL i PACK. To nie jest świeża rozmowa ChatGPT B ani natywny runtime.
+- Pomiary syntetycznych bajtów: DEMO_A FULL 18 728 B vs PACK+fetch 7 050 B (−62,36%); DEMO_B FULL 18 331 B vs PACK+fetch 6 672 B (−63,60%). Nie są to pomiary tokenów, czasu rzeczywistego modelu ani ogólnej przewagi dla innych rozmiarów historii.
+- Kluczowy negatywny wynik interoperacyjności: trzy warianty wire (WIT, XAVIER, DYREKTOR) mają różne pola/kształt. CROSS_OWNER_WIRE_COMPAT=FAIL_STATIC_SHAPE; format WIT pozostaje HOLD, dopóki właściciele nie wybiorą jednego schematu i nie wykonają wspólnego roundtrip.
+- FRESH_CHATGPT_B=NOT_RUN, CURRENT_ISSUER=UNBOUND, HOST_ACTION=NO, PROD_GO=NO.
+
+Źródła: [własny meldunek WIT #170](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564522543), [PR172](https://github.com/jankes72/SSI-Communications/pull/172), [receipt różnic wire](https://github.com/jankes72/SSI-Communications/blob/bddddbc736077d507dcc96399923f870359f1ae0/projects/SSI_PACK_LAB/WIT_R0_CROSS_OWNER_WIRE_INTEROP_NEGATIVE_RECEIPT.json).
