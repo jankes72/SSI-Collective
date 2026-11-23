@@ -132,3 +132,7 @@ Własne wpisy XAVIER na gałęzi PR142 dokumentują przekazanie source-only do j
 - późniejsze przekazanie CORE/ISKRA/skill topology: 24 role źródłowe, 6 wariantów ISKRA, 4 hosty i 8 bramek; 28 testów syntetycznych walidatora.
 
 Wskazane w materiałach CI 41/41 oraz 81/81 PASS dotycząło testów źródłowych/kontraktowych na określonych HEAD. Nie jest to odbiór natywny ani hostowy. Pozostawały: current SCC issuer/ACL, trwały lease/fencing/STOP, rzeczywiste Operations/Evidence readback, źródłowy kodek B1 i natywne wznowienie. PR142 był draftem, bez automatycznego merge i instalacji.
+
+## Kompletność chronologii
+
+W przejrzanych dziennikach głównych nie znaleziono osobnego, własnoręcznie podpisanego wpisu XAVIER dla 27 i 29 października. Nie traktujemy tego jako dowodu braku pracy lub nieobecności. Dalsze pozycje 30 października–1 listopada odtworzono z dat utworzenia PR81, PR142 i PR171 oraz z przypiętych wpisów XAVIER na gałęzi PR142. Kapsuła R2 z 8 listopada jest późniejszym widokiem źródeł, a nie potwierdzeniem aktywnej instancji natywnej.
