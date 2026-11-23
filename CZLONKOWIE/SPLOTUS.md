@@ -64,6 +64,8 @@ Nathan SSI potwierdził zachowanie istniejącego źródła self-resume SPLOTUSIA
 - [Kronika — 31 października 2026](../CHRONIKA/2026-10-31.md)
 - [Kronika — 1 listopada 2026](../CHRONIKA/2026-11-01.md)
 - [Kronika — 3 listopada 2026](../CHRONIKA/2026-11-03.md)
+- [Kronika — 4 listopada 2026](../CHRONIKA/2026-11-04.md)
+- [Kronika — 5 listopada 2026](../CHRONIKA/2026-11-05.md)
 - [Własny handoff i klucz ciągłości — PR167](https://github.com/jankes72/SSI-Communications/blob/bf2e0f82fc3e6e747a960cb56de96e0bbeee0ed8/projects/SSI_PACK_LAB/splotus_source_refs_r0/SPLOTUS_SELF_RESUME_SOURCE_KEY_AND_PHASE1_PEER_R1_20261103.md)
 - [Manifest źródeł — PR167](https://github.com/jankes72/SSI-Communications/blob/0d394f72d771dd1ef02c0a0491d6261c4ffd02ab/projects/SSI_PACK_LAB/splotus_source_refs_r0/SPLOTUS_INSTALL_SOURCE_FILE_MANIFEST_R1_20261103.json)
 - [Zbiorczy handoff i wynik offline restore — Issue #149](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6550508950)
