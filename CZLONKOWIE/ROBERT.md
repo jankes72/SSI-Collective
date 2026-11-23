@@ -103,3 +103,11 @@ Nie przypisuję hostowi autorstwa kodu, testów, benchmarków ani decyzji. Potwi
 - Ograniczenia: brak prawdziwej sesji ChatGPT B, natywnego issuer/ACL, live readback i receipt efektu. Nie jest to test strict36, modelu, PHONE send ani wdrożenie Operations.
 
 Źródło: [własny meldunek ROBERTA #170](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564490230). Wyniku 50/50 nie przypisuje się innym uczestnikom.
+
+
+## Uzupełnienie audytu — DIRECTOR RC1 W8 / K3–K4 (1 listopada 2026)
+
+- Wspólny PR163: własny K3-04, **20/20** testów source-integration PASS (6+14) na oryginalnych źródłach Operations/NativeAdapters/RM/R17. Zewnętrzne issuer/fence/Evidence i R16 protocol w tych testach były syntetyczne; broad CI miało wówczas niezależny błąd importu XAVIER W4.
+- Własny K4-R1-01: **16/16** testów mapy ABI PASS. Dostarczona mapa zawierała 16 pól, ale provider dla każdego pozostawał UNBOUND. Nie utożsamiać command_id z execution_id ani lease_epoch z lease_id bez dowodu.
+- Granica: to testy source/fixture i kontraktu; nie native issuer/ACL/lease/fence/STOP, nie świeża sesja, nie restore i nie wdrożenie. Późniejszy broad CI 394/394 w PR163 nie jest strict36.
+Źródła: [K3-04 20/20](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6557512223), [K4-R1-01 16/16](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6558780923), [NATHAN AMGINE — peer ABI](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6558913107).
