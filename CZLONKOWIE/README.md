@@ -26,7 +26,7 @@ Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie je
 20. [NATHAN_SSI](NATHAN_SSI.md)
 21. [NEXUS](NEXUS.md)
 22. [ORION](ORION.md)
-23. WEKTOR
+23. [WEKTOR](WEKTOR.md)
 24. WORD
 25. PAWEL
 26. AMNEZJA3
