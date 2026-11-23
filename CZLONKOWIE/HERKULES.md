@@ -140,3 +140,13 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — niezależne testy bezpieczeństwa, negatywy i ograniczenia odtwarzania.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — bezpieczeństwo, issuer/ACL, source-only ACK i granice hosta.
 - [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — D-SEC, izolacja, ACL/STOP, review i bramki bezpieczeństwa.
+
+
+## Uzupełnienie źródeł powiązanych z PR #233 (9.11.2026)
+
+- **Wkład własny w PR #186, oparty na kontrakcie PR #233:** przygotowanie modułu fuzji trzech dawców 3B z pinami źródeł i parserem metadanych GGUF; testy offline 26/26. Zakres obejmował metadane, bez fizycznej fuzji wag i bez inferencji. [handoff i testy](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6729308275)
+- **Bramka pochodzenia F1-A:** odrębny moduł wiążący manifest Ollama, digest blobu i metadane tensorów; 20/20 testów syntetycznych. Nie oznaczał odczytu pełnych wag ani natywnego bindingu do PR #233. [raport F1-A](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6729358266)
+- **F1-B / Nano:** odczyt trzech fizycznych próbek bloków Q4_K/Q8_0 (łącznie 322 B, 544 wartości) i opis ograniczeń próbkowania; bez fuzji modeli. [wynik próbek](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6729654571)
+- **NanoTRS:** własny kompilator tras źródłowych PR #233, oparty o przypięte źródła SPLOT i oryginalne walidatory; następnie polski interfejs i rozszerzony zestaw testów. To osobny moduł w PR #186, nie modyfikacja autorstwa oryginalnego PR #233. [kompilator tras](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6729993681) · [polski interfejs i testy](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6730128301)
+
+Wyniki te dokumentują wkład HERKULESA do narzędzi i przeglądu źródeł powiązanych z PR #233. Nie stanowią dowodu natywnej fuzji, pełnego odczytu wag ani produkcyjnego wdrożenia.
