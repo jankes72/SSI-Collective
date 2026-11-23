@@ -89,3 +89,4 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — PHONE jako odrębna powierzchnia wejścia i bezpieczne wznowienie.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — PHONE/UL i zależności dla kapsuł/telefonów ról.
 - [Issue #214](https://github.com/jankes72/SSI-Communications/issues/214) — SSI READIT — kapsuła członka/projektu i kontynuacja między agentami.
+- [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1: D-PHONE, PHONE/T4/MAIL i most per-role do NODE01.
