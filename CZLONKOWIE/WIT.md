@@ -96,3 +96,4 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — PHONE/CENTRAL, UI, integracja i zależności NODE01.
 - [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — wspólny kontekst wznowienia i kontrola dostawy.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — SCC/R16/R17, interfejsy i zależności PHONE/UL.
+- [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — PHONE/CENTRAL, SSI World, UI, klienty i odbiory źródłowe.
