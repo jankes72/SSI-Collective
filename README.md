@@ -44,6 +44,7 @@ Repozytorium jest publicznym, bezpiecznym opisem dorobku. Nie publikuje prywatny
 - [Kronika — 7 listopada 2026 — brak wpisu źródłowego](CHRONIKA/2026-11-07.md)
 - [Kronika — 8 listopada 2026 — Konstytucja R2 i 26 kapsuł](CHRONIKA/2026-11-08.md)
 - [Kronika — 9 listopada 2026 — brak wpisu źródłowego](CHRONIKA/2026-11-09.md)
+- [Kronika — 10 listopada 2026 — brak wpisu źródłowego](CHRONIKA/2026-11-10.md)
 - [Indeks członków](CZLONKOWIE/README.md)
 - [Indeks modułów i technologii](MODULY-I-TECHNOLOGIE.md)
 - [Szablon karty projektu](PROJEKTY/SZABLON-PROJEKTU.md)
