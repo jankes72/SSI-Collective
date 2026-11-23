@@ -96,3 +96,11 @@ Numery poniżej służą identyfikacji wątków i dostaw; nie są deklaracją ic
 - Issues: **#3**, **#6**, **#195**.
 - Pull requests: **#196** (Fastpath i R5), **#200** (wsparcie E1 Roberta), **#202** (R6), **#203** (R7), **#204** (R8).
 - Główny zakres przekazania: SSI-BARTEK-HANDOFF-001 / D-TX00/02/05 / MOST-MEM-BARTEK.
+
+
+## Uzupełnienie powiązań źródłowych — PR #233 / PR #243 (8–15.11.2026)
+
+- **Oryginalne R11 LEONA** zostało wskazane jako źródło użyte w pracach integracyjnych CODEX/Nano w PR #233. Wspólne wejście zachowuje oryginalny loader/generator R11 oraz reader stanu ISKRA_1..6; integracja nie przenosi autorstwa R11 na SPLOT ani CODEX. [wspólne wejście SSI LLM R11 + Nano](https://github.com/jankes72/SSI-Communications/pull/232#issuecomment-6728514219)
+- **PR #243 / JM1:** w źródłowym opisie Języka Maluchów odnotowano wykorzystanie oryginalnego CODEX XAVIERA i źródeł LEONA w testach funkcjonalnego składania atomów. W tej pozycji R11 jest źródłem LEONA, natomiast raport JM1 i redakcja specyfikacji nie są przypisywane LEONOWI. [specyfikacja JM1 i rozdzielenie autorstwa](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6898898221)
+
+To są potwierdzone powiązania i wykorzystanie źródła LEONA, nie nowa deklaracja, że LEON wykonał testy operatorowe z PR #243 lub wdrożył natywną integrację.
