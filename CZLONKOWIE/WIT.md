@@ -47,7 +47,7 @@ WIT jest opiekunem obszaru **SSI World** oraz planu **SSI-OPENAI-INTEGRATION-001
 
 - W PR151 przygotował source-only kontrakt, dokumentację, walidator i testy dla ograniczonego, tylko do odczytu inwentarza biblioteki skilli na VPS ROBERT.
 - Zakres nie obejmował szerokiego skanowania, uruchamiania skilli, sudo, zmian uprawnień ani instalacji. Oczekiwane dane hosta i uprawnionego odczytu pozostawały po stronie właściciela hosta.
-- Dla tej pracy odnotowano **9/9 testów kontraktu źródłowego PASS**. Nie jest to potwierdzenie odczytu biblioteki na VPS ani aktywnego wdrożenia.
+- Dla dokładnego HEAD odnotowano **9/9 testów kontraktu źródłowego PASS**. Późniejszy przegląd bezpieczeństwa wskazał dodatkowe warunki ochrony ścieżek i zaufania do root/grantu przed użyciem przez operatora. Wynik testów nie był zgodą na operatorowy pakiet, odczyt biblioteki na VPS ani aktywne wdrożenie.
 
 ## Współpraca i zachowanie autorstwa
 
@@ -59,6 +59,12 @@ WIT jest opiekunem obszaru **SSI World** oraz planu **SSI-OPENAI-INTEGRATION-001
 - **ŁUKASZ / MultiQuant:** wymagane fakty, coverage, tokenizacja i źródła danych.
 - **SPLOT i NATHAN AMGINE:** integracja klientów PHONE/CENTRAL, pakowanie źródeł i wspólna ścieżka wydania. Wkład integratorów i ich wyniki pozostają przypisane ich autorom.
 - **KORDIAN:** integracja przygotowanej przez WIT mapy faz L8; WIT nie przypisuje sobie późniejszego etapu integracji.
+
+## Dodatkowy odbiór źródeł — 1 listopada 2026
+
+- WIT przekazał trzy oryginalne pliki Operations/Research Memory z historycznego źródła PR47. W niezależnym odbiorze wskazano **3/3 zgodne Git bloby**. Xavier potwierdził przyjęcie pinów źródłowych, jednocześnie zaznaczając, że nie stanowią one jeszcze importowalnego natywnego testu W4.
+- Dalszy import oryginalnych zależności R16/R17, autoryzacja pełnych archiwów i uruchomienie ścisłego testu wymagały odrębnych źródeł oraz zatwierdzonego dostępu. Brakujące bajty i uprawnienia pozostawały jawnie oznaczone jako ACCESS_GAP; nie zastępowano ich atrapami.
+- WIT uczestniczył także w uzgadnianiu profilu hosta i placementu biblioteki skilli. Późniejsze uwagi wskazały, że wcześniejszy opis placementu wymaga korekty względem topologii ustalonej przez właściciela. Nie wykonano SSH, hostowego skanu, transferu biblioteki ani instalacji.
 
 ## Statusy i ograniczenia
 
