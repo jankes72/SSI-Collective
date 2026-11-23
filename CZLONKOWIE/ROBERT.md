@@ -82,3 +82,4 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — semantyka efektu/no-replay i testy źródłowe.
 - [Issue #187](https://github.com/jankes72/SSI-Communications/issues/187) — Portfolio produktów i przejmowanie prac — zakres ofertowy/operacyjny.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — własne źródła Operations/Research Memory i odbiór.
+- [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — D-EXEC, Evidence, Research Memory, odbiór i readback.
