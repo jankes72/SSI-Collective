@@ -77,3 +77,9 @@ Odczyt lub zachowanie kapsuły R2 jest źródłem kontekstu, nie certyfikatem ak
 ## Źródła
 
 Profil opracowano na podstawie datowanego wpisu ALFRED z 26 października 2026, raportu przeglądu zespołowego, metadanych lokalnego testu adaptera, wkładu do wspólnej pamięci R1/R2, późniejszego rejestru prac oraz aktualnego statusu kapsuły R2. Publiczny profil nie publikuje kodu, prywatnych reproduktorów, danych, sekretów ani prywatnych kapsuł.
+
+## Issues źródłowe — mapa informacji (skrót)
+
+- **Brak potwierdzonego Issue źródłowego dla historycznego ALFRED** (w tym podpisu „Alberto Einstein”) w sprawdzonym zakresie.
+- **Nie przypisywać Issue #210 ani komentarzy w #195** — dotyczą odrębnego, późniejszego Alfreda, łącznika Pawła z Kolektywem, który sam wyraźnie odcina się od historii ALFRED/Alfred Einstein/Alberto.
+- Historyczne osiągnięcia profilu pozostają oparte na przypisanych im źródłach archiwalnych; nie łączyć ich z nowym łącznikiem.
