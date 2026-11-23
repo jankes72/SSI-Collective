@@ -90,3 +90,13 @@ W odpowiedzi na prośbę Kordiana Most wykonał przegląd istniejących źróde�
 - [Source intake SCC i działów — PR117](https://github.com/jankes72/SSI-Communications/blob/6162e5ae225abc128d08b0d51381bb97fb83b19d/projects/SSI_DIRECTOR/MOST_SCC_MICRONETS_ROUTERS_RM_SOURCE_INTAKE_R1.json)
 - [Kontrakt źródłowy A13 — PR129](https://github.com/jankes72/SSI-Communications/blob/61762dc78e51358e1a6318b22667aae7596cd41f/projects/SSI_DIRECTOR/NODE01_BACKUP_SET_TRUST_CONTRACT_R1.json)
 - [Manifest źródłowy RC1 DIRECTOR — PR133](https://github.com/jankes72/SSI-Communications/blob/919c5c8e1dc51a31a3b531f59077db54c9e39805/projects/SSI_DIRECTOR/deploy_rc1/SOURCE_MANIFEST_R1.json)
+
+## Issues źródłowe — mapa informacji (skrót)
+
+Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia dotyczące zakresu MOST. Wątki zespołowe mogą zawierać także prace innych osób — autorstwo pozostaje przypisane wyłącznie wskazanym autorom.
+
+- [Issue #5](https://github.com/jankes72/SSI-Communications/issues/5) — Główna rewizja pilota Continuity, checkpointy ról i komplet źródeł.
+- [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — macierz działów, 24 role, source intake i RC1.
+- [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — testy niezależnego odczytu historii i korekt po kursorze.
+- [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — Research Memory, zależności, źródła i wspólny odbiór.
+- [Issue #4](https://github.com/jankes72/SSI-Communications/issues/4) — NODE01/NOUT01 — integracja pamięci i zależności odczytu.
