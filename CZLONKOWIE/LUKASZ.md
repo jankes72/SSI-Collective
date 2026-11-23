@@ -76,3 +76,12 @@ Plany, macierze i propozycje dokumentują wkład projektowy Łukasza. Nie stanow
 
 - [Kronika — 26 października 2026](../CHRONIKA/2026-10-26.md)
 - [Kronika — 27 października 2026](../CHRONIKA/2026-10-27.md)
+
+## Issues źródłowe — mapa informacji (skrót)
+
+Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia dotyczące zakresu LUKASZ. Wątki zespołowe mogą zawierać także prace innych osób — autorstwo pozostaje przypisane wyłącznie wskazanym autorom.
+
+- [Issue #9](https://github.com/jankes72/SSI-Communications/issues/9) — Główny handoff Context Compiler, MUST_KEEP, tokenizery i CC-01..18.
+- [Issue #44](https://github.com/jankes72/SSI-Communications/issues/44) — SSI MultiQuant 70B — oryginalne prace i rozdział odpowiedzialności po przekazaniu opieki KORDIANOWI.
+- [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — zależności MultiQuant/V10/S10 i źródła działów.
+- [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — Research Memory, Context Fastpath i V10/S10.
