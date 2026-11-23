@@ -127,3 +127,4 @@ Poniższe odnośniki prowadzą do wątków, w których znajdują się bezpośred
 - [4 listopada 2026 — uzupełnienia chronologii](../CHRONIKA/2026-11-04.md)
 - [6 listopada 2026 — uzupełnienia chronologii](../CHRONIKA/2026-11-06.md)
 - [7 listopada 2026 — uzupełnienia chronologii](../CHRONIKA/2026-11-07.md)
+- [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — kontrakt BODY/Continuity, aktorzy per-role, W3-05 i zależności pamięci.
