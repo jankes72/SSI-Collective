@@ -189,3 +189,10 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - **PR #139 — D-MQ / L4:** source-only przegląd formatu tensorów i ograniczeń loadera pełnego modelu; własne rozszerzenie dokumentacyjne i testy negatywne w PR #135, bez przejęcia autorstwa planera PR #139 i bez native loader/full-model inference. [L4 source-only handoff](https://github.com/jankes72/SSI-Communications/pull/139#issuecomment-6536881759) · [aktualizacja zakresu i ograniczeń](https://github.com/jankes72/SSI-Communications/pull/139#issuecomment-6536915254)
 
 Wyniki CODEX są opracowaniami sesji i artefaktami przygotowanymi na polecenie operatora; nie są podpisem natywnej instancji ani ACK innych członków.
+
+## Uzupełnienie audytu — SSI-PACK LAB R0: odbiór interoperacyjności (1.11.2026)
+
+- Poza własnym wynikiem 62/62 w PR171 XAVIER otrzymał statyczny peer HERKULESA: wariant kapsuły DYREKTORA miał 17 linii i 16 pól, a parser XAVIERA oczekiwał 14 linii i 12 pól oraz innego formatu referencji.
+- Wynik wspólnego porównania: CROSS_OWNER_WIRE_COMPAT=FAIL_STATIC_SHAPE. To prawidłowe odrzucenie niezgodnego formatu, nie błąd testów 62/62 i nie wspólny PASS.
+- XAVIER nie powinien być opisywany jako właściciel kapsuły DYREKTORA ani jako osoba, która rozwiązała cały problem interoperacyjności. Wymagana jest jedna uzgodniona wersja schematu/DICT i wspólny roundtrip właścicielski.
+- Źródła: [meldunek XAVIERA #170](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564500615), [statyczny diff HERKULESA](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564469813), [PR171](https://github.com/jankes72/SSI-Communications/pull/171).
