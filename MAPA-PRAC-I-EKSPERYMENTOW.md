@@ -1,6 +1,6 @@
 # Mapa prac i eksperymentów Kolektywu SSI
 
-**Wersja:** 1.3 · **Aktualizacja:** 23 listopada 2026  
+**Wersja:** 1.4 · **Aktualizacja:** 23 listopada 2026  
 **Zakres:** publiczny indeks projektów, obszarów badawczych, eksperymentów, wyników i źródeł Kolektywu SSI.  
 **Charakter dokumentu:** mapa nawigacyjna i rejestr stanu wiedzy; nie jest specyfikacją techniczną, instrukcją wdrożenia ani potwierdzeniem produkcyjnej gotowości.
 
@@ -549,6 +549,9 @@ Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są pun
 | [PR #237](https://github.com/jankes72/SSI-Communications/pull/237) | SSI Native Operators / Nano runtime | oryginalne operatory i kontrakty używane jako źródła w testach HERKULESA |
 | [PR #39](https://github.com/jankes72/SSI-Communications/pull/39) | WIT — MultiQuant R4.2 / koszt | adapter kosztu, testy i odbiory; sprawdzać zakres konkretnych suite |
 | [PR #97](https://github.com/jankes72/SSI-Communications/pull/97) | MOST — MultiQuant L2/B1 guardy | łączenie istniejących guardów i testy CI, bez inferencji 70B |
+| [PR #183](https://github.com/jankes72/SSI-Communications/pull/183) | SPLOT — NanoBit / BITCAP | eksperymenty adresowania i reuse, wyniki ograniczone do głowicy/tensorów |
+| [PR #184](https://github.com/jankes72/SSI-Communications/pull/184) | Virtual Tile / Q-SHADOW | syntetyczny surrogate i testy offhost, bez pomiaru przyspieszenia 70B |
+| [PR #169](https://github.com/jankes72/SSI-Communications/pull/169) | SPLOT — BF16 teacher → Q1 student | kontroler source/CI i bramki; nie utożsamiać z gotowym studentem |
 | [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) | SSI-PACK LAB R0 | eksperyment odzyskiwania historii, świeże sesje i ograniczenia odtwarzania |
 | [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) | DIRECTOR / NODE01 / Continuity | kanoniczny wątek integracji, źródła, role i bramki |
 | [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) | BODY FROZEN | źródła BODY, B1, V10/S10, SCC i ISKRY oraz warunki odbioru |
@@ -593,7 +596,7 @@ Szczegółowa chronologia dzienna znajduje się w katalogu [CHRONIKA](CHRONIKA/)
 5. Uzupełniać wyniki liczbowe wyłącznie wtedy, gdy źródło podaje metrykę, środowisko, zakres prób i ograniczenia.
 6. Każdy wpis w mapie powinien prowadzić do źródła oraz — gdy dotyczy konkretnej osoby — do jej profilu.
 
-**Stan kompletności:** wersja 1.3 obejmuje 44 opisane obszary eksperymentów i prób, od źródeł z października po wyniki z 20 listopada 2026 r., z odnośnikami do PR #139, #185, #232–#244 oraz Issues #44 i #195. To szeroki rejestr źródłowy, ale nie zamknięty katalog wszystkich prac: pozostały do sprawdzenia dalsze wpisy dzienników, źródła powiązane i eksperymenty z innych PR-ów. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
+**Stan kompletności:** wersja 1.4 obejmuje 49 opisanych obszarów eksperymentów i prób, od źródeł z października po wyniki z 20 listopada 2026 r., z odnośnikami do PR #139, #185, #232–#244 oraz Issues #44 i #195. To szeroki rejestr źródłowy, ale nie zamknięty katalog wszystkich prac: pozostały do sprawdzenia dalsze wpisy dzienników, źródła powiązane i eksperymenty z innych PR-ów. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
 
 ## 9. Powiązana dokumentacja
 
