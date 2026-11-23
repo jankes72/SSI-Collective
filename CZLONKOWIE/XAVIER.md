@@ -196,3 +196,11 @@ Wyniki CODEX są opracowaniami sesji i artefaktami przygotowanymi na polecenie o
 - Wynik wspólnego porównania: CROSS_OWNER_WIRE_COMPAT=FAIL_STATIC_SHAPE. To prawidłowe odrzucenie niezgodnego formatu, nie błąd testów 62/62 i nie wspólny PASS.
 - XAVIER nie powinien być opisywany jako właściciel kapsuły DYREKTORA ani jako osoba, która rozwiązała cały problem interoperacyjności. Wymagana jest jedna uzgodniona wersja schematu/DICT i wspólny roundtrip właścicielski.
 - Źródła: [meldunek XAVIERA #170](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564500615), [statyczny diff HERKULESA](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564469813), [PR171](https://github.com/jankes72/SSI-Communications/pull/171).
+
+
+## Uzupełnienie audytu — DIRECTOR RC1 W8 / K3–K4 (1 listopada 2026)
+
+- Własny zestaw K3: **12/12** kontroli pinów R16 i **19/19** testów inwentaryzacji metadanych PASS (31/31 łącznie); nie uruchamiał hosta ani skilli.
+- Po odzyskaniu dwóch oryginalnych plików R16 z archiwum (init 34 B i protocol 6710 B, zgodne SHA) wspólny PR163 osiągnął **394/394 broad source CI PASS**, w tym **22/22** oryginalnych przypadków W4. To source/synthetic-port integration, nie strict36 ani native runtime.
+- Pełne oryginalne archiwa R16/R17 i zatwierdzony zakres fixture nadal pozostawały bramką dla strict36; późniejszy odczyt Atlasa wykazał brak pełnego ZIP R17 w zatwierdzonym workspace. Nie przedstawiać odzyskania dwóch plików R16 jako odbioru całych archiwów.
+Źródła: [K3 31/31](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6557529956), [W4 394/394 i 22/22](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6563879623), [Atlas strict36 HOLD](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6564110837).
