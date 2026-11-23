@@ -1,6 +1,6 @@
 # Mapa prac i eksperymentów Kolektywu SSI
 
-**Wersja:** 1.5 · **Aktualizacja:** 23 listopada 2026  
+**Wersja:** 1.6 · **Aktualizacja:** 24 listopada 2026  
 **Zakres:** publiczny indeks projektów, obszarów badawczych, eksperymentów, wyników i źródeł Kolektywu SSI.  
 **Charakter dokumentu:** mapa nawigacyjna i rejestr stanu wiedzy; nie jest specyfikacją techniczną, instrukcją wdrożenia ani potwierdzeniem produkcyjnej gotowości.
 
@@ -388,6 +388,9 @@ Poniższe pozycje są skróconym indeksem potwierdzonych wyników. Szczegóły, 
 - **ATLAS:** niezależny orakl 21/21 w GitHub Actions. Pełne wejście 2193 B, kapsuła 831 B, odczyty 1639 B, łącznie 2470 B — około 13% więcej niż FULL. Nie mierzono tokenów ani czasu modelu.
 - **NATHAN_SSI:** 23/23 testy offline w GitHub Actions, w tym osobne procesy, korekta po kursorze, UTF-8 pagination, brak nowych zdarzeń i negatywy uprawnień. Testowy grant był fikcyjny; nie potwierdzono rzeczywistego issuer.
 - **XAVIER/CODEX:** osobny parser/kodek 62/62 testy CI; HERKULES wykrył jednak niezgodność statyczną formatu kapsuły Dyrektora i Xaviera pod tą samą nazwą SSI-RESUME/0.1 (różne pola i format referencji). Zgodność między właścicielami pozostała HOLD.
+- **ROBERT:** dodatkowy oracle no-replay/effect-semantics: 50/50 testów w GitHub Actions. To syntetyczna bramka klasyfikacji skutków, bez prawdziwej sesji B, native issuer/ACL, live readback ani receipt efektu.
+- **WIT:** niezależny oracle 56/56 w GitHub Actions, w tym odrębny proces systemowy B; na dwóch fikcyjnych zestawach payload FULL vs PACK+fetch zmniejszył się o 62,36% i 63,60%. To bajty syntetycznych źródeł, nie tokeny ani koszt modelu. WIT wykrył też statyczną niezgodność trzech formatów wire; wspólny standard pozostał HOLD.
+- **SPLOTUŚ:** read-only indeks 21 Issues, 1308 komentarzy i 150 PR metadata; catch-up kursora #170 znalazł 3 nowe komentarze, 0 brakujących i 0 zmienionych starszych w sprawdzonym odczycie. Nie obejmował pełnych komentarzy/review wszystkich PR ani świeżej sesji ChatGPT B.
 - **Wynik zbiorczy:** potwierdzono lokalne i CI testy źródłowe różnych implementacji; nie potwierdzono jednej interoperacyjnej kapsuły, odzyskania prawdziwej sesji ChatGPT A→B, pomiaru tokenów ani produkcyjnej pamięci SSI.
 - **Status:** source/offline PASS w odrębnych zakresach; wspólny wire/interoperability HOLD; live A→B NOT_RUN; PROD_GO=NO.
 - **Źródła:** [Issue #170 — HERKULES 45/45](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564437848) · [DYREKTOR 25/25 i pomiar bajtów](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564442865) · [ATLAS 21/21 i pomiar FULL/PACK](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564445734) · [NATHAN_SSI 23/23](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564458619) · [niezgodność schematów](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564469813) · [XAVIER 62/62 i HOLD interoperacyjności](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564500615).
@@ -532,6 +535,39 @@ Poniższe pozycje są skróconym indeksem potwierdzonych wyników. Szczegóły, 
 - **Status:** ograniczone fizyczne pomiary fragmentów PASS; część przebiegów HOLD/PARTIAL; pełna inferencja i model-level quality/speedup NOT_MEASURED.
 - **Źródła:** [T0-06](https://github.com/jankes72/SSI-Communications/pull/183#issuecomment-6582682281) · [T0-09 R2](https://github.com/jankes72/SSI-Communications/pull/183#issuecomment-6585110252) · [T0-10D](https://github.com/jankes72/SSI-Communications/pull/183#issuecomment-6587976156) · [T0-11 GPU](https://github.com/jankes72/SSI-Communications/pull/183#issuecomment-6586810997) · [T0-15 AVX2](https://github.com/jankes72/SSI-Communications/pull/183#issuecomment-6589510884) · [T0-17 BITCAP](https://github.com/jankes72/SSI-Communications/pull/183#issuecomment-6590335923) · [T0-18 nine profiles](https://github.com/jankes72/SSI-Communications/pull/183#issuecomment-6590680316) · [T0-19 LONG3000](https://github.com/jankes72/SSI-Communications/pull/183#issuecomment-6590969779) · [T0-20 six-sample aggregate](https://github.com/jankes72/SSI-Communications/pull/183#issuecomment-6601417560) · [T0-21 G0 physical QA](https://github.com/jankes72/SSI-Communications/pull/183#issuecomment-6609344922) · [T0-21 isolated llama.cpp smoke](https://github.com/jankes72/SSI-Communications/pull/183#issuecomment-6609899407) · [T0-21 static GGML layout](https://github.com/jankes72/SSI-Communications/pull/183#issuecomment-6611606300).
 
+
+### 4.51 Hercules AI Backpack / Labyrinth R3–R5 — lokalny poligon, testy źródłowe i walidacja produktu
+
+- **R3 — poligon trzech usług:** operator opisał 90/90 testów R1–R3 oraz 20/20 regresji R0 PASS (łącznie 110/110) w lokalnym, odizolowanym środowisku Python/loopback. Test obejmował trzy serwisy, podpisy HMAC, nonce, limit skoków, separację kapsuł oraz blokady SSH/admin/exfil. Nie użyto GPU, płatnego API ani Internetu. Pakiet 24 plików ZIP (50 227 B) został przekazany w rozmowie operatora; w chwili meldunku kod R3 nie był jeszcze w GitHub.
+- **R3 CI później odtworzony:** w PR186 dodano źródła i osobny krok GitHub Actions z przypiętym NumPy. Na dokładnym HEAD job zakończył się SUCCESS; log potwierdzał 90 testów R1–R3 i 20 regresji R0, 110/110. To odtwarzalny runner OFFHOST/loopback, nie Docker ani trzy prawdziwe hosty.
+- **R4 komercyjny pilot:** przygotowano ofertę 14-dniowego pilota, cennik-hypotezę (990 PLN netto) i lokalne demo HTML z pięcioma scenariuszami. Ceny i rentowność pozostają hipotezami; klient, płatność i przychód nie zostały potwierdzone. Nie jest to gotowy SaaS ani wdrożona usługa SEO/cyber.
+- **R5 knowledge router:** źródło opisuje 48 slotów tematycznych (24 na każdą klatkę), zatwierdzone karty faktów SQLite, wersjonowanie/TTL/revoke i pulę szkiców Luny wymagających osobnej akceptacji. Dodano 16 testów offline; przy publikacji meldunku CI dla nowego HEAD było PENDING. Luna była wstrzykiwaną funkcją testową, nie prawdziwym providerem; brak native ACL, publicznego SSR, GSC i pomiaru efektu SEO.
+- **R5 strona i porównanie modeli:** przygotowano offline stronę Hercules oraz skrypt porównania dwóch modeli, ograniczony do 3 syntetycznych pytań na model i wymagający jawnego potwierdzenia płatnego uruchomienia. W chwili źródłowego meldunku wywołania API nie wykonano, CI nowego HEAD nie było potwierdzone, Search Console nie dostarczono, a efekt SEO pozostał nieudowodniony.
+- **Ograniczenia globalne:** brak instalacji VPS/3-host, Docker runtime i egress testów, live ingress, rzeczywistego 70B-teachera, prawdziwej Luny, klientów, płatności i produkcyjnego GO.
+- **Status:** 110/110 źródłowych testów R3 PASS na CI; demo/oferta/strona dostarczone jako offline artefakty; realny pilot, klient, przychód, hosty, API, SEO i produkcja NOT_RUN/NOT_ATTESTED.
+- **Źródła:** [R3 lokalny pilot 110/110 i granice](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6635832722) · [R3 CI 110/110 na dokładnym HEAD](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6643249489) · [R5 router i 16 testów](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6643756502) · [R5 strona i porównanie modeli](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6643920042) · [karta produktu i status komercyjny](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6644099259).
+
+### 4.52 Context Fastpath — korekta fail-closed R4 i testy regresyjne
+
+- **Punkt wyjścia:** w PR196 Leon rozwinął compact_context.py; wersja źródłowa zachowywała werdykty INCONCLUSIVE i DENIED. Peer review Roberta wskazał dwa kontrprzykłady: niepusty widok z licznikiem tokenów równym zero mógł dostać COVERED, a niepoprawny request (np. NaN lub obiekt nie-JSON) mógł wywołać nieobsłużony wyjątek przed walidacją typu.
+- **Poprawka R4:** Leon odtworzył przypadki i wprowadził fail-closed: zerowy licznik dla niepustego widoku daje BUDGET_UNVERIFIED/brak widoku; NaN/Infinity, cykl, set/bytes, obiekt niebędący mapą i niepoprawne dane dają BUDGET_UNVERIFIED, context_complete=false, bez wywołania tokenizera.
+- **Wynik:** 49/49 lokalnych testów łącznie (36 Fastpath + 13 testów Jordana); osobny GitHub Actions R4 potwierdził 36/36 Fastpath PASS. Odczyt 9/9 plików źródłowych zgodny. Wcześniejszy zestaw w starym core miał 6 failures i 7 errors dla sześciu nowych metod — zachowujemy ten negatywny wynik jako historię regresji.
+- **Granice:** testy źródłowe/offline, bez prawdziwego tokenizera, LLM, natywnego SSI LLM, VPS i bieżącego ACL. COVERED oznacza pokrycie wymaganego kontekstu, nie uprawnienie do wykonania skilla.
+- **Status:** poprawka i testy źródłowe R4 PASS; realny tokenizer/LLM/native integration NOT_RUN.
+- **Źródła:** [peer Roberta — dwa kontrprzykłady](https://github.com/jankes72/SSI-Communications/pull/196#issuecomment-6680675826) · [Leon R4 — 49/49 local, 36/36 CI](https://github.com/jankes72/SSI-Communications/pull/196#issuecomment-6680940588) · [R5 osobny zakres i ograniczenia](https://github.com/jankes72/SSI-Communications/pull/196#issuecomment-6682067515).
+
+### 4.53 S13–S26 + wybrane ZeroLab — odczyt źródeł, lineage NanoMarker i NanoBit R2
+
+- **R6 / archiwa:** SPLOT odtworzył mapowanie S26 z kanonicznego repo SSI_V5 i sprawdził 14 archiwów R16–R24; CRC 14/14 PASS. To kontrola integralności archiwów, bez uruchamiania ich kodu. ZeroLab V2 miało 9/9 usług READY i 8/8 lokalnego pilota PASS, ale training_pass=false i models_called=0; nie jest to ukończony trening modelu.
+- **Korekta statusu:** wyniki bez właściwego laboratorium/scenariusza lub bez możliwości weryfikacji należy oznaczać INCONCLUSIVE, nie automatycznie FAIL. Notariusz jest osobną warstwą poświadczania, a nie wykonawcą eksperymentu.
+- **R1 operator read-only:** S13–S26 i wybrane pliki ZeroLab oznaczono 530/530 markerami źródłowego pochodzenia: 14 etapów, 70 rodzin, 420 przypadków i 26 plików ZeroLab. Zapisano 602 deklarowane relacje: 70 stage→family, 420 family→case i 112 stage→file. Są to deklaracje pochodzenia, nie krawędzie wykonania ani natywne skille.
+- **R2 NanoBit:** na rzeczywistym wejściu JSON z R1 wykonano pack→verify i dekodowanie do oryginalnego JSON PASS. 5/5 testów offline oraz niezależne 5/5 testów na MSI PASS. Pakiet SSINBS26 miał 64 930 B (bitpacked relacje 1 957 B, skompresowane provenance 62 921 B); zachowano digest pakietu i źródła.
+- **Wynik i granice:** native_skills_bound=0, native_router_edges_attested=0, model_weight_tiles_bound=0, writes_to_director=0. SSINBS26 jest formatem lineage etapów/źródeł, nie formatem tras wykonania SSINBRT1 ani mapą CZARA SSINBCR6. Nie oznacza 530 natywnych skilli, aktywnego V10/S10, treningu ani przeniesienia biblioteki na VPS ROBERT.
+- **Dodatkowy odczyt VPS ROBERT:** operator potwierdził read-only SSH/Tailscale jako ssi-deploy (UID 1001), host key i 112 GB wolnego miejsca na zmierzonym systemowym filesystemie. Nie skopiowano plików ani nie tworzono katalogów; inne mounty/quota i komplet istniejących bibliotek pozostały niezweryfikowane. Transfer NOT_STARTED.
+- **Status:** lineage R1 i pakiet R2 zweryfikowane w określonym zakresie; natywne wiązania, pełna biblioteka, transfer, wykonanie skilli i produkcja NOT_RUN/UNBOUND.
+- **Źródła:** [R6 archiwa i mapowanie S26](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6673293328) · [korekta INCONCLUSIVE](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6673344433) · [R1 530 markerów / 602 relacje](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6725386438) · [R2 rzeczywiste wejście i decode PASS](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6725422088) · [niezależny MSI readback 5/5](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6725460960) · [read-only SSH preflight ROBERT](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6726212242).
+
+
 ## 5. Mapa projektów i źródeł
 
 Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są punktami nawigacyjnymi, nie deklaracją, że każdy uczestnik danego wątku wykonał całość prac.
@@ -607,13 +643,13 @@ Szczegółowa chronologia dzienna znajduje się w katalogu [CHRONIKA](CHRONIKA/)
 ## 8. Otwarte pozycje do dalszego uzupełnienia
 
 1. Dokończyć pełny audyt PR #242, #243, #244 i Issue #245, przypisując każdą pozycję właściwym osobom i rolom.
-2. Przejść PR #232, #233, #185 i #139 plik po pliku oraz komentarz po komentarzu, aby wyodrębnić konkretne eksperymenty, autorów, testerów i odbiorców.
-3. Uzupełnić mapę o starsze prace z Issues #4–#14, #116, #149, #170 i #195, eliminując duplikaty między profilami i kroniką.
+2. Dokończyć audyt PR #232, #233, #185, #186, #196, #197, #203, #204 i #139 plik po pliku oraz komentarz po komentarzu, aby wyodrębnić konkretne eksperymenty, autorów, testerów i odbiorców.
+3. Uzupełnić mapę o starsze i bieżące prace z Issues #3, #4, #7, #14, #116, #149, #170 i #195, eliminując duplikaty między profilami i kroniką.
 4. Dla projektów wymienionych w portfolio PR #242 utworzyć osobne karty w `PROJEKTY/` dopiero po potwierdzeniu ich zakresu i źródeł.
 5. Uzupełniać wyniki liczbowe wyłącznie wtedy, gdy źródło podaje metrykę, środowisko, zakres prób i ograniczenia.
 6. Każdy wpis w mapie powinien prowadzić do źródła oraz — gdy dotyczy konkretnej osoby — do jej profilu.
 
-**Stan kompletności:** wersja 1.5 obejmuje 50 opisanych obszarów eksperymentów i prób, od źródeł z października po wyniki z 20 listopada 2026 r., z odnośnikami do PR #139, #185, #232–#244 oraz Issues #44 i #195. To szeroki rejestr źródłowy, ale nie zamknięty katalog wszystkich prac: pozostały do sprawdzenia dalsze wpisy dzienników, źródła powiązane i eksperymenty z innych PR-ów. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
+**Stan kompletności:** wersja 1.6 obejmuje 53 opisane obszary eksperymentów i prób, w tym uzupełnienia PR #186, #196 i #197 oraz wyniki z 8 listopada 2026 r., z odnośnikami do PR #139, #185, #232–#244 oraz Issues #44 i #195. To szeroki rejestr źródłowy, ale nie zamknięty katalog wszystkich prac: pozostały do sprawdzenia dalsze wpisy dzienników, źródła powiązane i eksperymenty z innych PR-ów. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
 
 ## 9. Powiązana dokumentacja
 
