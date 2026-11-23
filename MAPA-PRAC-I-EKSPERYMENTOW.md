@@ -152,6 +152,147 @@ Poniższe pozycje są skróconym indeksem potwierdzonych wyników. Szczegóły, 
 - **Rola:** plan rozmieszczenia przygotował SPLOT; optymalizacja i pomiary modeli pozostają odrębnymi zakresami.
 - **Źródło:** [PR #243 — plan rozmieszczenia przekazany ASTEROWI](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6886170545).
 
+
+### 4.11 SSI Small 0.5B — TEST20 i MicroLEGO
+
+- **TEST20:** raport zbiorczy ASTER podaje **17/20 zadań** i **56/61 kontroli**. To wynik konkretnego banku i wersji testu, nie ogólna miara inteligencji modelu.
+- **MicroLEGO A/B:** raw **2/5 vs 1/5**, a dokładny JSON **3/5 vs 0/5** w raportowanym wariancie. Nie wykazano natywnego wykonania skilli.
+- **Status:** eksperymenty lokalne zakończone w podanym zakresie; natywne wykonanie narzędzi i produkcyjny odbiór — niepotwierdzone.
+- **Źródło:** [PR #243 — zbiorczy raport R1–R3](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6881847134).
+
+### 4.12 SSI Small 0.5B — V10 single-field contrast R1–R3
+
+- **Cel:** sprawdzić kopiowanie i wybór pojedynczej wartości w kontrastowych parach danych.
+- **Wynik R3:** 24/24 procesy zakończyły się RC=0; P5 4/12, P6 6/12, ale w obu wariantach **0/6 par** miało jednocześnie poprawne obie strony. P5 wielokrotnie kopiował samą etykietę pola.
+- **Wniosek:** poprawne zakończenie procesu lub przejście walidatora nie jest poprawnością semantyczną modelu. Nie kwalifikować 0.5B do autonomicznego sterowania V10.
+- **Status:** pomiar zakończony; wynik negatywny dla autonomicznego sterowania.
+- **Źródło:** [PR #243 — R3 single-field contrast](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6880080660).
+
+### 4.13 SSI Small 1.5B — NanoMath R1–R4
+
+- **R1:** 110/120 (91,7%) po niezależnym reaudytcie.
+- **R2:** 60/80 (75%); PL 28/40, EN 32/40.
+- **R3 held-out:** PL_RAW 13/20, EN_RAW 18/20, PL_ASC 13/20, EN_ASC 18/20. Zmiana formy zapisu naprawiała część przypadków, ale sortowanie samo w sobie nie podniosło wyniku.
+- **R4 FULL 300:** 300/300 wyników polityk obejmowało 242 rzeczywiste wywołania GPU i 58 ponownych użyć odpowiedzi dla identycznych promptów. 1.5B uzyskał **116/150 (77,3%)** po ręcznym rozstrzygnięciu odpowiedzi REVIEW jako błędnej; 3B uzyskał **114/150 (76,0%)** w tym samym zestawie. Mianowniki obejmują skorelowane warianty, a nie niezależne losowania.
+- **Ograniczenia:** w 1.5B wystąpiły błędy mnożenia i logiki, zwłaszcza po polsku; 3B miał lepszy wynik w angielskiej logice, ale słabsze wyniki części działań. Nie utożsamiać PASS procesu z CORRECT.
+- **Status:** kampania R4 FULL opisana; wynik ograniczony do konkretnego banku i protokołu.
+- **Źródła:** [PR #243 — karta 1.5B R1–R4](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6882188932) · [PR #243 — pełny R4 300](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6882576801).
+
+### 4.14 SSI Small 3B — NanoMath R1–R4 i dostawa modelu
+
+- **Wyniki:** R1 96/120 (80%); R2 70/80 (87,5%); R3 PL_RAW 14/20, EN_RAW 19/20, PL_ASC 11/20, EN_ASC 20/20; R4 FULL 114/150 (76%).
+- **Dostawa:** opublikowano 67/67 części modelu 3B oraz manifest; suma części 1 672 007 680 B. To potwierdzenie obecności części i zgodności metadanych, nie niezależny fresh-clone restore.
+- **Ograniczenia:** w R4 model uzyskał 6/10 dla mnożenia i 6/10 dla dzielenia; nie traktować wyniku jako autonomicznej kompetencji matematycznej.
+- **Status:** binary parts published; fresh download/restore i runtime odbiór wymagały odrębnego potwierdzenia.
+- **Źródła:** [PR #243 — karta wyników 3B](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6883103064) · [PR #243 — dostawa 67/67](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6883250313).
+
+### 4.15 SSI 1.5B CPU R2 — optymalizacja AVX2 i A/B
+
+- **Preflight numeryczny:** rzeczywiste fragmenty Q4/Q8 16×1536 przeszły porównanie; maksymalny błąd bezwzględny wyniósł odpowiednio około 1,31×10⁻⁶ i 5,36×10⁻⁷. Na tym etapie nie uruchomiono generowania tokenów.
+- **Pierwszy A/B serial:** kandydat uzyskał 0,475× przepustowości baseline i był około 2,105× wolniejszy w opisanej próbie 16-tokenowej.
+- **OpenMP 2 threads:** kolejny wariant uzyskał 0,9566× baseline, nadal regresja o 4,34%.
+- **R2.1 AVX2:** późniejsze testy A/B raportowały poprawę, w tym powtarzalność 1,4379× i test 32-tokenowy 1,8192×.
+- **R2.2:** osobne przebiegi 64-tokenowe raportowały 2,4446×, a 128-tokenowa sekwencja A/B/B/A — 3,0457× dla mediany generate_s oraz około 4,9431× dla mediany sumy kolejnych forward. To wynik konkretnego promptu, hosta i backendu; nie uogólniać na wszystkie warstwy, modele ani obciążenia.
+- **Wniosek:** historia zawiera zarówno regresje, jak i późniejsze poprawy. Należy zachować wszystkie etapy, a nie przedstawiać wyłącznie najlepszego wyniku.
+- **Status:** eksperymentalne A/B na MSI; wdrożenie na VPS i produkcyjny odbiór — niepotwierdzone.
+- **Źródła:** [numeric preflight](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6883433941) · [regresja serial](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6883487256) · [R2.1 AVX2](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6883639365) · [powtarzalność R2.1](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6883685226) · [R2.2 64-token](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6883864324) · [R2.2 128-token](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6883957119).
+
+### 4.16 GPU R1/R2/R3 — mechanizmy akceleracji i porównanie
+
+- **Zakres:** GPU R2 obejmuje fused packed GEMV dla decode; GPU R3 dodaje eksperymentalny batched Q4 GEMM dla wybranych dużych macierzy i wielu tokenów prefill. To mechanizmy wykonawcze, nie nowy model, router ani scheduler.
+- **Pokrycie potwierdzone w przytoczonym preflight:** Q4 i Q8; nie jest to dowód pełnej zgodności wszystkich formatów.
+- **Porównanie:** raport 1.5B podaje 20/20 identycznych par odpowiedzi dla GPU R2 i R3.1 w określonym teście; zgodność wyjścia nie oznacza naprawy błędów rozumowania ani ogólnego przyspieszenia.
+- **Port CPU:** kandydat CPU był badany oddzielnie w punkcie 4.15. Nie przenosić wyników GPU na CPU.
+- **Status:** badania i porównania wariantów; pełna macierz A/B GPU oraz generalny speedup wymagają osobnych źródeł.
+- **Źródła:** [PR #243 — techniczny intake GPU R1–R3](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6875385560) · [PR #243 — karta 1.5B i porównanie GPU](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6882188932).
+
+### 4.17 Armia Maluchów R1 — sterownik czterech slotów
+
+- **Cel:** przygotować kontrolowany sterownik czterech logicznych slotów laboratoryjnych na istniejącym SSI Small 0.5B CPU.
+- **Wynik źródłowy:** 14/14 testów offline PASS, 6/6 selftest PASS, cztery sloty w stanie PLAN_ONLY; pliki źródłowe i receipty zostały opublikowane.
+- **Ograniczenia:** właściwy pilot run-offline-llm nie był jeszcze wykonany w tym źródłowym wpisie. Nie było natywnego klastra agentów, VPS backendu ani aktywnego uruchomienia BODY/ISKRA.
+- **Status:** kod i testy offline PASS; modelowy pilot NOT_RUN w tym punkcie historii.
+- **Źródło:** [PR #243 — Armia Maluchów R1](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6882419940).
+
+### 4.18 Armia Maluchów S1 — staging i shadow na ROBERT
+
+- **Cel:** sprawdzić przygotowany pakiet S1 i syntetyczny kod na starym hoście ROBERT.
+- **Wynik:** operator potwierdził rzeczywisty SSH preflight i późniejszy staging/shadow syntetycznego kodu.
+- **Ograniczenia:** nie był to test inferencji LLM ani natywne uruchomienie BODY; brak potwierdzenia pełnego modelowego runtime i aktywnej armii workerów.
+- **Status:** hostowy staging/shadow syntetyczny; model inference i produkcyjny GO — niepotwierdzone.
+- **Źródła:** [PR #243 — preflight S1 na ROBERT](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6990157603) · [PR #243 — staging/shadow S1](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6990435643).
+
+### 4.19 NANO-COMM R2 — 0.5B na DIRECTOR
+
+- **Cel:** sprawdzić zadania COPY, MARKER i MEANING na rzeczywistym modelu 0.5B AVX2 R4.
+- **Wynik:** R2 FULL30: **30/30 inferencji**, 12/30 exact, 18/30 poprawnego formatu; L1 COPY 10/10, L2 MARKER 0/10, L3 MEANING 2/10.
+- **Wniosek:** format odpowiedzi był znacznie częściej poprawny niż treść semantyczna; MARKER nie przeszedł w tej próbie.
+- **Status:** rzeczywisty ograniczony test modelu; bez produkcyjnego GO.
+- **Źródło:** [PR #244 — R2 FULL30](https://github.com/jankes72/SSI-Communications/pull/244#issuecomment-6916928848).
+
+### 4.20 Maluch Coder R3 — kontrolowane misje narzędziowe
+
+- **Cel:** sprawdzić wybór dwóch dozwolonych statycznych narzędzi i wykonanie zadań na syntetycznym JSON.
+- **Wynik FULL4:** 4/4 właściwe ID narzędzi, 4/4 misje EXECUTED_VERIFIED, 4/4 poprawne baseline'y deterministyczne, 6/6 odmów bez niepożądanego procesu. Odczyt receipt potwierdził exit=0, puste stderr i zgodne stdout.
+- **Koszt:** średnio około 6,33 s generowania modelu i 0,102 s wykonania statycznego programu; to osobne fazy, nie pomiar pełnego wall-clock ani dowód przyspieszenia.
+- **Ograniczenia:** tylko dwie intencje semantyczne w dwóch wariantach promptu; guided zawierał nazwy narzędzi. Nie potwierdzono Pocket Micro, BIT/Nano, SCC ACL ani izolacji systemowej per misja.
+- **Status:** ograniczony real-model pilot na DIRECTOR; autonomiczny terminal i produkcyjny GO — NO-GO.
+- **Źródła:** [PR #244 — R3 FULL4](https://github.com/jankes72/SSI-Communications/pull/244#issuecomment-6917639552) · [receipt readback i czasy](https://github.com/jankes72/SSI-Communications/pull/244#issuecomment-6917886107) · [Issue #245 — szczegółowy wynik](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6917887936).
+
+### 4.21 R4 — sześciogodzinny benchmark specjalizacji 0.5B / 1.5B / 3B
+
+- **Plan:** sparowany PL/EN benchmark dziewięciu specjalizacji: COPY, MARKER, TOOL, MATH, LOGIC, MEM, CODEOP, JM1 i HOLD; ten sam bank case_id, rotowana kolejność, scorer i guardy zasobów.
+- **Preflight:** 7/7 testów offline, w tym symulowane wywołania fake CLI; te testy nie wykonywały inferencji modeli.
+- **Inwentaryzacja:** na MSI znaleziono fizyczne wagi trzech modeli. Pełny SHA 0.5B zakończył się PASS; odczyt 1.5B został dwukrotnie przerwany przez IO_PRESSURE przy 7,59% i 6,40% I/O; 3B pozostał NOT_STARTED.
+- **FIX1/FIX2:** parser i runner poprawiono; 9/9, następnie 11/11 testów offline PASS. Próby PILOT_COMPLETE z fake CLI były symulacją, nie realnym pilotem. FIX2 dodał guardy w trakcie czytania SHA.
+- **Wniosek:** nie uruchomiono sześciogodzinnej kampanii R4 na trzech modelach. Nie wolno obniżać progu I/O ani powtarzać zatrzymanych odczytów bez nowej diagnostyki.
+- **Status:** plan i runner przygotowane; 0.5B SHA PASS; 1.5B HOLD; 3B NOT_STARTED; R4 6H NOT_RUN.
+- **Źródła:** [PR #244 — plan 6H](https://github.com/jankes72/SSI-Communications/pull/244#issuecomment-6918455499) · [preflight](https://github.com/jankes72/SSI-Communications/pull/244#issuecomment-6918872499) · [3 modele na MSI](https://github.com/jankes72/SSI-Communications/pull/244#issuecomment-6919026010) · [0.5B PASS / 1.5B HOLD / 3B NOT_STARTED](https://github.com/jankes72/SSI-Communications/pull/244#issuecomment-6920492407) · [FIX2 11/11](https://github.com/jankes72/SSI-Communications/pull/244#issuecomment-6920753279) · [drugi HOLD 1.5B](https://github.com/jankes72/SSI-Communications/pull/244#issuecomment-6920934735).
+
+### 4.22 CODEX R8 i R9 MINI — badania na ROBERT
+
+- **R8:** sześciogodzinny przebieg na ROBERT; 674 wywołania, 30 kompletnych dwujęzycznych przypadków. W zestawie protokołu raportowano wyniki S05 8/60, S15 31/60, S3 37/60 i HMIX_3 40/60. Mianownik 60 oznacza 30 zadań × dwa języki, nie 60 niezależnych zadań.
+- **R9 MINI:** 50/50 wywołań w pięciu zadaniach EN/PL, z dalszą analizą MOD. Zachować rozróżnienie wariantów i dokładnych zadań; nie przenosić wyniku na cały model.
+- **Role:** Paweł wykonywał próby operatorskie na ROBERT i przekazywał odczyty; XAVIER/CODEX opracował analizę i raport. ROBERT jest nazwą hosta, nie autorem wyników.
+- **Status:** R8 i R9 MINI wykonane w ograniczonym protokole; brak ogólnego GO.
+- **Źródła:** [Issue #245 — R8/R9 i pochodzenie](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6914120514) · [R8 handoff](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6914584055) · [R9 MINI](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6916033959).
+
+### 4.23 Coder Terminal Stage R1 — broker i ograniczone narzędzie
+
+- **Test lokalny:** 22/22 testy jednostkowe PASS na MSI.
+- **Test hostowy:** ograniczony krok id -u na DIRECTOR zakończył się exit_code=0, zwrócił UID 1001; test nie wywołał modelu.
+- **Granica:** nie potwierdzono SCC issuer, Pocket Micro, BIT loadera ani pełnego bindingu misji. Nie jest to dowód autonomicznego działania Malucha Codera.
+- **Status:** lokalny pakiet i pojedynczy ograniczony tool step PASS; pełna misja HOLD_UNBOUND_NOT_DONE, produkcyjne GO — NO-GO.
+- **Źródła:** [Issue #245 — 22/22 testów](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6917183170) · [Issue #245 — operatorowy preflight](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6917249138) · [Issue #245 — rzeczywisty krok narzędzia](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6917336093).
+
+### 4.24 EDU-A1 — pierwsza linia CODER + CAPSULE na 0.5B
+
+- **Cel:** badać model 0.5B jako ograniczony komponent pierwszej linii CODER oraz oddzielnie oceniać odczyt kart/kapsuł; wagi pozostały zamrożone.
+- **MSI:** pierwsze zadania CAL ujawniły błędne odpowiedzi HOLD i CHECK_ACL; po wznowieniu BODY_CODE_01 uzyskał poprawny wynik. W pierwszych trzech rzeczywistych przypadkach CAL były więc **1/3** poprawne. Przebieg zatrzymał się na HOLD_HOST_RESOURCE_PRESSURE; nie był to ukończony test 60 zadań.
+- **ROBERT:** pierwszy smoke wygenerował HOLD (3 tokeny) — poprawny technicznie format, ale nie odpowiedź oczekiwana dla tego testu. Pierwszy CAL BODY_GATE_01 również zwrócił HOLD zamiast DRAFT; drugi BODY_ROUTE_01 zwrócił CHECK_ACL zamiast CHECK_ACTOR. Readback potwierdził 0/2 dla tych dwóch przypadków, bez niebezpiecznych deklaracji działania.
+- **Testy harnessu:** 41/41 unit tests i selftest 120 PASS; te wyniki nie są inferencjami modelu.
+- **Ważny rozdział:** 1131 wpisów w atlasie strukturalnym oznacza fizyczne tensory safetensors, nie 1131 odrębnych obwodów wiedzy. CAPSULE_CAL i szersze kwalifikacje pozostają osobnymi bramkami.
+- **Status:** ograniczone próby rzeczywiste i diagnostyka wykonane; kampania 60 CAL + 60 HOLDOUT nieukończona; produkcyjne GO — NO-GO.
+- **Źródła:** [PR #243 — EDU-A1 wyniki MSI](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6992365819) · [MSI 3/60 i pierwsza poprawna odpowiedź CODER](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6992693029) · [ROBERT pierwszy CAL](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6994516373) · [readback odpowiedzi ROBERT](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6994784955) · [2/2 i checkpoint](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6996452688).
+
+### 4.25 Atlas wiedzy / Atlas obliczeń — próby referencyjne i C12/C13
+
+- **Atlas112 R7 / linia 70B:** na 20 prefiksach Atlas pokonał losowy wybór 112 kafli w 19/20 przypadków przy identycznym budżecie wag. Zachował 53,76% redukcji średniego błędu uzyskanej przez pełne BF16 dla up_proj; próg >50% został spełniony. Średni względny L2: Q8 2,9225%, Atlas112 2,3466%, random112 2,6580%, pełne BF16 1,8514%. Mediana czasu Atlasu 2,1521 s wobec 2,1330 s Q8; to eksperyment na MLP warstwy 0, nie wynik całego 70B.
+- **EDU reference8:** na ośmiu syntetycznych rekordach układ warunkowego odczytu uzyskał 8/8 poprawnych decyzji, tak samo jak wariant odczytujący oba pola zawsze, ale z 12 zamiast 16 wywołań modelu. Wynik opiera się na małym, kontrolowanym zbiorze; nie kwalifikuje pełnego systemu.
+- **C12/C13:** inwentaryzacja strukturalna 1131 tensorów została odczytana bez luk i nakładania się offsetów; aktywacyjne C12 i część testów C13/S5M pozostały NOT_RUN/HOLD. Próba jakości S5M na rzeczywistym 0.5B została zatrzymana przez HOST_RESOURCE_PRESSURE.
+- **Status:** Atlas112 R7 spełnił z góry określone kryteria w swoim zakresie; EDU reference8 ograniczony PASS; C12/C13 nieukończone.
+- **Źródła:** [PR #243 — Atlas112 R7](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-7024211244) · [PR #243 — EDU reference8](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6997907205) · [PR #243 — C13 S5M HOLD](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6990491824).
+
+### 4.26 SSI Nano-Brain — wybór kompetencji Pocket R9–R11
+
+- **Cel:** sprawdzić, czy model 0.5B potrafi rozpoznać, czy polecenie wymaga jednej z dwóch kompetencji Pocket, oraz odróżnić NAPIS, LISTA i BRAK.
+- **R9, 8 godzin:** 370 przykładów treningowych i 369 zadań testowych z 24 szablonów. Klasyfikator 172/369; model z kartą 153/369; model z kartą i przykładami 149/369. Dodanie przykładów zmniejszyło fałszywe wskazania skilla dla klasy BRAK z 47/123 do 26/123.
+- **R10:** podstawowa karta 13/24; wariant z dodatkową podpowiedzią 10/24; żaden nie uzyskał 0/8 całkowicie poprawnych trójek.
+- **R11:** model 0.5B odpowiedział tak 24/24; wykrył 8/8 celów, ale zaakceptował również wszystkie 16 poleceń o innych celach — zbalansowana trafność 50%. Kryterium przejścia nie zostało spełnione.
+- **Ważne:** w całej kampanii liczba rzeczywistych wywołań kompetencji Pocket wyniosła zero. To badanie decyzji/klasyfikacji, nie dowód wykonania skilli.
+- **Status:** eksperyment R9–R11 zakończony; kryterium użycia kompetencji niezaliczone; brak autonomicznego GO.
+- **Źródło:** [PR #243 — Nano-Brain R9–R11](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-7026280271).
+
 ## 5. Mapa projektów i źródeł
 
 Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są punktami nawigacyjnymi, nie deklaracją, że każdy uczestnik danego wątku wykonał całość prac.
