@@ -70,3 +70,21 @@
 - [Kronika — 29 października 2026](../CHRONIKA/2026-10-29.md)
 - [Kronika — 30 października 2026](../CHRONIKA/2026-10-30.md)
 - [Kronika — 31 października 2026](../CHRONIKA/2026-10-31.md)
+
+## Issues źródłowe — mapa informacji (skrót)
+
+Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia dotyczące zakresu SPLOT. Wątki zespołowe mogą zawierać także prace innych osób — autorstwo pozostaje przypisane wyłącznie wskazanym autorom.
+
+- [Issue #4](https://github.com/jankes72/SSI-Communications/issues/4) — Continuity Node/NOUT01 — przejęcie integracji, źródła i odbiór.
+- [Issue #5](https://github.com/jankes72/SSI-Communications/issues/5) — Rewizja pilota i przekazanie źródeł MOSTOWI.
+- [Issue #6](https://github.com/jankes72/SSI-Communications/issues/6) — Harness świeżych sesji, bootstrap i kanoniczny B1 — przekazanie do XAVIERA.
+- [Issue #7](https://github.com/jankes72/SSI-Communications/issues/7) — NOUT01, trasa dostępu, N0, izolacja i restore — przekazanie do HERKULESA.
+- [Issue #8](https://github.com/jankes72/SSI-Communications/issues/8) — Natywne źródła pamięci, ACL i Evidence — zależności dla LEONA/BARTKA.
+- [Issue #9](https://github.com/jankes72/SSI-Communications/issues/9) — Context Compiler, MUST_KEEP, tokenizery i CC-01..18.
+- [Issue #10](https://github.com/jankes72/SSI-Communications/issues/10) — Receipt, readback i wznowienie bez powtórzenia skutku — ROBERT.
+- [Issue #11](https://github.com/jankes72/SSI-Communications/issues/11) — Pakiet startowy sesji i powrót artefaktu — WIT.
+- [Issue #12](https://github.com/jankes72/SSI-Communications/issues/12) — Kolejność integracji, zgodność wersji i odbiór — ANDRZEJ.
+- [Issue #13](https://github.com/jankes72/SSI-Communications/issues/13) — Niezależny przegląd kompletności i testów — ORION/MAREK/WEKTOR/ALBERTO.
+- [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS/NODE01 — wspólna tablica działów, źródeł, ról i bramek wdrożenia.
+- [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — wspólny eksperyment odzyskiwania historii z Issues.
+- [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — Priorytet BODY FROZEN — integracja źródeł BIT/B1, RM, V10/S10, SCC i ISKIER.
