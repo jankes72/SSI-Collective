@@ -79,3 +79,4 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — własne źródła/kursor historii i przekazanie do wspólnego indeksu.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — Priorytet BODY FROZEN — wskazany odbiór pokrycia źródeł i edycji starszych komentarzy (MP-02).
 - [Issue #147](https://github.com/jankes72/SSI-Communications/issues/147) — Continuity Node R1 — źródłowy kontekst historii/recall i OWN_ACK pisarza.
+- [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — przydział W5-10, pozyskiwanie plików i dowodów z NODE01 oraz niezależność SPLOTUŚ od SPLOTA.
