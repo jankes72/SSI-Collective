@@ -393,6 +393,15 @@ Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są pun
 | [PR #233](https://github.com/jankes72/SSI-Communications/pull/233) | SSI LLM/Nano i moduły pochodne | eksperymenty lokalne, fuzja metadanych, kompilator tras i granice natywnej integracji |
 | [PR #185](https://github.com/jankes72/SSI-Communications/pull/185) | prace narzędziowe i moduły powiązane z Nano | odczyt wkładów poszczególnych autorów i testów; bez przypisywania całego PR jednej osobie |
 | [PR #139](https://github.com/jankes72/SSI-Communications/pull/139) | D-MQ / MultiQuant / L4 | source-only review, formaty tensorów, ograniczenia loadera i testy negatywne |
+| [Issue #44](https://github.com/jankes72/SSI-Communications/issues/44) | MultiQuant 70B / R4.2 / R5 Tensor LEGO | testy syntetyczne, guardy, przygotowanie teacher/student, host i koszt |
+| [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) | BODY FROZEN / CZARA / SSI V5 / ZeroLab | odzysk archiwów, Micro-First, Pocket/NanoBit, scenariusze lokalne i propozycje badań |
+| [Issue #3](https://github.com/jankes72/SSI-Communications/issues/3) | kolejność i koordynacja prac 70B | bramki B0–B5 i kolejność dostaw; nie jest samodzielnym wynikiem eksperymentu |
+| [Issue #4](https://github.com/jankes72/SSI-Communications/issues/4) | Continuity / wspólne źródła i pamięć | źródła, handoffy i odbiory zależności; sprawdzać poszczególne eksperymenty |
+| [PR #186](https://github.com/jankes72/SSI-Communications/pull/186) | HERKULES NanoMarker / F1-A / F1-B / NanoTRS | testy dekoderów, próbki GGUF i kompilator tras; bez pełnego merge/inferencji |
+| [PR #196](https://github.com/jankes72/SSI-Communications/pull/196) | LEON Context Fastpath / BODY | poprawki ochrony pamięci, testy interfejsów i scenariusze lokalne |
+| [PR #197](https://github.com/jankes72/SSI-Communications/pull/197) | SPLOT CZARA Micro-First / ZeroLab | source intake, archiwa, protokół i granice wznowień |
+| [PR #203](https://github.com/jankes72/SSI-Communications/pull/203) | LEON CODEX / LEGO skill bindings | mapowanie źródłowych powiązań skilli do symboli, bez automatycznego dispatchu |
+| [PR #204](https://github.com/jankes72/SSI-Communications/pull/204) | LEON R8 two-host mission | lokalny scenariusz dwóch procesów i kontrola odtworzenia |
 | [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) | SSI-PACK LAB R0 | eksperyment odzyskiwania historii, świeże sesje i ograniczenia odtwarzania |
 | [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) | DIRECTOR / NODE01 / Continuity | kanoniczny wątek integracji, źródła, role i bramki |
 | [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) | BODY FROZEN | źródła BODY, B1, V10/S10, SCC i ISKRY oraz warunki odbioru |
