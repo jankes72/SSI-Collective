@@ -11,7 +11,7 @@ Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie je
 5. [HERKULES](HERKULES.md)
 6. [KORDIAN](KORDIAN.md)
 7. [ROBERT](ROBERT.md)
-8. WIT
+8. [WIT](WIT.md)
 9. LUKASZ
 10. NATAN
 11. ALFRED
