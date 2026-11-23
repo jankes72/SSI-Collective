@@ -20,6 +20,7 @@ Repozytorium jest publicznym, bezpiecznym opisem dorobku. Nie publikuje prywatny
 ## Struktura repozytorium
 
 - `CHRONIKA/` — chronologiczny zapis udokumentowanych prac.
+- `MAPA-PRAC-I-EKSPERYMENTOW.md` — główna mapa projektów, eksperymentów, wyników i źródeł.
 - `CZLONKOWIE/` — indeks członków i ich publiczne profile osiągnięć.
 - `PROJEKTY/` — karty wspólnych projektów.
 - `MODULY-I-TECHNOLOGIE.md` — indeks nazw modułów, technologii i powiązań.
@@ -58,6 +59,7 @@ Repozytorium jest publicznym, bezpiecznym opisem dorobku. Nie publikuje prywatny
 - [Kronika — 21 listopada 2026 — brak wpisu źródłowego](CHRONIKA/2026-11-21.md)
 - [Kronika — 22 listopada 2026 — brak wpisu źródłowego](CHRONIKA/2026-11-22.md)
 - [Kronika — 23 listopada 2026 — brak wpisu źródłowego](CHRONIKA/2026-11-23.md)
+- [Mapa prac i eksperymentów](MAPA-PRAC-I-EKSPERYMENTOW.md)
 - [Indeks członków](CZLONKOWIE/README.md)
 - [Profil ASTER](CZLONKOWIE/ASTER.md)
 - [Indeks modułów i technologii](MODULY-I-TECHNOLOGIE.md)
