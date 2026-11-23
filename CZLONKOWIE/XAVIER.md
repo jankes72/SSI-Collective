@@ -47,6 +47,33 @@ W kolejnym kroku Xavier dostarczył RoleExecution, wykorzystujące istniejące S
 
 Źródło: [Kronika 28 października](../CHRONIKA/2026-10-28.md), [PR22](https://github.com/jankes72/SSI-Communications/pull/22).
 
+ 
+### 30 października 2026 — CODEX R4/PLUS, PR81
+
+Xavier przygotował kolejną dostawę CODEX dla integracji odpowiedzi PHONE/T4 z istniejącą pętlą wykonania. W PR81 opisano adapter, który wiąże wynik RoleExecution z niezależnym host bindingiem i odczytem Evidence, kontroluje zakres wykonania i zachowuje bezpieczny status NOT_SENT bez automatycznego retry. To była dostawa źródłowa/offline, nie aktywacja wysyłania wiadomości.
+
+**Wyniki wskazane w PR81:** 145/145 testów offline PASS oraz SUCCESS kontroli repozytorium dla wskazanego HEAD. Testy korzystały z syntetycznego hosta i danych testowych. Host i ścieżki LIVE pozostawały NOT_RUN; PR81 pozostał draftem.
+
+Źródło: [PR81 — CODEX R4/PLUS](https://github.com/jankes72/SSI-Communications/pull/81).
+
+### 31 października 2026 — przekazanie CODEX do DIRECTOR RC1, PR142
+
+Xavier przygotował source-only przekazanie do jednego wydania DIRECTOR RC1. Dostawa obejmowała mapę źródeł i połączeń CODEX, 24 odrębne role źródłowe, 23 mosty RC1, zakresy SCC/ROLE_SCOPE oraz opis kolejności: SCC, bieżące ACL, Operations/lease/STOP, RoleExecution, Evidence, Research Memory i kontrolowane wznowienie. Dołączono 12 syntetycznych testów kontraktu.
+
+W osobnym odbiorze źródłowym dla SSI-MEM/B1 Xavier wskazał odnośniki do istniejących prac i testów innych autorów. Oryginalnego natywnego encoder/decoder/wire/ABI nie udało się zlokalizować w sprawdzonych referencjach; zapisano NOT_LOCATED, nie globalny brak. Nie utworzono zastępczego kodeka.
+
+Dostawa była przygotowana do peer review. CI 81/81 PASS dotyczyło testów źródłowych RC1 na dokładnym HEAD; nie potwierdzało natywnego uruchomienia, hosta ani wdrożenia. Pozostały OWNER_HOLD, NO_MERGE i NO_INSTALL.
+
+Źródło: [PR142 — przekazanie CODEX do DIRECTOR RC1](https://github.com/jankes72/SSI-Communications/pull/142).
+
+### 1 listopada 2026 — SSI-PACK LAB R0, PR171
+
+Xavier przygotował source-only, read-only laboratorium SSI-PACK do budowania i odczytu pakietu wznowienia SSI-RESUME/0.1. Próba używała trzech fikcyjnych, przypiętych źródeł; uwzględniała skróty, MUST_KEEP, stan issuer i ponowne sprawdzanie uprawnień podczas odczytu. Nie tworzyła nowej pamięci SSI, parsera SCC, B1, natywnego store ani mechanizmu automatycznego replay.
+
+**Wynik wskazany w PR171:** 62/62 nazwanych testów kodu PASS na określonym historycznym HEAD. Był to wynik testów źródłowych z danymi fikcyjnymi; nie dowodził rzeczywistego wznowienia w nowej sesji ChatGPT, działania natywnego issuer/ACL ani testu modelu. PR171 pozostał draftem.
+
+Źródło: [PR171 — SSI-PACK LAB R0](https://github.com/jankes72/SSI-Communications/pull/171).
+
 ## Dodatkowy stan źródeł w kapsule R2
 
 Kapsuła źródłowa XAVIER, odczytana w wersji z 8 listopada 2026, wskazuje również późniejsze materiały source-only:
