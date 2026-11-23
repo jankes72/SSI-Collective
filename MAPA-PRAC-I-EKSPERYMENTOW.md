@@ -379,6 +379,48 @@ Poniższe pozycje są skróconym indeksem potwierdzonych wyników. Szczegóły, 
 - **Status:** syntetyczne testy i kod PASS; 70B teacher NOT_RUN; student NOT_BUILT.
 - **Źródła:** [Issue #44 — MOST META LEGO P1](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6499424660) · [Issue #44 — MOST L2/B1 guardy](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6532283643) · [Issue #44 — KORDIAN B0/B1/L3](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6532265825).
 
+
+### 4.36 SSI-PACK LAB R0 — odtwarzanie kontekstu z jednej wiadomości
+
+- **Cel:** sprawdzić, czy krótka ostatnia wiadomość może wskazać przypięte źródła i pozwolić nowemu procesowi odtworzyć aktualny kontekst bez odtwarzania efektów ubocznych.
+- **HERKULES:** 45/45 nowych negatywnych testów bezpieczeństwa w GitHub Actions; dodatkowo istniejący szkielet 108/108. Obejmowały m.in. obcą rolę/tenant, revoke, zmieniony SHA, nieaktualny kursor, luki w historii, duplikaty i prompt injection traktowany jako niezaufane dane. Nie wykonano prawdziwej sesji ChatGPT B ani natywnego issuer.
+- **DYREKTOR/ANDRZEJ:** 25/25 lokalnych testów offline fikcyjnego orakla; nie był to CI. Kapsuła miała 805 B wobec 3840 B pełnego wejścia, ale kapsuła wraz z odczytanymi źródłami 4005 B — bez oszczędności całkowitego transferu w tej próbce.
+- **ATLAS:** niezależny orakl 21/21 w GitHub Actions. Pełne wejście 2193 B, kapsuła 831 B, odczyty 1639 B, łącznie 2470 B — około 13% więcej niż FULL. Nie mierzono tokenów ani czasu modelu.
+- **NATHAN_SSI:** 23/23 testy offline w GitHub Actions, w tym osobne procesy, korekta po kursorze, UTF-8 pagination, brak nowych zdarzeń i negatywy uprawnień. Testowy grant był fikcyjny; nie potwierdzono rzeczywistego issuer.
+- **XAVIER/CODEX:** osobny parser/kodek 62/62 testy CI; HERKULES wykrył jednak niezgodność statyczną formatu kapsuły Dyrektora i Xaviera pod tą samą nazwą SSI-RESUME/0.1 (różne pola i format referencji). Zgodność między właścicielami pozostała HOLD.
+- **Wynik zbiorczy:** potwierdzono lokalne i CI testy źródłowe różnych implementacji; nie potwierdzono jednej interoperacyjnej kapsuły, odzyskania prawdziwej sesji ChatGPT A→B, pomiaru tokenów ani produkcyjnej pamięci SSI.
+- **Status:** source/offline PASS w odrębnych zakresach; wspólny wire/interoperability HOLD; live A→B NOT_RUN; PROD_GO=NO.
+- **Źródła:** [Issue #170 — HERKULES 45/45](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564437848) · [DYREKTOR 25/25 i pomiar bajtów](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564442865) · [ATLAS 21/21 i pomiar FULL/PACK](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564445734) · [NATHAN_SSI 23/23](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564458619) · [niezgodność schematów](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564469813) · [XAVIER 62/62 i HOLD interoperacyjności](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564500615).
+
+### 4.37 Qwen 0.8B na NOUT1 — benchmark inferencji i Context Fastpath
+
+- **Model:** lokalny qwen3.5:0.8b na fizycznym NOUT1. W pomiarze z 28 października 2026 r. ciepłe GPU20+CPU2 uzyskało medianę pełnej odpowiedzi **1,3378405 s**, a CPU-only **4,3452935 s** — około **3,25×** w tej konkretnej konfiguracji.
+- **Próba jakościowa:** 6/6 prostych odpowiedzi syntetycznych PASS; kontekst 2048, wyjście 43 tokeny. Liczba prób była mała (po dwa ciepłe pomiary na profil), więc nie jest to szeroki benchmark ani test jakości zadań produkcyjnych.
+- **Context Fastpath:** oryginalny compact_context.py::compile_view przeszedł 26/26 testów offline; integracja natywna NOT_RUN. Osobny tokenizer text-only przeszedł 7/7 testów, ale parity z finalnym rendererem pozostała UNBOUND.
+- **Pamięć:** raport wskazywał syntetyczny eksperyment SQLite/index; nie wolno interpretować deklaracji redukcji rozmiaru jako ogólnej oszczędności tokenów bez pomiaru na finalnym rendererze i rzeczywistych promptach.
+- **Wkład:** SPLOT dostarczył pierwotny benchmark i kod Context Fastpath; ATLAS podjął niezależne retesty źródeł; XAVIER odebrał counter i testował oryginalne Operations/RM/R17 w osobnym zakresie.
+- **Status:** historyczny lokalny benchmark modelu i testy komponentów wykonane; native Context Fastpath integration i bieżący host/provider — niepotwierdzone.
+- **Źródła:** [Issue #149 — SPLOT Qwen 0.8B i Fastpath](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6549084045) · [ATLAS — retesty i rozdzielenie pomiarów](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6549267314) · [XAVIER — Operations/R17 18/18](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6549382232).
+
+### 4.38 Continuity / Role Resume — rzeczywisty odczyt i restore offline
+
+- **Zakres:** historyczny pakiet ssi_role_resume_r1.py został uruchomiony przez operatora na fizycznym NODE01; 258 608 B, SHA256 zgodny z historycznym PR21 VALIDATION.json. Odczyt strukturalny potwierdził 10 źródeł dla jednej roli HERKULES.
+- **Wynik restore:** SNAPSHOT_CONTEXT_RESTORED, 10 źródeł załadowanych, 76 wpisów dziennika zindeksowanych, 421 359 B kontekstu. Liczba wywołań modelu wyniosła zero; runtime admission nie zostało przyznane, production_ready=false.
+- **Granica:** to odtworzenie kapsuły/źródeł offline, nie wznowienie aktywnej sesji modelu, nie natywny issuer i nie przywrócenie uprawnień do działania.
+- **Status:** historyczny restore offline PASS; runtime admission i produkcyjna ciągłość NOT_GRANTED.
+- **Źródło:** [Issue #149 — SPLOTUŚ, operatorowy NODE01 restore](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6550508950).
+
+### 4.39 DIRECTOR RC1 — wspólne testy Operations/R17 i bramki integracyjne
+
+- **Zakres:** fale W4–W7 złożyły źródła XAVIER, ROBERT, JORDAN, NATHAN SSI, NATHAN AMGINE, WIT, ATLAS i HERKULES w jeden diagnostyczny RC1 WIP. To prace nad kontraktami, odbiorem i integracją, a nie jeden kompletny test produkcyjny.
+- **Wyniki składowe:** XAVIER zgłosił 18/18 lokalnych testów na oryginalnym Operations/RM/R17; późniejszy normalizator koperty R17 25/25 lokalnie. JORDAN dostarczył cztery suite źródłowe 95/95 (core 19, closure 20, topology 37, isolation 19). PHONE NATHAN AMGINE przeszedł 45/45 testów źródłowych po poprawkach. ROBERT rozwinął testy mostu do 184/184, a następnie 186/186 PASS w CI.
+- **Wyniki negatywne zachowane:** w pierwszych retestach PHONE było 40/42; RoleNode NATHAN SSI miał 19 PASS/1 FAIL; wspólny test producer/receiver wykazał rozbieżność rewizji 3 vs 4, brak w5_execution_intent i odmowę reconcile. Te błędy nie mogą zostać ukryte przez późniejsze testy komponentów.
+- **Test wspólnego HEAD:** PR163 otrzymał plan 31 suite, ale testy na wspólnym HEAD nie zostały wykonane w tym momencie. Sumy niezależnych suite nie są wspólnym E2E.
+- **Bramki R4:** G1 oryginalne archiwa ACCESS_GAP, G2 STRICT36_NOT_ATTESTED/NOT_RUN, G3 native writer UNBOUND, G4 native pilot NOT_RUN, G5 restore/rollback NOT_RUN/HOLD, G6 release HOLD. Source CI PASS nie oznacza instalacji.
+- **Wkład:** XAVIER — normalizator i testy R17; ROBERT — receiver/bridge i CI; JORDAN — mapy aktorów, izolacja i testy topologii; NATHAN AMGINE — PHONE; NATHAN_SSI — RoleNode/continuity; ATLAS — niezależne retesty; HERKULES — security review i bramki; DYREKTOR — składanie RC1 i ledger; WIT — bounded read-only i trust/placement.
+- **Status:** liczne testy źródłowe PASS; wspólny native E2E, strict36, restore, host apply i produkcyjny GO niepotwierdzone; INSTALL_GO=NO.
+- **Źródła:** [XAVIER W4 Operations/R17 18/18](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6549382232) · [ATLAS W6 95/95 i rozdzielenie PHONE/RoleNode](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6550692116) · [ROBERT 184/184](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6582120836) · [ROBERT 186/186](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6583194933) · [karta bramek G1–G6](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6581954833) · [HERKULES bezpieczeństwo/restore HOLD](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6581989443).
+
 ## 5. Mapa projektów i źródeł
 
 Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są punktami nawigacyjnymi, nie deklaracją, że każdy uczestnik danego wątku wykonał całość prac.
