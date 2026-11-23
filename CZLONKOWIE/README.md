@@ -31,4 +31,8 @@ Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie je
 25. PAWEL
 26. AMNEZJA3
 
+## Dodatkowe oznaczenia udokumentowane później
+
+- [ASTER](ASTER.md) — onboarding i kapsuła początkowa R2 udokumentowane 14 listopada 2026; kierunek pracy zadeklarowany, bez potwierdzonej aktywacji natywnej.
+
 **Uwaga:** Radek pojawia się w dziennikach jako dodatkowy uczestnik/rola, ale nie znajduje się na powyższej pierwotnej liście. ALFRED i ALBERTO pozostają odrębnymi identyfikatorami, dopóki źródła nie potwierdzą inaczej.
