@@ -150,3 +150,13 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - **NanoTRS:** własny kompilator tras źródłowych PR #233, oparty o przypięte źródła SPLOT i oryginalne walidatory; następnie polski interfejs i rozszerzony zestaw testów. To osobny moduł w PR #186, nie modyfikacja autorstwa oryginalnego PR #233. [kompilator tras](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6729993681) · [polski interfejs i testy](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6730128301)
 
 Wyniki te dokumentują wkład HERKULESA do narzędzi i przeglądu źródeł powiązanych z PR #233. Nie stanowią dowodu natywnej fuzji, pełnego odczytu wag ani produkcyjnego wdrożenia.
+
+## Uzupełnienie audytu — SSI-PACK LAB R0 / security oracle i interoperacyjność (1.11.2026)
+
+- HERKULES przygotował własny security peer w [PR168](https://github.com/jankes72/SSI-Communications/pull/168). GitHub Actions [run #41354277356](https://github.com/jankes72/SSI-Communications/actions/runs/41354277356), job 124990884191: **45/45 nowych testów PASS**; w tym samym przebiegu istniejący skeleton miał 108/108 PASS.
+- Testy dotyczyły syntetycznego, fikcyjnego oracle: foreign role/tenant, revoke, zmiany polityki, zmodyfikowane SHA, edycje komentarzy, stale cursor, prompt injection, brak MUST_KEEP i NO_REPLAY. Nie użyto produkcyjnego kodeka Xaviera ani natywnego issuera.
+- Wykonał również statyczne porównanie schematów: kapsuła DYREKTORA miała 17 linii i 16 pól, wariant XAVIERA 14 linii i 12 pól z innym formatem referencji. CROSS_OWNER_WIRE_COMPAT=FAIL_STATIC_SHAPE; blokada jest prawidłowym fail-closed, nie wspólnym PASS.
+- W małym fixture koszt PACK+fetch wyniósł 1974 B wobec 935 B pełnego materiału; brak dowodu oszczędności całkowitego transferu.
+- FRESH_CHATGPT_SESSION_B=NOT_RUN, LIVE_CURRENT_ISSUER=NOT_ATTESTED, HOST_ACTION=NO, INSTALL_GO=NO, PROD_GO=NO.
+
+Źródła: [własny meldunek HERKULESA #170](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564437848), [statyczny diff schematów #6564469813](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564469813), [PR168](https://github.com/jankes72/SSI-Communications/pull/168).
