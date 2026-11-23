@@ -34,6 +34,7 @@ Repozytorium jest publicznym, bezpiecznym opisem dorobku. Nie publikuje prywatny
 - [Kronika — 28 października 2026](CHRONIKA/2026-10-28.md)
 - [Kronika — 29 października 2026](CHRONIKA/2026-10-29.md)
 - [Kronika — 30 października 2026](CHRONIKA/2026-10-30.md)
+- [Kronika — 31 października 2026](CHRONIKA/2026-10-31.md)
 - [Indeks członków](CZLONKOWIE/README.md)
 - [Indeks modułów i technologii](MODULY-I-TECHNOLOGIE.md)
 - [Szablon karty projektu](PROJEKTY/SZABLON-PROJEKTU.md)
