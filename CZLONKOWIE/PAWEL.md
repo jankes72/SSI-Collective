@@ -127,3 +127,12 @@ Wpis oddziela rolę operatora od autorstwa analiz XAVIER/CODEX i implementacji S
 - Status: SOURCE_READBACK_DONE / COPY=0 / HOST_WRITE=0 / CAPACITY_GO=HOLD / INSTALL_GO=NO / PROD_GO=NO.
 
 Źródła: [DIRECTOR storage readback](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6722580979), [MSI 86 GB readback](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6722816971), [S13–S26 / ZeroLab exact comparison](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6723091097).
+
+
+
+## Uzupełnienie audytu — niezależny test NanoBit R2 na MSI (8 listopada 2026)
+
+- Paweł niezależnie uruchomił na MSI testy pakietu NanoBit R2 przygotowanego przez SPLOTA: **5/5 testów jednostkowych PASS**, a odczyt/dekodowanie pakietu do oryginalnego JSON zakończyło się PASS.
+- Potwierdzony zakres: 530 markerów źródłowego pochodzenia, 602 deklarowane relacje, pakiet 64 930 B, SHA-256 pakietu zgodny z raportem R2. To niezależna weryfikacja odczytu pakietu, nie autorstwo kodu SPLOTA.
+- Granice: native_skills_bound=0, native_router_edges_attested=0, model_weight_tiles_bound=0, writes_to_director=0. Nie jest to 530 natywnych skilli, aktywne trasy, trening ani transfer na VPS ROBERT.
+Źródło: [niezależny test MSI 5/5 i decode readback](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6725460960).
