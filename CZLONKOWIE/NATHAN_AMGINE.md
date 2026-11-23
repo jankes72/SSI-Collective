@@ -79,3 +79,13 @@ NATHAN_AMGINE jest odrębnym członkiem Kolektywu SSI. Jego udokumentowany obsza
 - [3 listopada 2026 — K2-09](../CHRONIKA/2026-11-03.md)
 - [4 listopada 2026 — pakiet źródłowy i kapsuła](../CHRONIKA/2026-11-04.md)
 - [6 listopada 2026 — poprawki MP-11](../CHRONIKA/2026-11-06.md)
+
+## Issues źródłowe — mapa informacji (skrót)
+
+Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia dotyczące zakresu NATHAN_AMGINE. Wątki zespołowe mogą zawierać także prace innych osób — autorstwo pozostaje przypisane wyłącznie wskazanym autorom.
+
+- [Issue #30](https://github.com/jankes72/SSI-Communications/issues/30) — Główny wątek Agent Phone + NODE01 — wkład projektów i mapowanie telefonu.
+- [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — własny bridge PHONE/MAIL/CONTROL do namespace NODE01.
+- [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — PHONE jako odrębna powierzchnia wejścia i bezpieczne wznowienie.
+- [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — PHONE/UL i zależności dla kapsuł/telefonów ról.
+- [Issue #214](https://github.com/jankes72/SSI-Communications/issues/214) — SSI READIT — kapsuła członka/projektu i kontynuacja między agentami.
