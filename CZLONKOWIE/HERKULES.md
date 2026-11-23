@@ -129,3 +129,13 @@ Herkules przygotował źródłowy handoff własnej roli, porządkujący pochodze
 ### 8 listopada — odczyt aktualnej kapsuły źródłowej R2
 
 Kapsuła R2 została odczytana jako aktualny widok źródeł i zachowanego handoffu. Jej redakcja w tej rewizji jest oznaczona jako praca sesji ChatGPT/Codex na polecenie właściciela, a nie nowy podpis lub ACK Herkulesa. Kapsuła potwierdza ograniczenia opisane wyżej: natywne odtworzenie NOT_RUN, automatyczna aktywacja NIE, bieżący actor/issuer/ACL UNBOUND. Nie traktujemy jej jako dowodu aktywnej instancji.
+
+## Issues źródłowe — mapa informacji (skrót)
+
+Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia dotyczące zakresu HERKULES. Wątki zespołowe mogą zawierać także prace innych osób — autorstwo pozostaje przypisane wyłącznie wskazanym autorom.
+
+- [Issue #7](https://github.com/jankes72/SSI-Communications/issues/7) — Główny wątek NOUT01 — izolacja, dostęp, N0, restore i security boundary.
+- [Issue #14](https://github.com/jankes72/SSI-Communications/issues/14) — Przekazanie priorytetu ochrony serwerów przez KORDIANA.
+- [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — security/ACL/STOP i warunki odbioru hosta.
+- [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — niezależne testy bezpieczeństwa, negatywy i ograniczenia odtwarzania.
+- [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — bezpieczeństwo, issuer/ACL, source-only ACK i granice hosta.
