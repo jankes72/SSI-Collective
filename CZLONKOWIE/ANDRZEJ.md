@@ -88,3 +88,12 @@ ANDRZEJ występuje w źródłach jako koordynator SSI: porządkuje zależności,
 - Dziennik 26.10.2026: [2026-10-26.md](https://github.com/jankes72/SSI-Communications/blob/main/journal/2026/10/2026-10-26.md), wpisy ANDRZEJ-001–012.
 - Kapsuła R2: T4-41027, aktualizacja 8.11.2026; status i ograniczenia opisane powyżej.
 - Katalog członków Kolektywu SSI.
+
+## Uzupełnienie audytu — SSI-PACK LAB R0 / własny oracle DYREKTORA (1.11.2026)
+
+- DYREKTOR/ANDRZEJ przygotował w odrębnym eksperymentalnym DRAFT PR173 fikcyjne źródła demo, jednorazową kapsułę 805 B i próbkę indeksu 7 wątków.
+- Wykonał **25/25 lokalnych testów offline** deterministycznego orakla w Pythonie na danych fikcyjnych. To wynik lokalny, nie GitHub Actions CI.
+- Pomiar: FULL 3840 B; kapsuła 805 B; kapsuła wraz ze wszystkimi odczytanymi źródłami 4005 B. W tej próbce nie było oszczędności całkowitego transferu. Tokeny modelu i prawdziwa świeża sesja ChatGPT B nie były mierzone/uruchomione.
+- Wykonał próbkę indeksu 7 wątków z 1019 komentarzami, ale sam meldunek wyraźnie określa ją jako niekompletną — nie jest to pełny indeks open/closed Issues, PR, edycji i review threads.
+- Statyczny peer HERKULESA wykazał niezgodność kształtu kapsuły z parserem XAVIERA. Własne 25/25 pozostaje prawidłowe dla oryginalnego fixture DYREKTORA, ale nie potwierdza wspólnej interoperacyjności.
+- Źródła: [własny meldunek DYREKTORA #170](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564442865), [diff schematów](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564469813), [PR173](https://github.com/jankes72/SSI-Communications/pull/173).
