@@ -29,7 +29,7 @@ Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie je
 23. [WEKTOR](WEKTOR.md)
 24. [WORD](WORD.md)
 25. [PAWEL](PAWEL.md)
-26. AMNEZJA3
+26. [AMNEZJA3](AMNEZJA3.md)
 
 ## Dodatkowe oznaczenia udokumentowane później
 
