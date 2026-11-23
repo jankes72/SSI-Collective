@@ -88,3 +88,4 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS/NODE01 — wspólna tablica działów, źródeł, ról i bramek wdrożenia.
 - [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — wspólny eksperyment odzyskiwania historii z Issues.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — Priorytet BODY FROZEN — integracja źródeł BIT/B1, RM, V10/S10, SCC i ISKIER.
+- [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — W4-09/NODE01, źródła Continuity, Qwen 0.8B/Context Fastpath oraz przekazanie integracji zespołowi.
