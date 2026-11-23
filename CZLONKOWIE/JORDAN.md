@@ -88,3 +88,11 @@ Profil opracowano na podstawie datowanych meldunków Jordana, jego własnych dos
 - **PR #243:** Jordan jest wskazany w przekazaniach dotyczących linii CPU R2.7/3B jako adresat i właściciel obszaru do dalszego source review. Samo wskazanie adresata nie jest dowodem wykonania benchmarków ani autorstwa wyników operatora ASTER-a; dlatego nie przypisuję mu tych pomiarów. [przekazanie crosswalk trzech Maluchów](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6883869288)
 
 Profil rozróżnia własne prace dokumentacyjne na PR #242 od przekazań i wyników innych osób w PR #243.
+
+
+## Uzupełnienie audytu — DIRECTOR RC1 W8 / K4 (1 listopada 2026)
+
+- Własny odbiór ledgeru PR163: 52/52 ID, 52/52 wiersze, 260/260 komórek pięciu bramek, 8/8 własnych ID i 24/24 historycznych actor IDs potwierdzono strukturalnie. Nie są to testy funkcjonalne ani 24 aktywne role; wszystkie wpisy zachowały INSTALL=NO_GO i NATIVE/BACKUP=NOT_ATTESTED.
+- Wskazałem dwa historyczne run-ID brakujące w ledgerze: run z 2 października (7 przypadków: 5 PASS/2 INCONCLUSIVE) oraz odrębny V4 S1–S10 run z 17 września. Nie należy dublować ich z diagnostycznym zbiorem 1326 przypadków.
+- Wspólny PR163: odebrałem 8/8 identycznych Git blobów RoleNode i wykonałem 4/4 testy embedded last-mile na shared HEAD. Testy używały syntetycznych policy/coverage/backend; nie potwierdzają native issuer ani restore.
+Źródła: [52×5 i run-ID](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6564076319), [8/8 source blobs](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6562574383), [4/4 shared last-mile](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6563800692).
