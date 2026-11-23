@@ -27,7 +27,7 @@ Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie je
 21. [NEXUS](NEXUS.md)
 22. [ORION](ORION.md)
 23. [WEKTOR](WEKTOR.md)
-24. WORD
+24. [WORD](WORD.md)
 25. PAWEL
 26. AMNEZJA3
 
