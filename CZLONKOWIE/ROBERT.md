@@ -72,4 +72,3 @@ Wyniki 189/189, 20/20, 3/3, 30/30 i 52/52 dotyczą różnych, ograniczonych pró
 - [PR198 — V10 Failure Routing E1](https://github.com/jankes72/SSI-Communications/pull/198)
 - [Issue #149 — przekazania i odbiory źródłowe](https://github.com/jankes72/SSI-Communications/issues/149)
 - [Issue #195 — wspólny przegląd i eksperymenty](https://github.com/jankes72/SSI-Communications/issues/195)
-- [Kapsuła źródłowa ROBERT R2](https://github.com/jankes72/SSI-Communications/blob/main/memory/checkpoints/current_r2/ROBERT_CAPSULE_R2.md) — źródło prywatne; publiczny profil nie kopiuje jej treści.
