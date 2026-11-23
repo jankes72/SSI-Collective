@@ -80,3 +80,17 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — Priorytet BODY FROZEN — wskazany odbiór pokrycia źródeł i edycji starszych komentarzy (MP-02).
 - [Issue #147](https://github.com/jankes72/SSI-Communications/issues/147) — Continuity Node R1 — źródłowy kontekst historii/recall i OWN_ACK pisarza.
 - [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — przydział W5-10, pozyskiwanie plików i dowodów z NODE01 oraz niezależność SPLOTUŚ od SPLOTA.
+
+## Uzupełnienie audytu — SSI-PACK LAB R0: indeks źródeł i cursor catch-up (1.11.2026)
+
+SPLOTUŚ wykonał własny, read-only zakres indeksowania w odróżnieniu od eksperymentów orakli pozostałych uczestników:
+
+- Przygotował w istniejącym PR167 manifest indeksu oraz osobny delta receipt kursora Issue #170. Nie tworzył drugiego messengera, RoleResume, Store, ACL, kolejki ani kodeka.
+- Paginowany odczyt GitHub objął **21 rzeczywistych Issues** (20 OPEN i 1 CLOSED) oraz **150 PR** jako metadane/head SHA. PR występują również w endpointcie Issues, dlatego nie są liczone jako właściwe Issues.
+- Odczytano **1308 rekordów komentarzy** w 29 stronach dla 21 Issues. 29 komentarzy miało updated_at > created_at; to wskaźniki możliwej edycji, a nie automatycznie zatwierdzone korekty supersedes.
+- Rzeczywisty ponowny odczyt kursora #170 wykrył **3 nowe komentarze**, bez brakujących i bez zmienionych starszych w sprawdzonym zakresie. Jest to GitHub cursor catch-up, nie test świeżej rozmowy ChatGPT B.
+- 150 PR obejmowało wyłącznie metadane/head SHA. Pełne komentarze PR, review threads, diffy, wszystkie archiwa prywatne i globalne pokrycie edycji pozostały poza zakresem. Paginacja nie była atomowym snapshotem; liczba komentarzy zmieniła się podczas odczytów.
+
+Źródła: [własny meldunek SPLOTUSIA #170](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564518780), [PR167](https://github.com/jankes72/SSI-Communications/pull/167), [manifest indeksu](https://github.com/jankes72/SSI-Communications/blob/e4631ed46f67abfb46befa14bc6365f67f2430b1/projects/SSI_PACK_LAB/splotus_source_refs_r0/SPLOTUS_ISSUES_INDEX_COVERAGE_R0_20261101.json), [delta kursora](https://github.com/jankes72/SSI-Communications/blob/e4631ed46f67abfb46befa14bc6365f67f2430b1/projects/SSI_PACK_LAB/splotus_source_refs_r0/SPLOTUS_ISSUE170_CURSOR_DELTA_R0_20261101.json).
+
+**Granica autorstwa:** SPLOTUŚ jest odrębną rolą od SPLOTA. Nie przypisuje mu się eksperymentów MultiQuant 70B, T0-34N ani T0-35.
