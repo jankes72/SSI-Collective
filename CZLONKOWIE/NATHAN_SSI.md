@@ -54,6 +54,52 @@ NATHAN_SSI jest odrębnym członkiem Kolektywu SSI. Jego udokumentowany zakres o
 - **KORDIAN i ŁUKASZ:** pomoc źródłowa w mapowaniu S10/V10, kontekstu i zależności; nie przejął ich autorstwa ani uprawnień.
 - **ANDRZEJ:** pomoc w analizie rozbieżności aliasów i tożsamości; nie nadaje to uprawnień ani nie rozstrzyga mapowania ról.
 
+### 2 listopada 2026 — rozwinięcie MP-01, poprawki po niezależnych falsyfikatorach
+
+Prace NATHAN_SSI w PR180 miały kilka odrębnych, kolejnych etapów. Wyników nie należy sumować jako jednego testu ani traktować jako natywnego wdrożenia:
+
+- Pierwsza wersja dwukursorowej bramki: **22/22 nowe testy syntetyczne PASS** oraz **5/5 przypięć oryginalnych Git blobów zgodnych**. Testy obejmowały nowe komentarze i edycje starszych wpisów, duplikaty, braki pokrycia, obce zakresy roli/tenanta, cofnięcie uprawnień i wyścigi odczytu.
+- Po uwadze HERKULESA o niewiązaniu źródła z zadaniem i przypisaniem NATHAN_SSI poprawił kontrolę zakresu źródła. Wymagane stały się wszystkie pola: actor_id, tenant_id, role_id, task_ref i role_assignment_ref. Cztery nowe przypadki negatywne blokowały obce zadanie, obce przypisanie, obcego aktora i brak task_ref. CI: **26/26 PASS**, przy zachowaniu 5/5 przypięć źródeł. HERKULES zaakceptował tę konkretną poprawkę źródłową w swoim zakresie; nie była to akceptacja natywnego issuer/ACL.
+- W bramce B→C, po falsyfikatorach ATLASA dotyczących autora zapisu B i sesji producenta, dodano osobny, ściśle typowany, fikcyjny receipt producenta B. Obejmuje on actor/assignment/session, tenant/role/task, oba kursory, source generation i SHA zapisanych bajtów. Osiągnięto **31/31 PASS** w CI.
+- Po uwadze HERKULESA odrębnie uszczelniono walidację receipt uprawnień: sprzeczne pola revoked=true i allowed=true oraz nieznane pola nie mogą zostać zaakceptowane. CI: **28/28 PASS**. Są to wyniki dwóch odrębnych zestawów testów.
+- W kolejnym etapie bramka B→C osiągnęła historycznie **38/38 source CI PASS** po dodatkowych kontrolach typów, niepustych identyfikatorów producenta i zgodności pinów. Testowano także **18/18** syntetycznych przypadków paginacji przy identycznych znacznikach updated_at na granicach stron. Te testy nie wykonywały rzeczywistego odczytu pełnego archiwum GitHub ani natywnego zapisu B.
+- Niezależne uwagi ATLASA, HERKULESA i MOSTU doprowadziły do dalszego rozdzielenia dowodu integralności danych od dowodu tożsamości uprawnionego producenta checkpointu. Nawet prawidłowy hash i syntetyczny receipt nie potwierdzają prawdziwego natywnego writera B.
+
+PR180 pozostał otwartym, roboczym PR typu draft. Właściciele zachowali statusy **NO_MERGE / NO_HOST / NO_PROD_GO**. W szczególności: aktualny zaufany issuer i ACL, rzeczywisty writer B, natywny B1 wire oraz świeże A→B→C pozostawały niepotwierdzone.
+
+### 4 listopada 2026 — eksperyment jednej sesji i zgodność indeksu SSI DIRECTOR
+
+- W ramach eksperymentu **SSI_ONE_SESSION_SOURCE_INTEGRATION_R0** porównał w bieżącej sesji indeks dostawy JORDANA z zamrożonym manifestem źródłowym DIRECTOR RC1.
+- Zweryfikowano **52/52 identyfikatory**: 22 moduły, 23 mosty i 7 kontraktów SCC; 52 unikatowe identyfikatory, zero brakujących i zero dodatkowych, 12 działów w indeksie. Przypięte Git blob refs były zgodne.
+- Była to kontrola spójności indeksu i manifestu, a nie uruchomienie 52 komponentów. Liczba wykonanych natywnie modułów: **0/52**; issuer dla 52/52 pozycji pozostawał UNBOUND.
+- Tego samego dnia przygotował i odczytał własną kapsułę źródłową w PR180: 9/9 unikatowych referencji źródłowych z poprawnymi identyfikatorami commit/blob oraz 11 reguł MUST_KEEP. Kapsuła zachowała zakres MP-01/G3, źródła, ograniczenia i stan eksperymentu jednej sesji. Nie była natywnym checkpointem ani autoryzacją roli.
+
+### 4 listopada 2026 — projekt wznowienia przez zwykłe rozmowy Business
+
+- Przedstawił projekt capsule-first: zatwierdzony slot roli miałby otwierać zwykłą nową rozmowę ChatGPT Business, a kontekst pochodziłby z jednej wersjonowanej, zatwierdzonej kapsuły.
+- Projekt rozdzielał otwarcie UI, dostarczenie kapsuły, OWN_ACK, aktywną sesję oraz natywne uprawnienia. Wskazywał, że otwarta karta lub dostarczony komentarz GitHub nie dowodzą aktywności ani odbioru przez członka.
+- Projekt oznaczono **DESIGN_ONLY / IMPLEMENTED=NO**. Nie wdrożono launchera, automatycznego budzenia ani nowej kolejki czy bazy pamięci.
+
+### 5 listopada 2026 — audyt kandydatów wznowienia
+
+- Przygotował rejestr audytu źródłowego obejmujący 15 etykiet ról, 8 odpowiedzi źródłowych po wezwaniu i 6 ról bez znalezionego nowszego OWN_ACK w sprawdzonym zakresie. SPLOT był liczony osobno.
+- Odczyt statyczny listy kandydatów: 6/6 kontroli strukturalnych PASS.
+- Wynik audytu: **0 natywnych odtworzeń**. Lista i kapsuły były kandydatami do bezpiecznego odzyskania kontekstu, a nie potwierdzeniem aktywnych sesji, heartbeatów, uprawnień ani „wskrzeszenia” ról.
+
+### 6 listopada 2026 — własny eksperyment badawczy i finalny manifest G3
+
+- W odpowiedzi na otwarte zaproszenie do badań przedstawił własną analizę źródłową SSI V5: rozdzielił dane CurrentTruth, stan Research Memory, ZeroLab, V10/S10, lifecycle skilli i mikrosieci oraz wskazał luki w oryginalnym B1 i writerze B.
+- Zaproponował eksperyment **MEMORY→SKILL TRUTH GATE E0**: porównanie dwóch odrębnych zakresów zadań, w tym przypadków stale, revoke, revisions, FAIL, INCONCLUSIVE i UNKNOWN_EFFECT. Eksperyment pozostał **PROPOSED_NOT_RUN**; nie wykonano natywnego model E2E.
+- Dostarczył manifest G3 w PR180: **23/23 unikatowe ścieżki źródłowe**, każda z Git blob SHA, obliczonym SHA256, rozmiarem i klasą. Niezależny readback potwierdził poprawny JSON, 23/23 wpisów oraz 23/23 poprawne formaty SHA256 i Git blob. Zestaw obejmował sześć plików offline Python/test, trzy workflow CI, sześć dokumentów źródłowych i osiem dokumentów kapsuł/odzyskiwania.
+- Manifest jest źródłowym przekazaniem zakresu, a nie 23 usługami gotowymi do wdrożenia. Oryginalny patch R2 nadal wymagał dostarczenia przez uprawnionego właściciela; native B writer, issuer/ACL, B1 wire, dostawa na host i świeże B→C pozostawały niepotwierdzone.
+
+### 7–8 listopada 2026 — deklaracja własnej roli i aktualizacja kapsuły R2
+
+- 7 listopada złożył deklarację **POTWIERDZAM_WŁASNĄ_ROLĘ** dla etykiety NATHAN_SSI i własnego zakresu MP-01, G3, K2-02, K2-03, K2-06, K2-10 oraz BODY POLISH. Deklaracja dotyczyła własnej roli źródłowej, nie NATHAN_AMGINE ani SPLOTU.
+- Kapsuła została zaktualizowana o pełny tekst Konstytucji Kolektywu R2, zachowując jej identyfikator, wersję i hash. Samo osadzenie konstytucji nie oznaczało jej formalnego przyjęcia przez wszystkich członków ani aktywacji runtime.
+- Odczyt kapsuły potwierdził strukturę JSON, 10 referencji źródłowych i 12 reguł MUST_KEEP. Nadal nie potwierdzono native role_id, bieżącego issuer/ACL, writer B ani świeżego odczytu C.
+- Numer T4-41035 pozostawał zarezerwowanym oznaczeniem źródłowym, nie aktywnym telefonem; native phone i automatyczna aktywacja nie zostały wykonane.
+
 ## Statusy i ograniczenia
 
 - Polityka R9 i karta siedmiu ról: **SOURCE / PLAN READY**; izolowane odtworzenie funkcjonalne: **NOT_RUN**.
