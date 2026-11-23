@@ -105,6 +105,10 @@ Paweł wykonał i przekazał wynik odczytowej kontroli stanu eksperymentu po prz
 
 
 
+## Uzupełnienie wkładu operatorskiego — PR #242 (13.11.2026)
+
+- **Universal Lab / SSI Small R2 na MSI:** Paweł zainstalował odtworzony adapter `ssi-unified-r2`, potwierdził lokalny model `ssi-small-q4q8-r2` i wykonał testy `run` oraz `form`. Wynik: wygenerowany szkic funkcji Python bez jej wykonania oraz formularz 4/4 pól ze statusem `VALIDATED_DRAFT_NOT_SUBMITTED`. To operatorowy test lokalny i szkic niewysłany; nie oznacza produkcyjnego M5, integracji SCC, publicznego endpointu ani automatycznej wysyłki. [operatorowy readback PR #242](https://github.com/jankes72/SSI-Communications/pull/242#issuecomment-6859648443)
+
 ## Uzupełnienie wkładu operatorskiego — PR #243, PR #244 i Issue #245 (14–20.11.2026)
 
 - **PR #243 — operator badań Maluchów:** przekazanie terminalowych odczytów z MSI, lokalnych pomiarów CPU/GPU, wyników odtwarzania paczek i testów modeli 0.5B/1.5B/3B. Autorstwo narzędzi i raportów pozostaje przypisane odpowiednim członkom; Paweł jest wskazany jako operator pomiarów i dostawca wyników z hosta. [przykładowy readback CPU R2.1](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6883639365) · [raport CODEX z rozdzieleniem operatora i analizy](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6914425784)
