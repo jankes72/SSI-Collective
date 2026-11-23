@@ -100,3 +100,4 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — testy niezależnego odczytu historii i korekt po kursorze.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — Research Memory, zależności, źródła i wspólny odbiór.
 - [Issue #4](https://github.com/jankes72/SSI-Communications/issues/4) — NODE01/NOUT01 — integracja pamięci i zależności odczytu.
+- [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — source intake, pamięć, zależności działów i przekazania do wspólnego RC1.
