@@ -469,6 +469,52 @@ Poniższe pozycje są skróconym indeksem potwierdzonych wyników. Szczegóły, 
 - **Status:** paczka i testy source/offline PASS; SSH, instalacja, realna kampania i native generator NOT_RUN.
 - **Źródła:** [projekt edukacji tras](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6752024332) · [pakiet i 68/68 testów](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6752880652) · [ostateczne bajty i sumy](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6752906641).
 
+
+### 4.45 Llama 3.1 70B BF16 — pozyskanie teachera, kontrola wag i Q8 pilot
+
+- **Źródło teachera:** Llama-3.1-70B-Instruct, przypięta rewizja Hugging Face. Na NOUT1 operator pobrał 39/39 plików, w tym 30/30 shardów BF16; suma wag 141 107 497 872 B. Późniejszy operatorowy audyt zgłosił 30/30 SHA wag PASS, 9/9 hashy metadanych i INDEX_WEIGHT_MAP PASS.
+- **Q8:** wykonano ograniczony pilot dwóch tensorów z niezależnym audytem 2/2. To nie oznacza Q8 dla wszystkich 723 tensorów.
+- **Q1 sample:** fizyczna próbka BF16→Q1 dotyczyła 16 wierszy × 28 672 kolumny jednego tensora. Wynik MEASURED_NOT_QUALIFIED: Q1 relative weight L2 0,63751 wobec Q8 0,008226 na tych samych wierszach; Q1 matvec proxy 0,67128 wobec Q8 0,010014. Provisional sign256+FP16 scale, bez ustalonego progu jakości; pełna inferencja i student NOT_RUN/NOT_BUILT.
+- **T1G/T1I:** historyczne eksperymenty mikromacierzy pokazały, że low-rank+sparse nie uzyskał jednocześnie wymaganej jakości i ratio w 0/15 prób; osobny test INT8 na VAL uzyskał rel L2 około 0,04870, a INT4 około 0,15725. To różne próbki i metodologie — nie układać ich w globalny ranking kodeków.
+- **Zasoby:** preflight NOUT1 w listopadzie zakończył się HOLD_IO_PRESSURE; nie wolno wnioskować, że host jest gotowy do kolejnego ciężkiego przebiegu. Student 70B nie został zbudowany.
+- **Status:** teacher files i SHA/metadata operator-reported PASS; Q8 pilot 2/723; Q1 measured but not qualified; full Q1/Q8 student, pełny model i produkcyjne użycie NOT_RUN/NOT_BUILT.
+- **Źródła:** [30/30 BF16 shardów i indeks](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6537384669) · [pełne pobranie 39/39](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6541178958) · [SHA 30/30 PASS](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6541390513) · [Q1 P0 instalacja i selftest](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6558927782) · [Q1 real sample measured not qualified](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6558981229) · [Q1 history recovery / T1G/T1I](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6559121512).
+
+### 4.46 Tensor LEGO / Q1 — T0-27, T0-28 i T0-30, wyniki wieloseedowe
+
+- **T0-27:** 10/10 testów jednostkowych i 18/18 kontroli procedury PASS na syntetycznej sieci 80 liniowych bloków szerokości 12. Adaptive 16 Q4 + 64 Q1 z ponownie trenowaną LoRA Q3 osiągnęło mean rel L2 0,07308; random16 Q4 + retrain 0,09372. Przy starym adapterze wynik adaptacyjny pogarszał się, a dobór CAL-only mógł overfitować. Forward był po rozpakowaniu do FP32 — nie native packed 70B.
+- **T0-28:** pięć syntetycznych teacherów × dwie próby. Adaptive 16/80 Q4 przy tym samym budżecie zapisu przegrał średnio z random: 0,08298 vs 0,08008 mean rel output L2; wygrał 6/10, przegrał 4/10. Nie wykazano przewagi średniej; profile nie zostały zakwalifikowane.
+- **T0-30:** pięć syntetycznych teacherów × dwie próby, adaptive Q1/Q2/Q4 + rank-2 correction. Mean rel L2: Q1 0,297723; Q2 0,080778; Q4 0,016133; adaptive 0,208330; random 0,211876. Adaptive vs Q2 wygrał 0/10; bramka poprawy jakości nie została spełniona. Toy payload 12 336 B wobec 12 480 B dla Q2 (1,15% mniej) przy około 2,58× gorszym błędzie. Decyzja QUALITY_NO_GO, fallback Q2.
+- **NOUT1:** w trakcie tych prac rzeczywisty preflight zatrzymał ciężkie zadania przez IO pressure; hostowe testy T0-29/pełny model nie zostały uruchomione.
+- **Status:** eksperymenty syntetyczne wykonane; T0-28 bez przewagi, T0-30 QUALITY_NO_GO; nie są to pomiary jakości ani szybkości LLM 70B.
+- **Źródła:** [T0-27](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6632674479) · [T0-28](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6633939163) · [NOUT1 preflight HOLD](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6636129183) · [T0-30 QUALITY NO_GO](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6642843875).
+
+### 4.47 NanoBit / NanoLEGO — T0-31, T0-32 i T0-33
+
+- **T0-31 NanoBit:** offhost eksperyment z adresowanymi wzorcami, nakładką XOR i ponownym użyciem obliczeń. Łączył logicznie wcześniejsze BITCAP, Virtual Tile i predictive prefetch; nie był rzeczywistym testem BF16/70B. Historyczne T0-19 (3000 matvec na kaflu) i T0-20C (jeden kafel B1) pozostają osobnymi wynikami.
+- **T0-32 NanoLEGO Student-8B:** przygotowano architekturę i ABI studenta około 8B oraz wykonano toy/offhost eksperyment. Student nie został wytrenowany na rzeczywistym teacherze 70B; 723 tensorów teacher weight_map nie jest wymiarem architektury studenta.
+- **T0-33 NanoLEGO POWER:** 29/29 unit tests PASS, pięć seedów, 15/15 plików źródłowych readback. Badanie power-law słowników kafli/faktoryzacji na syntetycznym modelu; nie potwierdza kompresji lub jakości rzeczywistego 70B.
+- **Status:** eksperymenty i prototypy offhost; realny student 8B NOT_BUILT; pełny 70B inference NOT_RUN.
+- **Źródła:** [T0-31](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6656734154) · [T0-32 Student-8B](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6657133667) · [T0-33 POWER](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6657640933).
+
+### 4.48 NanoGate T0-35 — syntetyczny klasyfikator ścieżki
+
+- **Metoda:** klasyfikator 11 cech; 240 TRAIN, 80 TUNE, 80 TEST i 48 SHIFT_TEST. Drugi przebieg odtworzył bajtowo identyczny model.
+- **Wynik znanych rodzin:** learned 80/80 (TP48 FP0 FN0 TN32), heurystyka 64/80.
+- **Wynik niewidzianych rodzin:** learned 26/48, heurystyka 32/48; learned wygenerował 22 fałszywe wskazania Nano. Guard VAL/SHIFT_VAL blokował błędne wskazania.
+- **Granica:** NanoGate zwraca tylko WORTH_TRY; nie steruje kodowaniem, ACL ani klientem. Dane toy nie są GGUF ani testem 70B.
+- **Status:** 23/23 unit tests PASS i syntetyczny trening wykonany; brak przewagi na SHIFT, brak produkcyjnego GO.
+- **Źródło:** [Issue #44 — T0-35](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6663198989).
+
+### 4.49 SSI Private AI Product A0 — deterministyczny retriever dokumentów
+
+- **Cel:** pierwszy ograniczony wycinek produktu dokumentowego Private AI, bez nowego modelu i bez zewnętrznej usługi.
+- **Wynik offhost:** 20/20 wyselekcjonowanych fikcyjnych pytań, 28/28 testów jednostkowych, 10/10 plików source readback. Na MSI operator powtórzył 28/28 testów i 20/20 benchmarku; 15 przypadków FOUND, 5 ABSTAIN.
+- **Co działało:** deterministyczny retriever zwracający dosłowny cytat ze źródła. To nie był RAG-LLM. Tenant/role w CLI były niezaufanymi wartościami, nie natywną autoryzacją.
+- **Ograniczenia:** brak rzeczywistych danych klienta, PDF/DOCX ingest, modelu GGUF, UI, signed issuer, trwałego store, pełnego ACL, backup/restore i produkcyjnego hardeningu. A1 real LLM NOT_RUN.
+- **Status:** A0 offhost i operatorowy smoke MSI PASS w ograniczonym fikcyjnym zbiorze; semantyczny RAG i produkcyjne użycie NO_GO.
+- **Źródła:** [A0 offhost 20/20 i 28/28](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6643377367) · [A0 operator MSI receipt](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6643925319) · [A1 S0 — brak inferencji](https://github.com/jankes72/SSI-Communications/issues/44#issuecomment-6643949634).
+
 ## 5. Mapa projektów i źródeł
 
 Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są punktami nawigacyjnymi, nie deklaracją, że każdy uczestnik danego wątku wykonał całość prac.
