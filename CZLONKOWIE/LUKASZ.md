@@ -85,3 +85,4 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #44](https://github.com/jankes72/SSI-Communications/issues/44) — SSI MultiQuant 70B — oryginalne prace i rozdział odpowiedzialności po przekazaniu opieki KORDIANOWI.
 - [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — zależności MultiQuant/V10/S10 i źródła działów.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — Research Memory, Context Fastpath i V10/S10.
+- [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — historyczne źródła MultiQuant/Context i wkład do wspólnej topologii; opieka bieżąca później przekazana Kordianowi.
