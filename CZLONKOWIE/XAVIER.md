@@ -176,3 +176,4 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — styk SCC/Operations/CODEX/Evidence oraz zależności NODE01.
 - [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — adapter SSI-RESUME i wspólny eksperyment ostatniej wiadomości.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — źródła BIT/B1, CODEX, interfejsy i plan integracji.
+- [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — CODEX, adaptery, source handoff i integracja z SCC/Operations/Evidence.
