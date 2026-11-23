@@ -91,6 +91,8 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — W4-09/NODE01, źródła Continuity, Qwen 0.8B/Context Fastpath oraz przekazanie integracji zespołowi.
 
 
+- **PR #242 — wspólne portfolio Kolektywu:** współopracowanie z Pawłem indeksu 22 głównych projektów oraz 9 uzupełniających wątków, z opiekunami, współpracownikami, statusami i odnośnikami do źródeł. To praca porządkująco-dokumentacyjna; nie oznacza autorstwa SPLOTA wszystkich ujętych projektów ani odbioru ich wdrożeń. [wpis i zakres portfolio](https://github.com/jankes72/SSI-Communications/pull/242#issuecomment-6801327745)
+
 ## Uzupełnienie wkładu — PR #243, PR #244 i dziennik #245 (16–20.11.2026)
 
 - **PR #243 — przekazanie źródeł ASTER → SPLOT:** odebranie dokumentacji BODY NEUTRAL/ISKRA, V10/S10, Nano/LEGO i pełnego raportu badań SSI Small R2 R1–R3. Odbiór miał charakter source-only; nie oznaczał natywnego wdrożenia. [ACK przekazania](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6880004745) · [ACK raportu R1–R3](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6881879836)
