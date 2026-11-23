@@ -116,3 +116,14 @@ Paweł wykonał i przekazał wynik odczytowej kontroli stanu eksperymentu po prz
 - **Issue #245 — operatorowe odczyty R7/R8/R9 i R4:** dostarczenie odczytów z ROBERT i MSI, w tym zakończenie 6-godzinnego R8 (674 próby, 30 kompletnych przypadków dwujęzycznych) oraz kontrolowane zatrzymania odczytu wag przy przekroczeniu limitu I/O. R9 MINI pozostał przygotowany bez inferencji; odczyt 1.5B zakończył się HOLD, a 3B nie został rozpoczęty. [R8 — pochodzenie wyników](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6914120514) · [R4 bezpieczny HOLD](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6920936251)
 
 Wpis oddziela rolę operatora od autorstwa analiz XAVIER/CODEX i implementacji SPLOT. Nie przenosi na Pawła autorstwa ich kodu ani nie oznacza wyników jako produkcyjnego GO.
+
+
+## Uzupełnienie audytu — DIRECTOR storage i S13–S26 / ZeroLab (8 listopada 2026)
+
+- Paweł wykonał i przekazał ograniczone odczyty operatorowe READ-ONLY z MSI i VPS DIRECTOR. Na DIRECTOR potwierdzono konto ssi-deploy UID/GID 1001, około 60 GB wolnego miejsca na filesystemie 116 GB oraz blokadę zapisu do /home/ssi-deploy i /srv/ssi; staging 0711 pozostawał niewidoczny do pełnej inwentaryzacji z uprawnień nie-root.
+- Na MSI odczytano około 86 GB danych SSI_V5. Czternaście wybranych katalogów skill/LEGO/micronetwork miało około 449 MB, ale nie była to pełna inwentaryzacja skilli. Nie wykonano kopiowania, zmian uprawnień ani instalacji.
+- W ograniczonym porównaniu MSI↔DIRECTOR potwierdzono zgodność bajtów i SHA-256 dla 14/14 definicji STAGE.json S13–S26 oraz 27/27 wybranych kandydatów ZeroLab (26 plików kodu/pinów i jedna baza runtime). Baza SQLite nie została wskazana do transferu. Brak braków dotyczył wyłącznie 41 porównanych pozycji, nie całych drzew ani pełnego runtime.
+- Rola Pawła: operator odczytów i przekazania wyników. Nie przypisuje sobie autorstwa kodu, skilli, badań ZeroLab ani testów innych członków.
+- Status: SOURCE_READBACK_DONE / COPY=0 / HOST_WRITE=0 / CAPACITY_GO=HOLD / INSTALL_GO=NO / PROD_GO=NO.
+
+Źródła: [DIRECTOR storage readback](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6722580979), [MSI 86 GB readback](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6722816971), [S13–S26 / ZeroLab exact comparison](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6723091097).
