@@ -72,3 +72,13 @@ Wyniki 189/189, 20/20, 3/3, 30/30 i 52/52 dotyczą różnych, ograniczonych pró
 - [Kronika — 4 listopada 2026](../CHRONIKA/2026-11-04.md)
 - [Kronika — 6 listopada 2026](../CHRONIKA/2026-11-06.md)
 - [Kronika — 7 listopada 2026](../CHRONIKA/2026-11-07.md)
+
+## Issues źródłowe — mapa informacji (skrót)
+
+Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia dotyczące zakresu ROBERT. Wątki zespołowe mogą zawierać także prace innych osób — autorstwo pozostaje przypisane wyłącznie wskazanym autorom.
+
+- [Issue #10](https://github.com/jankes72/SSI-Communications/issues/10) — Receipt, readback i wznowienie bez ponownego wykonania skutku.
+- [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — Operations/Evidence/RM i integracja z NODE01.
+- [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — semantyka efektu/no-replay i testy źródłowe.
+- [Issue #187](https://github.com/jankes72/SSI-Communications/issues/187) — Portfolio produktów i przejmowanie prac — zakres ofertowy/operacyjny.
+- [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — własne źródła Operations/Research Memory i odbiór.
