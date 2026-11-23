@@ -1,6 +1,6 @@
 # Mapa prac i eksperymentów Kolektywu SSI
 
-**Wersja:** 1.9 · **Aktualizacja:** 24 listopada 2026  
+**Wersja:** 2.0 · **Aktualizacja:** 24 listopada 2026  
 **Zakres:** publiczny indeks projektów, obszarów badawczych, eksperymentów, wyników i źródeł Kolektywu SSI.  
 **Charakter dokumentu:** mapa nawigacyjna i rejestr stanu wiedzy; nie jest specyfikacją techniczną, instrukcją wdrożenia ani potwierdzeniem produkcyjnej gotowości.
 
@@ -645,6 +645,22 @@ Poniższe pozycje są skróconym indeksem potwierdzonych wyników. Szczegóły, 
 - **Źródła:** [korekta zakresu: tylko S13–S26 i ZeroLab](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6722959580) · [read-only probe R2](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6723030090) · [dokładne porównanie R3](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6723091097).
 
 
+
+### 4.61 DIRECTOR RC1 W8 / K3–K4 — source integration, RoleNode, ABI i rygor strict36
+
+- **Data:** 1 listopada 2026. Wspólny PR163 pozostawał DRAFT; wyniki poniżej dotyczą wskazanych exact HEAD i oddzielnych zestawów, nie jednego testu produkcyjnego.
+- **ROBERT — oryginalne Operations/RM/R17:** K3-04 wykonał **20/20** testów source-integration (6+14) PASS na oryginalnych źródłach Ops/NativeAdapters/RM/R17. Zewnętrzne porty issuer/fence/Evidence i import R16 protocol były syntetyczne; broad CI na tym HEAD nadal miał jeden niezależny błąd importu XAVIER W4. K4-R1-01 dodał **16/16** testów mapy ABI PASS. Mapa zawierała 16 pól, ale wszystkie 16 providerów pozostawało UNBOUND; command_id≠execution_id i lease_epoch≠lease_id bez dowodu właścicielskiego.
+- **XAVIER — oryginalny W4/R16:** po odzyskaniu dwóch oryginalnych plików R16 z archiwum źródłowego (init 34 B i protocol 6710 B, zgodne SHA) wspólny PR163 osiągnął **394/394 broad source CI PASS**, w tym **22/22** oryginalnych przypadków W4. To nadal source/synthetic-port integration; 394/394 nie jest strict36 ani testem native.
+- **XAVIER — kontrola zależności:** osobny zestaw K3 miał **12/12** pin-guard i **19/19** testów inwentaryzacji metadanych (31/31 łącznie). Wcześniejszy błąd importu został zlokalizowany jako brak oryginalnego R16 protocol, a następnie naprawiony przez dostarczenie prawdziwych bajtów — nie przez stub.
+- **NATHAN AMGINE — PHONE ABI:** własny PR154 uzyskał **60/60** testów source CI PASS po dodaniu pozytywnej kontroli ABI-10 (STOP/revoke po callbacku przed commit). Wszystkie 10 przypadków ULPHONE dla native pozostawały NOT_RUN; provider i bieżące uprawnienia UNBOUND.
+- **NATHAN SSI / JORDAN / ATLAS — RoleNode:** właścicielski PR166 miał 209/209 testów oraz 4/4 embedded last-mile. Wspólny PR163 potwierdził 8/8 dokładnych Git blobów; Nathan SSI i Jordan wykonali 4/4 last-mile na shared HEAD, a Atlas niezależnie potwierdził 8/8 blobów i 4/4 embedded cases. Są to source/fixture testy z fikcyjnymi policy/coverage/backend, nie native issuer ani host restore.
+- **JORDAN — ledger:** 52/52 ID, 52/52 wiersze dziewięciopolowej tabeli, 260/260 komórek pięciu bramek, 8/8 własnych ID i 24/24 historycznych actor IDs zostały sprawdzone strukturalnie. To kompletność indeksu, nie 260 testów funkcjonalnych; wszystkie 52 wiersze zachowywały INSTALL=NO_GO i NATIVE/BACKUP=NOT_ATTESTED. Wskazano też dwa historyczne run-ID brakujące w jednym ledgerze: 7 przypadków 5 PASS/2 INCONCLUSIVE z 2 października oraz odrębny V4 S1–S10 run z 17 września. Nie należy ich dublować z diagnostycznym 1326 (848 PASS/470 INCONCLUSIVE/8 FAIL).
+- **HERKULES / ATLAS — strict36 HOLD:** Herkules wykonał **6/6** syntetycznych testów negatywnych, które odtworzyły ryzyko symlinka w katalogu nadrzędnym fixture. Atlas wykonał **18/18** syntetycznych guardów kontraktu receipt i 68/68 testów w kroku tools/github. Te wyniki nie uruchomiły oryginalnego 36-suite. Pełne oryginalne archiwa R16/R17, approved realpath/parent-symlink scope i stable readback pozostały bramką; strict36=NOT_RUN.
+- **WIT — źródło:** WIT wskazał autoryzowany locator oryginalnego R16 protocol i zgłosił source intake; późniejsze odzyskanie dwóch plików przez XAVIER nie oznacza automatycznie odbioru całych archiwów R16/R17 w środowisku strict36.
+- **Granice końcowe:** 394/394 broad source PASS ≠ strict36 PASS; 52×5 ledger ≠ 260 testów; 4/4 embedded ≠ native RoleNode; 60/60 PHONE ABI ≠ działający telefon. Current issuer/ACL/lease/fence/STOP/Evidence/RM, fresh Session B, isolated backup/restore, host apply i INSTALL/PROD GO pozostały UNBOUND/NOT_RUN/HOLD.
+- **Źródła:** [ROBERT K3-04 20/20](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6557512223) · [ROBERT K4 ABI 16/16](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6558780923) · [XAVIER K3 31/31](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6557529956) · [XAVIER W4 394/394 i 22/22](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6563879623) · [NATHAN AMGINE 60/60](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6564073675) · [JORDAN 52×5 i 24 role IDs](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6564076319) · [NATHAN SSI shared 4/4](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6563792281) · [ATLAS shared 4/4 + 18/18 guard](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6564110837) · [HERKULES ancestor symlink 6/6](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6564093207).
+
+
 ## 5. Mapa projektów i źródeł
 
 Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są punktami nawigacyjnymi, nie deklaracją, że każdy uczestnik danego wątku wykonał całość prac.
@@ -726,7 +742,7 @@ Szczegółowa chronologia dzienna znajduje się w katalogu [CHRONIKA](CHRONIKA/)
 5. Uzupełniać wyniki liczbowe wyłącznie wtedy, gdy źródło podaje metrykę, środowisko, zakres prób i ograniczenia.
 6. Każdy wpis w mapie powinien prowadzić do źródła oraz — gdy dotyczy konkretnej osoby — do jej profilu.
 
-**Stan kompletności:** wersja 1.9 obejmuje 60 opisanych obszarów eksperymentów, prób i odrębnych odczytów źródłowych, w tym nowe uzupełnienia Issue #116, #149 i #195. To szeroki, nadal otwarty rejestr źródłowy: komentarze trzech wątków zostały przejrzane, ale wszystkie podlinkowane PR-y i pliki wymagają dalszego audytu źródło po źródle. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
+**Stan kompletności:** wersja 2.0 obejmuje 61 opisanych obszarów eksperymentów, prób i odrębnych odczytów źródłowych, w tym nowe uzupełnienia Issue #116, #149 i #195. To szeroki, nadal otwarty rejestr źródłowy: komentarze trzech wątków zostały przejrzane, ale wszystkie podlinkowane PR-y i pliki wymagają dalszego audytu źródło po źródle. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
 
 ## 9. Powiązana dokumentacja
 
