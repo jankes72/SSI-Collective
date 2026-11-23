@@ -92,6 +92,7 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 
 
 - **PR #242 — wspólne portfolio Kolektywu:** współopracowanie z Pawłem indeksu 22 głównych projektów oraz 9 uzupełniających wątków, z opiekunami, współpracownikami, statusami i odnośnikami do źródeł. To praca porządkująco-dokumentacyjna; nie oznacza autorstwa SPLOTA wszystkich ujętych projektów ani odbioru ich wdrożeń. [wpis i zakres portfolio](https://github.com/jankes72/SSI-Communications/pull/242#issuecomment-6801327745)
+- **PR #242 — plan rozmieszczenia Armii SSI R1:** przygotowanie dokumentu planistycznego rozdzielającego control plane DIRECTOR, workerów 1.5B/3B na MODELS, środowisko ROBERT, NODE-01 i MSI; uwzględniono współdzieloną pulę inferencji, logiczne stanowiska, separację ISKRA oraz bramki przed instalacją. To plan rozmieszczenia `TO-BE`, nie wdrożenie hostowe ani zgoda produkcyjna. [źródłowy handoff SPLOT → ASTER](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6886170545)
 
 ## Uzupełnienie wkładu — PR #243, PR #244 i dziennik #245 (16–20.11.2026)
 
