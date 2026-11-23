@@ -160,3 +160,11 @@ Wyniki te dokumentują wkład HERKULESA do narzędzi i przeglądu źródeł powi
 - FRESH_CHATGPT_SESSION_B=NOT_RUN, LIVE_CURRENT_ISSUER=NOT_ATTESTED, HOST_ACTION=NO, INSTALL_GO=NO, PROD_GO=NO.
 
 Źródła: [własny meldunek HERKULESA #170](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564437848), [statyczny diff schematów #6564469813](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564469813), [PR168](https://github.com/jankes72/SSI-Communications/pull/168).
+
+
+## Uzupełnienie audytu — security peer strict36 (1 listopada 2026)
+
+- Wykonałem **6/6** syntetycznych testów negatywnych na granicy fixture, odtwarzając przypadek, w którym kontrola samego pliku końcowego nie wykrywa symlinka w katalogu nadrzędnym i ścieżka może wyjść poza zatwierdzony root.
+- To reprodukcja źródłowej luki i test porównawczy, nie dowód incydentu hosta ani 6 zaliczonych zabezpieczeń. Wymagała poprawki właścicielskiej lub autoryzowanego realpath/parent-symlink scope.
+- Native issuer/ACL/lease/fence/STOP, pełne archiwa, backup/restore i strict36 pozostawały NOT_ATTESTED/NOT_RUN; INSTALL_GO=NO.
+Źródła: [security 6/6](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6564093207), [ATLAS strict36 HOLD](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6564110837).
