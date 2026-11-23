@@ -4,9 +4,9 @@ Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie je
 
 ## Pierwotna lista 26 członków
 
-1. SPLOT
-2. SPLOTUS
-3. MOST
+1. [SPLOT](SPLOT.md)
+2. [SPLOTUS](SPLOTUS.md)
+3. [MOST](MOST.md)
 4. XAVIER
 5. HERKULES
 6. KORDIAN
