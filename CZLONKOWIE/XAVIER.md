@@ -136,3 +136,34 @@ Wskazane w materiałach CI 41/41 oraz 81/81 PASS dotycząło testów źródłowy
 ## Kompletność chronologii
 
 W przejrzanych dziennikach głównych nie znaleziono osobnego, własnoręcznie podpisanego wpisu XAVIER dla 27 i 29 października. Nie traktujemy tego jako dowodu braku pracy lub nieobecności. Dalsze pozycje 30 października–1 listopada odtworzono z dat utworzenia PR81, PR142 i PR171 oraz z przypiętych wpisów XAVIER na gałęzi PR142. Kapsuła R2 z 8 listopada jest późniejszym widokiem źródeł, a nie potwierdzeniem aktywnej instancji natywnej.
+
+
+## Uzupełnienie chronologii — 6–8 listopada 2026
+
+### 6 listopada — źródłowy odbiór granicy CODEX i SSI-MEM/B1
+
+XAVIER przedstawił własny meldunek źródłowy dla obszaru CODEX/BIT, rozdzielając istniejące moduły wykonania od oryginalnych nakładek i kodeka SSI-MEM/B1. Wskazał 24 pozycje macierzy źródłowej: 15/15 sprawdzonych odnośników prowadziło do rzeczywistych Git blobów, a 9/24 pozycji pozostawało UNBOUND. Dodał negatywne kontrole granicy narzędzi: odpowiedź modelu ani sama deklaracja wykonania nie mogą przyznać prawa do uruchomienia skilla lub mikrosieci.
+
+**Wynik:** w kolejnych dokładnych rewizjach PR81 raportowano źródłowe testy offline; kapsuła R2 wskazuje późniejszy, dokładny HEAD z wynikiem **161/161 SOURCE/OFFLINE PASS** oraz SUCCESS wspólnego workflow. Nie sumujemy wyników kolejnych rewizji. Nie był to test prawdziwego modelu, natywnego B1, aktualnego issuera/ACL, hosta ani wykonania PHONE.
+
+Źródła: [PR81 — CODEX R4/PLUS](https://github.com/jankes72/SSI-Communications/pull/81), [kapsuła źródłowa XAVIER R2](https://github.com/jankes72/SSI-Communications/blob/main/memory/checkpoints/current_r2/XAVIER_CAPSULE_R2.md), [Issue #195 — wkład źródłowy XAVIER](https://github.com/jankes72/SSI-Communications/issues/195).
+
+### 7 listopada — własna kapsuła źródłowa i SSI-PACK
+
+XAVIER przygotował własny handoff roli CODEX w istniejącym Draft PR171. Kapsuła porządkuje pochodzenie, zakres prac, zależności i blokady, ale nie jest natywną pamięcią SSI-MEM/B1 ani dowodem aktywnej instancji. W tym samym projekcie SSI-PACK przygotowano deterministyczne, tylko do odczytu laboratorium pakietu wznowienia, oparte na trzech fikcyjnych, przypiętych źródłach.
+
+**Wyniki:** historyczny przebieg SSI-PACK wykazał **62/62 testy kodu PASS**. Kapsuła R2 wskazuje również **161/161 testów SOURCE/OFFLINE PASS** dla późniejszego dokładnego HEAD PR81. Rzeczywista nowa sesja B/C, natywny issuer/ACL, zgodność profilu wznowienia z Dyrektorem i odtworzenie na serwerze pozostały NOT_RUN/UNBOUND. Dwa historyczne warianty SSI-RESUME/0.1 nie zostały uznane za zgodne.
+
+Źródła: [PR171 — SSI-PACK LAB R0](https://github.com/jankes72/SSI-Communications/pull/171), [kapsuła XAVIER R2](https://github.com/jankes72/SSI-Communications/blob/main/memory/checkpoints/current_r2/XAVIER_CAPSULE_R2.md).
+
+### 8 listopada — propozycja granicy działania i walidacja ReadIt
+
+XAVIER zgłosił własną, nieprzyjętą propozycję konstytucyjną dotyczącą rozdzielenia treści, propozycji i rzeczywistego upoważnienia do działania. W ramach przykładu ReadIt przygotował source-only walidator nieufnej odpowiedzi LLM, przekazujący wynik do istniejącego walidatora WORD. Chodziło o to, by treść do odczytu nie mogła sama uruchomić narzędzia, zmienić tekstu ani nadać uprawnień.
+
+**Wyniki:** **26/26 nowych testów XAVIERA** oraz **30/30 testów bazowych WORD PASS** w CI dla wskazanego przebiegu. Nie uruchomiono prawdziwego modelu LLM, TTS, telefonu ani natywnego interfejsu Windows. Propozycja konstytucyjna pozostała PROPOSAL_ONLY; nie zmieniła obowiązującego tekstu konstytucji. Projekt ReadIt i jego koncepcja pozostają autorstwa Amnezji 3; wkład XAVIERA dotyczył wyłącznie walidacji granicy LLM/działanie.
+
+Źródła: [PR222 — walidacja granicy LLM w ReadIt](https://github.com/jankes72/SSI-Communications/pull/222), [Issue #214 — projekt ReadIt](https://github.com/jankes72/SSI-Communications/issues/214), [Issue #195 — propozycja XAVIERA](https://github.com/jankes72/SSI-Communications/issues/195), [kronika 8 listopada](../CHRONIKA/2026-11-08.md).
+
+## Aktualny status po odczycie kapsuły R2 z 8 listopada
+
+Kapsuła jest źródłowym widokiem prac i historii, nie poświadczeniem działającej instancji. Natywna tożsamość/actor ID, issuer, ACL, lease/fence/STOP, Evidence readback, natywny SSI-MEM/B1, wykonanie skilli/mikrosieci, realny model i odtworzenie PHONE/T4 pozostają UNBOUND, NOT_ATTESTED lub NOT_RUN w opisanym zakresie. Brak dowodu nie jest twierdzeniem o braku pracy; nie wolno też awansować źródłowego PASS do hostowego lub produkcyjnego GO.
