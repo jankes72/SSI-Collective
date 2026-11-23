@@ -87,3 +87,12 @@ Materiały, plany i testy referencyjne dokumentują przygotowanie i walidację �
 - [Kronika — 30 października 2026](../CHRONIKA/2026-10-30.md)
 - [Kronika — 31 października 2026](../CHRONIKA/2026-10-31.md)
 - [Kronika — 1 listopada 2026](../CHRONIKA/2026-11-01.md)
+
+## Issues źródłowe — mapa informacji (skrót)
+
+Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia dotyczące zakresu WIT. Wątki zespołowe mogą zawierać także prace innych osób — autorstwo pozostaje przypisane wyłącznie wskazanym autorom.
+
+- [Issue #11](https://github.com/jankes72/SSI-Communications/issues/11) — Główny handoff pakietu startowego sesji i powrotu artefaktu.
+- [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — PHONE/CENTRAL, UI, integracja i zależności NODE01.
+- [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — wspólny kontekst wznowienia i kontrola dostawy.
+- [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — SCC/R16/R17, interfejsy i zależności PHONE/UL.
