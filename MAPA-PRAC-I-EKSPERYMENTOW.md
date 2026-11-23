@@ -1,6 +1,6 @@
 # Mapa prac i eksperymentów Kolektywu SSI
 
-**Wersja:** 1.8 · **Aktualizacja:** 24 listopada 2026  
+**Wersja:** 1.9 · **Aktualizacja:** 24 listopada 2026  
 **Zakres:** publiczny indeks projektów, obszarów badawczych, eksperymentów, wyników i źródeł Kolektywu SSI.  
 **Charakter dokumentu:** mapa nawigacyjna i rejestr stanu wiedzy; nie jest specyfikacją techniczną, instrukcją wdrożenia ani potwierdzeniem produkcyjnej gotowości.
 
@@ -622,6 +622,29 @@ Poniższe pozycje są skróconym indeksem potwierdzonych wyników. Szczegóły, 
 - **Źródła:** [PR95 — własny raport i wyniki R6](https://github.com/jankes72/SSI-Communications/pull/95) · [Issue #116 — macierz 24 ról i readback 3/3](https://github.com/jankes72/SSI-Communications/issues/116#issuecomment-6534526098) · [Issue #116 — 7/7 workflow i granice hosta](https://github.com/jankes72/SSI-Communications/issues/116#issuecomment-6534531372).
 
 
+
+### 4.59 DIRECTOR / MSI — rzeczywisty odczyt pojemności i uprawnień przed migracją
+
+- **Data:** 8 listopada 2026.
+- **DIRECTOR:** operatorowy read-only SSH potwierdził host ssi-director i konto ssi-deploy UID/GID 1001. Systemowy filesystem: 116 GB, około 56 GB zajęte i 60 GB wolne. Katalog /home/ssi-deploy oraz /srv/ssi należały do root:root; konto ssi-deploy nie miało zapisu. /srv/ssi/staging miało tryb 0711, więc nie można było wyliczać jego zawartości z uprawnień nie-root. /srv/ssi/skills nie istniało w odczytanym zakresie.
+- **MSI:** odczyt całego katalogu SSI_V5 wykazał około 86 GB: m.in. stare kopie 44 GB, Organizer_swiat_Pilki 19 GB, SSI V5 Final 13 GB, SSI_TRAINING_CORE 7,8 GB, lego_poket 355 MB, BODY_FROZEN 325 MB i mikrosieci 50 MB. Czternaście wybranych katalogów skill/LEGO/micronetwork miało razem około 449 MB, ale nie stanowiło pełnej inwentaryzacji ani pełnego katalogu skilli.
+- **Wniosek:** pełna kopia 86 GB nie mieściła się na 60 GB wolnego miejsca DIRECTOR. Nie wolno wyciągać z rozmiaru katalogów liczby kwalifikowanych skilli ani uznawać niewidocznego root-owned staging za pusty.
+- **Granice:** nie wykonano kopiowania, zmiany uprawnień, chown, sudo, restartu ani instalacji. Pojemność i uprawnienia pozostawały HOLD; wymagany był ograniczony odczyt źródeł, porównanie wersji/hashy i osobna zgoda na docelowy katalog non-root.
+- **Rola:** Paweł dostarczył odczyty operatorowe; to nie jest autorstwo implementacji skilli ani testów kolegów.
+- **Źródła:** [DIRECTOR UID, katalogi i pojemność](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6722580979) · [brak zapisu i staging 0711](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6722609587) · [MSI 14 wybranych katalogów ~449 MB](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6722668288) · [MSI SSI_V5 86 GB](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6722816971).
+
+### 4.60 S13–S26 / ZeroLab — porównanie MSI ↔ DIRECTOR read-only R2/R3
+
+- **Data:** 8 listopada 2026.
+- **Cel:** ograniczyć porównanie do S13–S26 i najnowszych źródeł ZeroLab, bez kopiowania całego MSI ani powielania archiwów.
+- **Wynik stage:** **14/14 plików STAGE.json S13–S26** odczytano na MSI i w DIRECTOR staging; bajty i SHA-256 były identyczne. 13/14 odpowiadało historycznemu ZIP z 30 września; S17 różnił się od historycznej próbki na obu hostach, więc nie był to rozjazd MSI↔DIRECTOR ani dowód nowszej wersji.
+- **Wynik ZeroLab:** **27/27 kandydatów** zgodnych między wybranymi zakresami: 26 plików kodu/pinów oraz jedna baza SSI_ZERO_LAB/state.sqlite3. Baza jest stanem runtime i nie należy jej kopiować tylko dlatego, że hash jest zgodny.
+- **Łączny wynik:** brak brakujących elementów w 41 porównanych pozycjach; dla tych konkretnych pozycji nie było podstawy do kopiowania. Zakres obejmował wyłącznie definicje STAGE.json i filtrowane pliki ZeroLab, nie pełne drzewa etapów, kwalifikowane skille, runtime, ABI ani wszystkie nowsze modyfikacje root-owned.
+- **Kontekst archiwów:** diagnostyczny run S20–S26 miał 848 PASS / 470 INCONCLUSIVE / 8 FAIL, status CANCELLED i evidence_verified=false; nie jest pełnym backupem ani nowym treningiem. Starszy RND FIX R3 miał 105/106 PASS i 1 SKIP, ale był starszy od ZeroLab V2. ZeroLab V2: 9/9 READY, ograniczony pilot 8/8 PASS przy 0 wywołań modelu; osobne partie odzyskiwania zakończyły się 5 PASS/2 INCONCLUSIVE i 4 PASS/3 INCONCLUSIVE ze STOPPED_INFRASTRUCTURE. Nie potwierdzono pełnego S26/S40 ani fizycznego odbioru.
+- **Status:** porównanie wybranych źródeł PASS; transfer ZERO; pełne kwalifikowanie skilli, native binding, aktywacja runtime i produkcyjny GO — NOT_RUN/UNBOUND/HOLD.
+- **Źródła:** [korekta zakresu: tylko S13–S26 i ZeroLab](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6722959580) · [read-only probe R2](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6723030090) · [dokładne porównanie R3](https://github.com/jankes72/SSI-Communications/pull/177#issuecomment-6723091097).
+
+
 ## 5. Mapa projektów i źródeł
 
 Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są punktami nawigacyjnymi, nie deklaracją, że każdy uczestnik danego wątku wykonał całość prac.
@@ -703,7 +726,7 @@ Szczegółowa chronologia dzienna znajduje się w katalogu [CHRONIKA](CHRONIKA/)
 5. Uzupełniać wyniki liczbowe wyłącznie wtedy, gdy źródło podaje metrykę, środowisko, zakres prób i ograniczenia.
 6. Każdy wpis w mapie powinien prowadzić do źródła oraz — gdy dotyczy konkretnej osoby — do jej profilu.
 
-**Stan kompletności:** wersja 1.8 obejmuje 58 opisanych obszarów eksperymentów, prób i odrębnych dostaw źródłowych, w tym nowe uzupełnienia Issue #116, #149 i #195. To szeroki, nadal otwarty rejestr źródłowy: komentarze trzech wątków zostały przejrzane, ale wszystkie podlinkowane PR-y i pliki wymagają dalszego audytu źródło po źródle. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
+**Stan kompletności:** wersja 1.9 obejmuje 60 opisanych obszarów eksperymentów, prób i odrębnych odczytów źródłowych, w tym nowe uzupełnienia Issue #116, #149 i #195. To szeroki, nadal otwarty rejestr źródłowy: komentarze trzech wątków zostały przejrzane, ale wszystkie podlinkowane PR-y i pliki wymagają dalszego audytu źródło po źródle. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
 
 ## 9. Powiązana dokumentacja
 
