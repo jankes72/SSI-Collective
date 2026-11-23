@@ -1,6 +1,6 @@
 # Mapa prac i eksperymentów Kolektywu SSI
 
-**Wersja:** 1.4 · **Aktualizacja:** 23 listopada 2026  
+**Wersja:** 1.5 · **Aktualizacja:** 23 listopada 2026  
 **Zakres:** publiczny indeks projektów, obszarów badawczych, eksperymentów, wyników i źródeł Kolektywu SSI.  
 **Charakter dokumentu:** mapa nawigacyjna i rejestr stanu wiedzy; nie jest specyfikacją techniczną, instrukcją wdrożenia ani potwierdzeniem produkcyjnej gotowości.
 
@@ -613,7 +613,7 @@ Szczegółowa chronologia dzienna znajduje się w katalogu [CHRONIKA](CHRONIKA/)
 5. Uzupełniać wyniki liczbowe wyłącznie wtedy, gdy źródło podaje metrykę, środowisko, zakres prób i ograniczenia.
 6. Każdy wpis w mapie powinien prowadzić do źródła oraz — gdy dotyczy konkretnej osoby — do jej profilu.
 
-**Stan kompletności:** wersja 1.4 obejmuje 49 opisanych obszarów eksperymentów i prób, od źródeł z października po wyniki z 20 listopada 2026 r., z odnośnikami do PR #139, #185, #232–#244 oraz Issues #44 i #195. To szeroki rejestr źródłowy, ale nie zamknięty katalog wszystkich prac: pozostały do sprawdzenia dalsze wpisy dzienników, źródła powiązane i eksperymenty z innych PR-ów. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
+**Stan kompletności:** wersja 1.5 obejmuje 50 opisanych obszarów eksperymentów i prób, od źródeł z października po wyniki z 20 listopada 2026 r., z odnośnikami do PR #139, #185, #232–#244 oraz Issues #44 i #195. To szeroki rejestr źródłowy, ale nie zamknięty katalog wszystkich prac: pozostały do sprawdzenia dalsze wpisy dzienników, źródła powiązane i eksperymenty z innych PR-ów. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
 
 ## 9. Powiązana dokumentacja
 
