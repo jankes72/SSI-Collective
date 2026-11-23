@@ -83,3 +83,14 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #187](https://github.com/jankes72/SSI-Communications/issues/187) — Portfolio produktów i przejmowanie prac — zakres ofertowy/operacyjny.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — własne źródła Operations/Research Memory i odbiór.
 - [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — D-EXEC, Evidence, Research Memory, odbiór i readback.
+
+
+## Uzupełnienie — środowisko ROBERT w badaniach PR #243 / Issue #245 (15–16.11.2026)
+
+W tych źródłach ROBERT występuje jako **host/środowisko testowe**, a nie autor raportów CODEX ani operator pomiarów. Operatorem uruchomień i dostawcą odczytów terminala był Paweł; dokumentację i analizę CODEX przygotował XAVIER.
+
+- **R7 AVX2 stage:** na ROBERT potwierdzono przygotowanie izolowanego środowiska CPU, kontrolę pinów SHA, kompilację bibliotek AVX2 i 23/23 testy jednostkowe. Był to etap stage, bez pełnego modelowego GO. [R7 stage](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6903002106)
+- **1.5B i 3B AVX2 smoke:** na ROBERT wykonano krótkie próby rzeczywistych modeli z parytetem tokenów; wyniki 2.6778× i 3.8360× odnoszą się do pojedynczych smoke'ów po 8 tokenów, a nie do ogólnej wydajności produkcyjnej. [1.5B](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6903545824) · [3B](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6903642084)
+- **R8/R9:** ROBERT był hostem sześciogodzinnego badania R8 i przygotowania R9 MINI; wyniki zostały opracowane i opublikowane przez XAVIER/CODEX, przy odczytach operatora Pawła. R9 pozostawał przygotowany, bez wyników inferencji. [raport XAVIER/CODEX](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6914425784) · [dziennik #245](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6914120514)
+
+Nie przypisuję hostowi autorstwa kodu, testów, benchmarków ani decyzji. Potwierdzenie hostowego smoke nie oznacza wdrożenia usługi ani PRODUCTION_GO.
