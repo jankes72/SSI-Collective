@@ -1,6 +1,6 @@
 # Mapa prac i eksperymentów Kolektywu SSI
 
-**Wersja:** 2.0 · **Aktualizacja:** 24 listopada 2026  
+**Wersja:** 2.1 · **Aktualizacja:** 24 listopada 2026  
 **Zakres:** publiczny indeks projektów, obszarów badawczych, eksperymentów, wyników i źródeł Kolektywu SSI.  
 **Charakter dokumentu:** mapa nawigacyjna i rejestr stanu wiedzy; nie jest specyfikacją techniczną, instrukcją wdrożenia ani potwierdzeniem produkcyjnej gotowości.
 
@@ -736,7 +736,7 @@ Szczegółowa chronologia dzienna znajduje się w katalogu [CHRONIKA](CHRONIKA/)
 ## 8. Otwarte pozycje do dalszego uzupełnienia
 
 1. Dokończyć pełny audyt PR #242, #243, #244 i Issue #245, przypisując każdą pozycję właściwym osobom i rolom.
-2. Dokończyć audyt PR #232, #233, #185, #186, #196, #197, #203, #204 i #139 plik po pliku oraz komentarz po komentarzu, aby wyodrębnić konkretne eksperymenty, autorów, testerów i odbiorców.
+2. Dokończyć audyt plik-po-pliku i exact-HEAD dla PR #139, #142, #143, #144, #151, #154, #163, #165, #166, #177, #178, #179, #181, #185, #186, #196, #197, #198, #199, #203, #204, #232 i #233. W tej rundzie przejrzano treść i komentarze PR #163, #165, #177, #179, #181, #198 i #199 oraz wybrane zależności; wpisy w mapie zachowują rozdział source/CI/native i nie zamykają jeszcze pełnego audytu wszystkich plików i rewizji.
 3. Dokończyć audyt PR-ów i plików powiązanych z Issues #116, #149 i #195; komentarze tych trzech wątków zostały przejrzane, a potwierdzone wyniki i ograniczenia dopisano w sekcjach 4.54–4.57. Nie uznawać samego przeglądu komentarzy za pełny audyt wszystkich podlinkowanych PR-ów.
 4. Dla projektów wymienionych w portfolio PR #242 utworzyć osobne karty w `PROJEKTY/` dopiero po potwierdzeniu ich zakresu i źródeł.
 5. Uzupełniać wyniki liczbowe wyłącznie wtedy, gdy źródło podaje metrykę, środowisko, zakres prób i ograniczenia.
