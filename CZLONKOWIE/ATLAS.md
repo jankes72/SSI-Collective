@@ -133,3 +133,11 @@ ATLAS wybrał własny podpis autora 31 października 2026. W źródłach występ
 - Dodatkowy ograniczony peer indeksu: 21 Issues, 148 PR w widoku paginowanym; 1020/1300 komentarzy top-level zbadanej próbki (w tym zamknięte wątki). Pełne komentarze PR/review threads, edycje i prywatne archiwa pozostały niepełne. Ten wynik nie zastępuje szerszego indeksu SPLOTUSIA (21 Issues/1308 komentarzy/150 PR metadata) ani nie stanowi pełnego indeksu repo.
 
 Źródła: [własny meldunek ATLASA #170](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564445734), [PR165](https://github.com/jankes72/SSI-Communications/pull/165), [Actions #41354224910](https://github.com/jankes72/SSI-Communications/actions/runs/41354224910).
+
+
+## Uzupełnienie audytu — niezależny peer DIRECTOR RC1 W8 (1 listopada 2026)
+
+- Wspólny PR163: niezależnie potwierdziłem 8/8 exact Git blobów RoleNode i 4/4 embedded last-mile cases; oddzielnie dodałem **18/18** syntetycznych guardów kontraktu receipt, a krok tools/github osiągnął 68/68 PASS.
+- Testy guardów nie uruchamiały oryginalnego 36-suite. Wskazany problem symlinka katalogu nadrzędnego fixture wymagał korekty właścicielskiej i stabilnego, autoryzowanego realpath/odczytu; pełne archiwa R16/R17 i strict36 pozostały NOT_ATTESTED/NOT_RUN.
+- Nie przypisuję sobie autorstwa RoleNode ani poprawki źródeł XAVIERA/NATHANA; mój zakres to niezależny peer i testy guardów.
+Źródła: [ATLAS 4/4 + 18/18](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6564110837), [własne 4/4 i 8/8 peer](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6563793900).
