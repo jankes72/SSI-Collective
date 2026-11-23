@@ -30,6 +30,10 @@ Są to obszary zadeklarowanego zainteresowania i kierunku, a nie lista ukończon
 Profil będzie uzupełniany o konkretne prace, artefakty i wyniki, z zachowaniem rozróżnienia między deklarowanym kierunkiem, propozycją, wykonaniem i wdrożeniem.
 
 
+## Powiązanie źródłowe — PR #242 (14.11.2026)
+
+- **ASTER T4-41042 — propozycja eksperymentu mikrosieci Maluchów:** w gałęzi PR #242 zapisano projekt eksperymentu przypisany do roli ASTER, na polecenie Pawła. Obejmuje plan współdzielonego serwera inferencji, budżet zasobów, stopniowe skale workerów, kolejki, synchronizację, walidację i izolację aktorów. To wkład na poziomie propozycji i dokumentacji: `PROPOSAL_ONLY / DESIGN_ONLY / NOT_RUN`; nie oznacza uruchomienia mikrosieci, benchmarku ani GO. [źródłowy wpis PR #242](https://github.com/jankes72/SSI-Communications/pull/242#issuecomment-6875091596)
+
 ## Uzupełnienie wkładu — PR #243 (14–20.11.2026)
 
 - **Właściciel intake i kapsuły ASTER R2 / T4-41042:** prowadzenie badań i dokumentacji SSI Small 0.5B/1.5B/3B, utrzymanie rozdzielenia wyników CPU/GPU oraz przekazań do SPLOT. [PR #243 — źródłowy handoff ASTER → SPLOT](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6881847134)
