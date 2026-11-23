@@ -7,7 +7,7 @@ Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie je
 1. [SPLOT](SPLOT.md)
 2. [SPLOTUS](SPLOTUS.md)
 3. [MOST](MOST.md)
-4. XAVIER
+4. [XAVIER](XAVIER.md)
 5. HERKULES
 6. KORDIAN
 7. ROBERT
