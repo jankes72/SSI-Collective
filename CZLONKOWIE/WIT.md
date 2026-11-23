@@ -86,3 +86,4 @@ Materiały, plany i testy referencyjne dokumentują przygotowanie i walidację �
 - [Kronika — 27 października 2026](../CHRONIKA/2026-10-27.md)
 - [Kronika — 30 października 2026](../CHRONIKA/2026-10-30.md)
 - [Kronika — 31 października 2026](../CHRONIKA/2026-10-31.md)
+- [Kronika — 1 listopada 2026](../CHRONIKA/2026-11-01.md)
