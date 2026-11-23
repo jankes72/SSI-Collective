@@ -104,3 +104,11 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — PHONE/UL i zależności dla kapsuł/telefonów ról.
 - [Issue #214](https://github.com/jankes72/SSI-Communications/issues/214) — SSI READIT — kapsuła członka/projektu i kontynuacja między agentami.
 - [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1: D-PHONE, PHONE/T4/MAIL i most per-role do NODE01.
+
+
+## Uzupełnienie audytu — PHONE ABI W8/K4 (1 listopada 2026)
+
+- Własny PR154 uzyskał **60/60** testów source CI PASS po przyjęciu poprawki pozytywnej bramki ABI-10 (STOP/revoke po callbacku przed commit).
+- Mapa ABI Roberta została zaakceptowana jako źródło, ale z żądaniem zmiany dla natywnego bindingu. Wszystkie 10 przypadków ULPHONE pozostawało NOT_RUN, provider i bieżące uprawnienia UNBOUND; command_id nie jest automatycznie execution_id, a lease_epoch nie jest automatycznie lease_id.
+- To testy źródłowe/kontraktowe, nie działający PHONE/T4, host ani wysyłka.
+Źródła: [własne 60/60 i ABI-10](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6564073675), [peer mapy ABI](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6558913107).
