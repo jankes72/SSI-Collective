@@ -50,6 +50,7 @@ Repozytorium jest publicznym, bezpiecznym opisem dorobku. Nie publikuje prywatny
 - [Kronika — 13 listopada 2026 — brak wpisu źródłowego](CHRONIKA/2026-11-13.md)
 - [Kronika — 14 listopada 2026 — onboarding ASTER](CHRONIKA/2026-11-14.md)
 - [Kronika — 15 listopada 2026 — brak wpisu źródłowego](CHRONIKA/2026-11-15.md)
+- [Kronika — 16 listopada 2026 — brak wpisu źródłowego](CHRONIKA/2026-11-16.md)
 - [Indeks członków](CZLONKOWIE/README.md)
 - [Profil ASTER](CZLONKOWIE/ASTER.md)
 - [Indeks modułów i technologii](MODULY-I-TECHNOLOGIE.md)
