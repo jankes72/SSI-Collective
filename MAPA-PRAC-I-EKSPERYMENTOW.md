@@ -1,6 +1,6 @@
 # Mapa prac i eksperymentów Kolektywu SSI
 
-**Wersja:** 1.7 · **Aktualizacja:** 24 listopada 2026  
+**Wersja:** 1.8 · **Aktualizacja:** 24 listopada 2026  
 **Zakres:** publiczny indeks projektów, obszarów badawczych, eksperymentów, wyników i źródeł Kolektywu SSI.  
 **Charakter dokumentu:** mapa nawigacyjna i rejestr stanu wiedzy; nie jest specyfikacją techniczną, instrukcją wdrożenia ani potwierdzeniem produkcyjnej gotowości.
 
@@ -611,6 +611,17 @@ Poniższe pozycje są skróconym indeksem potwierdzonych wyników. Szczegóły, 
 - **Źródła:** [apel WORD](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6722132091) · [SPLOT](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724057974) · [HERKULES](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724064020) · [NATHAN AMGINE](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724066743) · [JORDAN](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724088199) · [XAVIER](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724116279) · [SPLOTUŚ](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724145326) · [ANDRZEJ](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724191145) · [ROBERT](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724199494) · [ATLAS](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724386877).
 
 
+
+### 4.58 WIT R6 — polskie klienty PHONE/CENTRAL i macierz PHONE/MAIL/World
+
+- **Data:** 30–31 października 2026.
+- **Własne testy klienta:** na wskazanych rewizjach PR95 WIT raportował 73 testy jednostkowe PASS, 9/9 scenariuszy loopback HTTP PASS oraz 12/12 scenariuszy przeglądarkowych PASS. Testy korzystały z syntetycznych sesji, uprawnień i danych; nie były rozmową z modelem ani odbiorem produkcyjnego hosta.
+- **Macierz 24 ról:** WIT dostarczył w PR95 source-backed PHONE/MAIL/World matrix, walidator i siedem testów izolacji/negatywów. Source readback wyniósł 3/3. Dla dokładnego HEAD 31d5539ef8002f8d229d5494d3ce0f5d1ec702e zakończyło się 7/7 workflow SUCCESS.
+- **Wynik negatywny / ograniczenia:** PHONE wskazuje wyłącznie istniejące role_id z seedu; MAIL pozostaje MAIL_BINDING_UNBOUND, CONTROL NOT_VERIFIED, checkpoint/Evidence null, fresh resume NOT_RUN. Macierz źródłowa nie oznacza aktywnych skrzynek, telefonów, 24 usług ani pamięci na NODE01. PR95 pozostawał DRAFT; nie wykonano instalacji ani hostowego LIVE resume.
+- **Wkład:** WIT — własne klienty, macierz, walidator i testy; gateway i składanie wydania należą do odrębnych właścicieli, w tym NATHAN AMGINE/SPLOT. Nie przypisywać WIT autorstwa gatewaya.
+- **Źródła:** [PR95 — własny raport i wyniki R6](https://github.com/jankes72/SSI-Communications/pull/95) · [Issue #116 — macierz 24 ról i readback 3/3](https://github.com/jankes72/SSI-Communications/issues/116#issuecomment-6534526098) · [Issue #116 — 7/7 workflow i granice hosta](https://github.com/jankes72/SSI-Communications/issues/116#issuecomment-6534531372).
+
+
 ## 5. Mapa projektów i źródeł
 
 Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są punktami nawigacyjnymi, nie deklaracją, że każdy uczestnik danego wątku wykonał całość prac.
@@ -692,7 +703,7 @@ Szczegółowa chronologia dzienna znajduje się w katalogu [CHRONIKA](CHRONIKA/)
 5. Uzupełniać wyniki liczbowe wyłącznie wtedy, gdy źródło podaje metrykę, środowisko, zakres prób i ograniczenia.
 6. Każdy wpis w mapie powinien prowadzić do źródła oraz — gdy dotyczy konkretnej osoby — do jej profilu.
 
-**Stan kompletności:** wersja 1.7 obejmuje 57 opisanych obszarów eksperymentów, prób i odrębnych dostaw źródłowych, w tym nowe uzupełnienia Issue #116, #149 i #195. To szeroki, nadal otwarty rejestr źródłowy: komentarze trzech wątków zostały przejrzane, ale wszystkie podlinkowane PR-y i pliki wymagają dalszego audytu źródło po źródle. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
+**Stan kompletności:** wersja 1.8 obejmuje 58 opisanych obszarów eksperymentów, prób i odrębnych dostaw źródłowych, w tym nowe uzupełnienia Issue #116, #149 i #195. To szeroki, nadal otwarty rejestr źródłowy: komentarze trzech wątków zostały przejrzane, ale wszystkie podlinkowane PR-y i pliki wymagają dalszego audytu źródło po źródle. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
 
 ## 9. Powiązana dokumentacja
 
