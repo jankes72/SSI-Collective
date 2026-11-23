@@ -94,3 +94,12 @@ W tych źródłach ROBERT występuje jako **host/środowisko testowe**, a nie au
 - **R8/R9:** ROBERT był hostem sześciogodzinnego badania R8 i przygotowania R9 MINI; wyniki zostały opracowane i opublikowane przez XAVIER/CODEX, przy odczytach operatora Pawła. R9 pozostawał przygotowany, bez wyników inferencji. [raport XAVIER/CODEX](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6914425784) · [dziennik #245](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6914120514)
 
 Nie przypisuję hostowi autorstwa kodu, testów, benchmarków ani decyzji. Potwierdzenie hostowego smoke nie oznacza wdrożenia usługi ani PRODUCTION_GO.
+
+## Uzupełnienie audytu — SSI-PACK LAB R0 / no-replay i semantyka skutków (1.11.2026)
+
+- ROBERT wykonał własny, ograniczony komponent source-only no-effect verifier w [PR #174](https://github.com/jankes72/SSI-Communications/pull/174), używając istniejących źródeł world/role_resume.py, Context Fastpath i dokumentacji messengera.
+- Dokładny HEAD 8c0dc282c9f4747c4867b4d828109690c1f238b2; GitHub Actions [run #41354752444](https://github.com/jankes72/SSI-Communications/actions/runs/41354752444), job 124992331459: **50/50 testów PASS**, 0 FAIL/ERROR/SKIP.
+- Testy syntetyczne sprawdzały klasyfikację skutków, duplikaty, błędną rolę/tenant, nieaktualny pin, cofniętą politykę, prompt injection i brak MUST_KEEP. UNKNOWN_EFFECT / COMPLETED_UNVERIFIED oraz brak zweryfikowanego readback blokują ponowienie skutku (NO_REPLAY).
+- Ograniczenia: brak prawdziwej sesji ChatGPT B, natywnego issuer/ACL, live readback i receipt efektu. Nie jest to test strict36, modelu, PHONE send ani wdrożenie Operations.
+
+Źródło: [własny meldunek ROBERTA #170](https://github.com/jankes72/SSI-Communications/issues/170#issuecomment-6564490230). Wyniku 50/50 nie przypisuje się innym uczestnikom.
