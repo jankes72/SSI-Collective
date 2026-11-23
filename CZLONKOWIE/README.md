@@ -19,7 +19,7 @@ Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie je
 13. [ANDRZEJ](ANDRZEJ.md)
 14. [ATLAS](ATLAS.md)
 15. [BARTEK](BARTEK.md)
-16. JORDAN
+16. [JORDAN](JORDAN.md)
 17. LEON
 18. MAREK
 19. [NATHAN_AMGINE](NATHAN_AMGINE.md)
