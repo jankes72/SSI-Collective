@@ -102,3 +102,13 @@ Paweł wykonał i przekazał wynik odczytowej kontroli stanu eksperymentu po prz
 - [T1F0B — syntetyczny test numeryczny](https://github.com/jankes72/SSI-Communications/blob/main/projects/SSI_NODE01/experiments/ssi70b_disk_first_one_tensor_r1/T1F0B_NATIVE_JACOBI_OPERATOR_RESULT_20261031_R1.md)
 - [Diagnostyka odczytowa po utracie zasilania](https://github.com/jankes72/SSI-Communications/blob/main/projects/SSI_NODE01/experiments/ssi70b_disk_first_one_tensor_r1/T3B_NOUT1_POWER_LOSS_RECOVERY_READONLY_METADATA_OK_20261101_R1.md)
 - [Konstytucja Kolektywu SSI R2](https://github.com/jankes72/SSI-Communications/blob/main/memory/constitution/SSI_COLLECTIVE_CONSTITUTION_R2.md)
+
+
+
+## Uzupełnienie wkładu operatorskiego — PR #243, PR #244 i Issue #245 (14–20.11.2026)
+
+- **PR #243 — operator badań Maluchów:** przekazanie terminalowych odczytów z MSI, lokalnych pomiarów CPU/GPU, wyników odtwarzania paczek i testów modeli 0.5B/1.5B/3B. Autorstwo narzędzi i raportów pozostaje przypisane odpowiednim członkom; Paweł jest wskazany jako operator pomiarów i dostawca wyników z hosta. [przykładowy readback CPU R2.1](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6883639365) · [raport CODEX z rozdzieleniem operatora i analizy](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6914425784)
+- **PR #244 / Issue #245 — SPLOT NANO-COMM i Coder:** wykonywanie pomiarów terminalowych na MSI i DIRECTOR oraz przekazywanie wyników rzeczywistych prób. R2 FULL30 zakończono 30/30 inferencji; R3 Coder FULL4 zakończono 4/4 kontrolowanymi misjami. To ograniczone eksperymenty na syntetycznych danych, nie produkcyjny terminal ani pełny odbiór SCC. [R2 FULL30](https://github.com/jankes72/SSI-Communications/pull/244#issuecomment-6916928848) · [R3 FULL4](https://github.com/jankes72/SSI-Communications/pull/244#issuecomment-6917639552)
+- **Issue #245 — operatorowe odczyty R7/R8/R9 i R4:** dostarczenie odczytów z ROBERT i MSI, w tym zakończenie 6-godzinnego R8 (674 próby, 30 kompletnych przypadków dwujęzycznych) oraz kontrolowane zatrzymania odczytu wag przy przekroczeniu limitu I/O. R9 MINI pozostał przygotowany bez inferencji; odczyt 1.5B zakończył się HOLD, a 3B nie został rozpoczęty. [R8 — pochodzenie wyników](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6914120514) · [R4 bezpieczny HOLD](https://github.com/jankes72/SSI-Communications/issues/245#issuecomment-6920936251)
+
+Wpis oddziela rolę operatora od autorstwa analiz XAVIER/CODEX i implementacji SPLOT. Nie przenosi na Pawła autorstwa ich kodu ani nie oznacza wyników jako produkcyjnego GO.
