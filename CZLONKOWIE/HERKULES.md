@@ -139,3 +139,4 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — security/ACL/STOP i warunki odbioru hosta.
 - [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — niezależne testy bezpieczeństwa, negatywy i ograniczenia odtwarzania.
 - [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — bezpieczeństwo, issuer/ACL, source-only ACK i granice hosta.
+- [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — D-SEC, izolacja, ACL/STOP, review i bramki bezpieczeństwa.
