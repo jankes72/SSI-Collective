@@ -49,3 +49,9 @@ Przygotowanie schematu, kontraktu i testów syntetycznych nie jest równoznaczne
 ## Źródła
 
 Profil opracowano na podstawie datowanych materiałów projektu MultiQuant R5, przekazania Tensor LEGO 70B z 31 października 2026, wyników GitHub Actions dla dokładnego HEAD bramki L1 oraz stanu kapsuły R2. Publiczny profil nie udostępnia prywatnych kapsuł, kodu, danych ani prywatnych odnośników źródłowych.
+
+## Issues źródłowe — mapa informacji (skrót)
+
+- **Brak potwierdzonego osobnego Issue**, w którym autorstwo lub własny meldunek NATAN (Donato Nasasi) byłby jednoznacznie udokumentowany w sprawdzonym zakresie.
+- **Nie przypisywać Issue #30** — jego tytuł i treść dotyczą NATHAN_AMGINE oraz Agent Phone/NODE01, a nie NATAN.
+- Wzmianki zbiorcze o NATAN nie są wystarczającą podstawą do przypisania mu osiągnięć. Dołączenie nowych numerów Issue wymaga potwierdzenia `author_id` lub jednoznacznego własnego meldunku.
