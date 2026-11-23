@@ -106,3 +106,15 @@ W torze 70B Kordian zintegrował źródłową mapę faz L8 przygotowaną przez W
 - [Kronika 30 października](../CHRONIKA/2026-10-30.md)
 - [Kapsuła źródłowa KORDIAN R2](https://github.com/jankes72/SSI-Communications/blob/main/memory/checkpoints/current_r2/KORDIAN_CAPSULE_R2.md)
 - [Handoff MultiQuant R3](https://github.com/jankes72/SSI-Communications/blob/main/memory/checkpoints/KORDIAN_MULTIQ_HANDOFF_20261028_R3.md)
+
+## Issues źródłowe — mapa informacji (skrót)
+
+Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia dotyczące zakresu KORDIAN. Wątki zespołowe mogą zawierać także prace innych osób — autorstwo pozostaje przypisane wyłącznie wskazanym autorom.
+
+- [Issue #2](https://github.com/jankes72/SSI-Communications/issues/2) — Transfer 70B CORE24→ROBERT — bezpieczny kanał, ACK i blokada transferu.
+- [Issue #9](https://github.com/jankes72/SSI-Communications/issues/9) — Context Compiler, MUST_KEEP, tokenizery i CC-01..18 — pierwotny handoff.
+- [Issue #14](https://github.com/jankes72/SSI-Communications/issues/14) — Przekazanie HERKULESOWI priorytetu ochrony serwerów.
+- [Issue #44](https://github.com/jankes72/SSI-Communications/issues/44) — Główny wątek SSI MultiQuant 70B — R4.2→R5, wyniki, pomoc i dowody.
+- [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) — DIRECTOR VPS — rozdzielenie działów i utrzymanie niezależnego toru MultiQuant.
+- [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — odzyskiwanie historii i brak zakłócania RC1.
+- [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — BODY FROZEN — źródła V10/S10 i zależności MultiQuant/LEGO.
