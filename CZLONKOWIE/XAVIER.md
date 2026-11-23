@@ -179,6 +179,8 @@ Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia do
 - [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — CODEX, adaptery, source handoff i integracja z SCC/Operations/Evidence.
 
 
+- **PR #242 — Universal Lab / pre-login:** opracowanie przez XAVIER/CODEX szczegółowego handoffu SSI Small R2 jako niewykonawczego silnika pomocy przed logowaniem, z granicami PUBLIC_ONLY, bezpiecznym adapterem, fallbackiem FAQ i kolejnością kontroli integracji. Osobny odczyt potwierdził lokalny test `run` (wygenerowanie szkicu funkcji bez wykonania) i `form` (4/4 pól jako `VALIDATED_DRAFT_NOT_SUBMITTED`); instalację adaptera i uruchomienie testu wykonał operator Paweł. To source/spec proposal i lokalny test MSI, nie wdrożenie M5, nie publiczny endpoint i nie produkcyjne GO. [handoff i kontrakt pre-login](https://github.com/jankes72/SSI-Communications/pull/242#issuecomment-6859908250) · [operatorowy readback E2E MSI](https://github.com/jankes72/SSI-Communications/pull/242#issuecomment-6859648443)
+
 ## Uzupełnienie wkładu — PR #243, Issue #245 i PR #139 (14–16.11.2026)
 
 - **PR #243 — SSI Small 0.5B:** przygotowanie protokołu bezpiecznego pakowania i podziału modelu na części, testy syntetyczne pakowacza oraz dokumentacja kontroli SHA. Rzeczywisty upload 12/12 części wykonał operator Paweł; wpis rozdziela przygotowanie narzędzia od operacji operatora. [protokół i testy pakowacza](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6875481738) · [receipt uploadu operatora](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-6875576680)
