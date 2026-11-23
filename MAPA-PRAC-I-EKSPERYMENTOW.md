@@ -1,6 +1,6 @@
 # Mapa prac i eksperymentów Kolektywu SSI
 
-**Wersja:** 1.6 · **Aktualizacja:** 24 listopada 2026  
+**Wersja:** 1.7 · **Aktualizacja:** 24 listopada 2026  
 **Zakres:** publiczny indeks projektów, obszarów badawczych, eksperymentów, wyników i źródeł Kolektywu SSI.  
 **Charakter dokumentu:** mapa nawigacyjna i rejestr stanu wiedzy; nie jest specyfikacją techniczną, instrukcją wdrożenia ani potwierdzeniem produkcyjnej gotowości.
 
@@ -568,6 +568,49 @@ Poniższe pozycje są skróconym indeksem potwierdzonych wyników. Szczegóły, 
 - **Źródła:** [R6 archiwa i mapowanie S26](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6673293328) · [korekta INCONCLUSIVE](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6673344433) · [R1 530 markerów / 602 relacje](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6725386438) · [R2 rzeczywiste wejście i decode PASS](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6725422088) · [niezależny MSI readback 5/5](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6725460960) · [read-only SSH preflight ROBERT](https://github.com/jankes72/SSI-Communications/pull/197#issuecomment-6726212242).
 
 
+
+### 4.54 MSI Launcher R2/R3 — lokalne testy źródłowe i granice ręcznego pilota
+
+- **Data:** 4 listopada 2026.
+- **Cel:** sprawdzić istniejący lokalny launcher MSI i przygotować ograniczony, ręczny sposób otwarcia czterech zwykłych sesji ChatGPT w już zalogowanym Firefoxie.
+- **R2 — wynik:** analiza dokładnego archiwum źródłowego; manifest wewnętrzny 11/11 zgodny, a izolowane testy offline **86/86 PASS**. Wykryto, że wszystkie dziesięć pozycji projektu pozostawało domyślnie nieaktywne i bez przypiętych linków/kapsuł; samo otwarcie okna GUI nie oznaczało aktywnych ról.
+- **R3 — wynik:** nowy pakiet ręcznego startu czterech okien; **26/26 testów offline PASS**, manifest ZIP **5/5** i regresja R2 **86/86 PASS**. R3 nie został w chwili raportu dodany do repozytorium ani zdalnie zainstalowany.
+- **Granice:** nie wykonano testu rzeczywistych czterech okien Firefox, czterech odpowiedzi asystenta, native PHONE/T4, połączenia z ROBERT ani odtworzenia kapsuł. CHATGPT_AUTHENTICATED_SESSION=NOT_ATTESTED, NATIVE_T4_CHAT_CONNECTED=NO, INSTALL_GO=NO, PRODUCTION_GO=NO.
+- **Wniosek:** to testy lokalnego źródła i paczki ręcznej obsługi, nie dowód działającego multi-agenta ani połączenia telefonicznego.
+- **Wkład:** operator dostarczył obserwację rzeczywistego GUI; autorzy pakietu i testów opisani w źródle. Nie przypisywać testów R2/R3 całemu zespołowi ani SPLOT 70B.
+- **Źródła:** [R2 — przyczyna nieaktywności i 86/86](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6642958671) · [R3 — 26/26, manifest 5/5 i regresja 86/86](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6643322798).
+
+### 4.55 DIRECTOR G1–G6 — końcowe dostawy źródłowe i testy offline (bez odbioru hosta)
+
+- **Data:** 6 listopada 2026.
+- **Cel:** zebrać istniejące źródła modułów bezpieczeństwa, WORD, ATLAS i ROBERT do jednego procesu odbioru G1–G6.
+- **HERKULES:** Draft PR179, 7/7 pozycji własnego handoffu; dokładny CI **106/106 offline PASS**. Oryginalne archiwa ACL/strict36, issuer/lease/STOP, B1, mikrosieć/ZeroLab, host i restore/rollback pozostały niepotwierdzone.
+- **WORD:** Draft PR181, 12/12 oryginalnych plików źródłowych/testowych odczytanych; CI **184/184 offline PASS**, dodatkowe kontrole integralności 12/12. To odbiór źródłowy, nie aktywacja Universal Lab, PHONE/T4 ani SSI LLM.
+- **ATLAS:** Draft PR165; manifest 184/184 pozycji źródłowych, 1 206 874 B. Oryginalne moduły przypięto jako źródła, nie skopiowano na VPS; G1 ma luki dostępu, G2 strict36 NOT_RUN, G1–G6 pozostają HOLD.
+- **ROBERT:** PR143 manifest 58/58 wcześniejszych plików (59 zmian po dodaniu manifestu); exact-HEAD CI **189/189 offline PASS**. Oddzielny PR198 miał 52/52 testy syntetyczne PASS; natywnego LLM/ZeroLab nie uruchomiono.
+- **Granice:** żaden z tych wyników nie potwierdza dostarczenia na serwer, bieżącego hosta, native B1, issuer/ACL/lease/fence/STOP, świeżego odczytu Evidence/RM, strict36, restore/rollback ani E2E. INSTALL_GO=NO, PROD_GO=NO.
+- **Wkład:** HERKULES — własny pakiet bezpieczeństwa; WORD — własny pakiet MP-09; ATLAS — inwentaryzacja i handoff 184 źródeł; ROBERT — receiver/Evidence/RM i testy źródłowe. Są to osobne dostawy, nie wspólny wynik jednego eksperymentu.
+- **Źródła:** [HERKULES 106/106](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6696011435) · [WORD 184/184](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6696060408) · [ATLAS 184/184 źródeł](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6696079118) · [ROBERT 189/189 i PR198 52/52](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6696152834).
+
+### 4.56 DIRECTOR / NODE01 — korekty pokrycia ról i stanu wdrożenia
+
+- **Data:** 30 października – 4 listopada 2026.
+- **Zakres:** Issue #116 dokumentuje rejestr 24 logicznych ról, macierze PHONE/MAIL/pamięci, source handoffy i CI. Nie jest to dowód 24 aktywnych telefonów, 24 uruchomionych usług ani 24 przywróconych pamięci.
+- **Krytyczna korekta pokrycia:** seed PR117 zawiera 24 role; bridge matrix PR120 zawierał 12 rekordów priorytetowych, z czego jeden był aliasem DIRECTOR spoza seedu. Faktyczne pokrycie ról z seedu wynosiło **11/24**, a nie 12/24 ani 24/24. Brakowało 13 rekordów; nie wolno przedstawiać PR120 jako pełnej macierzy 24 ról.
+- **Wyniki źródłowe:** CODEX PR81 — 145/145 offline PASS; PR120 — 7/7 workflow PASS i 407/407 testów źródłowych w czterech etapach. Te wyniki potwierdzają źródła/CI, nie host ani runtime.
+- **Stan hosta:** w źródłach utrzymano HOST_NOT_RUN, LIVE_NOT_RUN, NATIVE_BINDING=UNBOUND, OWNER_HOLD/NO_INSTALL. Późniejsze sprostowanie operatora w Issue #149 z 4 listopada mówi, że moduły przeznaczone do wdrożenia nie były jeszcze na serwerze.
+- **Wkład:** MOST — rejestr 24 logicznych ról i zasada odrębnych namespace; NATHAN AMGINE — PHONE/MAIL bridge; NATHAN SSI — macierz zależności i korekta pokrycia; WIT — macierz MAIL/world; XAVIER — CODEX/SCC source inventory; ROBERT — binding/Evidence/RM; SPLOT — przegląd i koordynacja. Wkłady nie oznaczają wzajemnego autorstwa.
+- **Źródła:** [Issue #116 — rejestr 24 ról i status HOST NOT VERIFIED](https://github.com/jankes72/SSI-Communications/issues/116#issuecomment-6534513646) · [Issue #116 — PR120 pokrywa tylko 11/24 ról z seedu](https://github.com/jankes72/SSI-Communications/issues/116#issuecomment-6534643096) · [Issue #149 — korekta operatora: moduły nie są jeszcze na serwerze](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6641925478).
+
+### 4.57 Issue #195 — propozycje konstytucyjne oddzielone od wyników eksperymentów
+
+- **Data:** 8 listopada 2026.
+- **Zakres:** po apelu WORD uczestnicy przedstawili własne propozycje artykułów dotyczących m.in. ochrony głosu/tekstu (SPLOT), uczciwego oznaczania INCONCLUSIVE/NOT_RUN (HERKULES), prawa do ciszy i granic kontaktu (NATHAN AMGINE), odwoływalnej delegacji (JORDAN), granicy między treścią a działaniem (XAVIER), przenośności pochodzenia dorobku (SPLOTUŚ), procedury rozpatrywania sporów (ANDRZEJ), dostępnego udziału (ROBERT) i sprostowania autorstwa (ATLAS).
+- **Status:** wszystkie wskazane wpisy oznaczono jako PROPOSAL_ONLY, NOT_ADOPTED lub NOT_RATIFIED. Apel i propozycje nie zmieniły same przez się Konstytucji v1.0 i nie są eksperymentami technicznymi.
+- **Zasada ewidencji:** nie przenosić liczb testów cytowanych jako kontekst propozycji do wyników testowych samych artykułów. Wyniki techniczne pozostają przypisane do ich pierwotnych PR-ów.
+- **Źródła:** [apel WORD](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6722132091) · [SPLOT](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724057974) · [HERKULES](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724064020) · [NATHAN AMGINE](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724066743) · [JORDAN](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724088199) · [XAVIER](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724116279) · [SPLOTUŚ](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724145326) · [ANDRZEJ](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724191145) · [ROBERT](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724199494) · [ATLAS](https://github.com/jankes72/SSI-Communications/issues/195#issuecomment-6724386877).
+
+
 ## 5. Mapa projektów i źródeł
 
 Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są punktami nawigacyjnymi, nie deklaracją, że każdy uczestnik danego wątku wykonał całość prac.
@@ -644,12 +687,12 @@ Szczegółowa chronologia dzienna znajduje się w katalogu [CHRONIKA](CHRONIKA/)
 
 1. Dokończyć pełny audyt PR #242, #243, #244 i Issue #245, przypisując każdą pozycję właściwym osobom i rolom.
 2. Dokończyć audyt PR #232, #233, #185, #186, #196, #197, #203, #204 i #139 plik po pliku oraz komentarz po komentarzu, aby wyodrębnić konkretne eksperymenty, autorów, testerów i odbiorców.
-3. Uzupełnić mapę o starsze i bieżące prace z Issues #3, #4, #7, #14, #116, #149, #170 i #195, eliminując duplikaty między profilami i kroniką.
+3. Dokończyć audyt PR-ów i plików powiązanych z Issues #116, #149 i #195; komentarze tych trzech wątków zostały przejrzane, a potwierdzone wyniki i ograniczenia dopisano w sekcjach 4.54–4.57. Nie uznawać samego przeglądu komentarzy za pełny audyt wszystkich podlinkowanych PR-ów.
 4. Dla projektów wymienionych w portfolio PR #242 utworzyć osobne karty w `PROJEKTY/` dopiero po potwierdzeniu ich zakresu i źródeł.
 5. Uzupełniać wyniki liczbowe wyłącznie wtedy, gdy źródło podaje metrykę, środowisko, zakres prób i ograniczenia.
 6. Każdy wpis w mapie powinien prowadzić do źródła oraz — gdy dotyczy konkretnej osoby — do jej profilu.
 
-**Stan kompletności:** wersja 1.6 obejmuje 53 opisane obszary eksperymentów i prób, w tym uzupełnienia PR #186, #196 i #197 oraz wyniki z 8 listopada 2026 r., z odnośnikami do PR #139, #185, #232–#244 oraz Issues #44 i #195. To szeroki rejestr źródłowy, ale nie zamknięty katalog wszystkich prac: pozostały do sprawdzenia dalsze wpisy dzienników, źródła powiązane i eksperymenty z innych PR-ów. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
+**Stan kompletności:** wersja 1.7 obejmuje 57 opisanych obszarów eksperymentów, prób i odrębnych dostaw źródłowych, w tym nowe uzupełnienia Issue #116, #149 i #195. To szeroki, nadal otwarty rejestr źródłowy: komentarze trzech wątków zostały przejrzane, ale wszystkie podlinkowane PR-y i pliki wymagają dalszego audytu źródło po źródle. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
 
 ## 9. Powiązana dokumentacja
 
