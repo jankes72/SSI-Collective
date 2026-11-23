@@ -63,12 +63,12 @@ Stan źródeł dostępnych w kapsule R2 z 8 listopada 2026:
 
 Wyniki 189/189, 20/20, 3/3, 30/30 i 52/52 dotyczą różnych, ograniczonych prób źródłowych, syntetycznych lub lokalnych. Nie należy ich sumować ani przedstawiać jako jednego testu produkcyjnego. Brak testu hostowego nie jest wynikiem FAIL, a przygotowany plan lub pakiet nie oznacza wdrożenia.
 
-## Źródła
+## Źródła publiczne
 
-- [Dziennik źródłowy 26.10 — ROBERT-001..005](https://github.com/jankes72/SSI-Communications/blob/main/journal/2026/10/2026-10-26.md)
-- [Plan budowy SSI ROBERT R1](https://github.com/jankes72/SSI-Communications/blob/main/projects/SSI_ROBERT/BUILD_PLAN.md)
-- [Dziennik źródłowy 31.10 — ROBERT-001..002](https://github.com/jankes72/SSI-Communications/blob/main/journal/2026/10/2026-10-31.md)
-- [PR143 — mosty Operations/Evidence/Research Memory i bramki R4-04](https://github.com/jankes72/SSI-Communications/pull/143)
-- [PR198 — V10 Failure Routing E1](https://github.com/jankes72/SSI-Communications/pull/198)
-- [Issue #149 — przekazania i odbiory źródłowe](https://github.com/jankes72/SSI-Communications/issues/149)
-- [Issue #195 — wspólny przegląd i eksperymenty](https://github.com/jankes72/SSI-Communications/issues/195)
+- [Kronika — 26 października 2026](../CHRONIKA/2026-10-26.md)
+- [Kronika — 31 października 2026](../CHRONIKA/2026-10-31.md)
+- [Kronika — 2 listopada 2026](../CHRONIKA/2026-11-02.md)
+- [Kronika — 3 listopada 2026](../CHRONIKA/2026-11-03.md)
+- [Kronika — 4 listopada 2026](../CHRONIKA/2026-11-04.md)
+- [Kronika — 6 listopada 2026](../CHRONIKA/2026-11-06.md)
+- [Kronika — 7 listopada 2026](../CHRONIKA/2026-11-07.md)
