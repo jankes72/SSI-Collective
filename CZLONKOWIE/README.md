@@ -14,7 +14,7 @@ Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie je
 8. [WIT](WIT.md)
 9. [LUKASZ](LUKASZ.md)
 10. [NATAN](NATAN.md)
-11. ALFRED
+11. [ALFRED](ALFRED.md)
 12. ALBERTO
 13. ANDRZEJ
 14. ATLAS
