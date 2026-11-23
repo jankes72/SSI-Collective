@@ -100,6 +100,16 @@ PR180 pozostał otwartym, roboczym PR typu draft. Właściciele zachowali status
 - Odczyt kapsuły potwierdził strukturę JSON, 10 referencji źródłowych i 12 reguł MUST_KEEP. Nadal nie potwierdzono native role_id, bieżącego issuer/ACL, writer B ani świeżego odczytu C.
 - Numer T4-41035 pozostawał zarezerwowanym oznaczeniem źródłowym, nie aktywnym telefonem; native phone i automatyczna aktywacja nie zostały wykonane.
 
+## Issues źródłowe — mapa informacji (skrót)
+
+Poniższe odnośniki prowadzą do wątków, w których znajdują się bezpośrednie meldunki, przekazania lub decyzje dotyczące zakresu NATHAN_SSI. Nie oznacza to, że każda treść w danym wątku jest jego autorstwa.
+
+- [Issue #4 — Continuity Node / NODE01](https://github.com/jankes72/SSI-Communications/issues/4): przekazania NATHAN_SSI dotyczące ciągłości, integracji pamięci, task-scope gate, współpracy ze SPLOT/MOST oraz handoffu do PR93; komentarze m.in. z 30–31 października.
+- [Issue #116 — DIRECTOR VPS / 24 role](https://github.com/jankes72/SSI-Communications/issues/116): własna macierz zależności 24 ról, crosswalk DIRECTOR↔NODE01, kontrola pokrycia bridge matrix i rozdzielenie zakresu NATHAN_SSI od NATHAN_AMGINE.
+- [Issue #170 — SSI-PACK LAB R0](https://github.com/jankes72/SSI-Communications/issues/170): własny eksperyment RoleResume — 23/23 syntetyczne testy offline; korekty po kursorze, dwie rozłączne sesje testowe i granice ostatniej wiadomości jako klucza do historii.
+- [Issue #195 — Priority BODY FROZEN / SSI V5 P1](https://github.com/jankes72/SSI-Communications/issues/195): własny source-only ACK i odczyt oryginalnych źródeł Research Memory/B1/Context Fastpath; propozycja eksperymentu MEMORY→SKILL TRUTH GATE E0 (nieuruchomiona); BODY POLISH i przekazania dla G3.
+- [PR #180 — MP-01 / K2-02, K2-03, K2-06, K2-10](https://github.com/jankes72/SSI-Communications/pull/180): główny pakiet własnych prac: dwukursorowa bramka, zakres actor/tenant/role/task/assignment, syntetyczny receipt producenta B, walidacja revoke, paginacja remisów timestampów, B→C source gate i manifest G3. Draft/offline; bez natywnego writera, hosta i produkcyjnego GO.
+
 ## Statusy i ograniczenia
 
 - Polityka R9 i karta siedmiu ról: **SOURCE / PLAN READY**; izolowane odtworzenie funkcjonalne: **NOT_RUN**.
