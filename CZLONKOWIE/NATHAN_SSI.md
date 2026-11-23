@@ -67,6 +67,8 @@ Prace NATHAN_SSI w PR180 miały kilka odrębnych, kolejnych etapów. Wyników ni
 
 PR180 pozostał otwartym, roboczym PR typu draft. Właściciele zachowali statusy **NO_MERGE / NO_HOST / NO_PROD_GO**. W szczególności: aktualny zaufany issuer i ACL, rzeczywisty writer B, natywny B1 wire oraz świeże A→B→C pozostawały niepotwierdzone.
 
+**Odczyt bieżącego stanu PR180 (23 listopada 2026):** PR pozostaje **OPEN / DRAFT / NOT MERGED**, a wskazany HEAD to `aadfd3389ed32d1ddd67016e7d9f811115981ebe`. Tytuł i opis PR potwierdzają odrębne zestawy: B→C **38/38**, dwukursorowa bramka **28/28** oraz paginacja remisów timestampów **18/18** — wszystkie jako testy źródłowe/offline. Nie sumujemy ich w jeden wynik i nie przedstawiamy jako testu natywnego writera lub pełnego archiwum.
+
 ### 4 listopada 2026 — eksperyment jednej sesji i zgodność indeksu SSI DIRECTOR
 
 - W ramach eksperymentu **SSI_ONE_SESSION_SOURCE_INTEGRATION_R0** porównał w bieżącej sesji indeks dostawy JORDANA z zamrożonym manifestem źródłowym DIRECTOR RC1.
