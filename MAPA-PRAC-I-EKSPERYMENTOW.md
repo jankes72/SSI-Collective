@@ -421,6 +421,54 @@ Poniższe pozycje są skróconym indeksem potwierdzonych wyników. Szczegóły, 
 - **Status:** liczne testy źródłowe PASS; wspólny native E2E, strict36, restore, host apply i produkcyjny GO niepotwierdzone; INSTALL_GO=NO.
 - **Źródła:** [XAVIER W4 Operations/R17 18/18](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6549382232) · [ATLAS W6 95/95 i rozdzielenie PHONE/RoleNode](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6550692116) · [ROBERT 184/184](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6582120836) · [ROBERT 186/186](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6583194933) · [karta bramek G1–G6](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6581954833) · [HERKULES bezpieczeństwo/restore HOLD](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6581989443).
 
+
+### 4.40 NanoMarker R11–R13 — adaptacyjna precyzja, NanoBit i LoRA
+
+- **R11 HERKULES:** off-host CPU, pięć seedów i dwie miniaturowe sieci. Przy budżecie 25% rzędów Q4 uczony marker pokonał losowy wybór w 5/5 seedów dla obu proporcji, ale prostsza heurystyka była lepsza od markera w 5/5 dla proporcji 3B i 3/5 dla 2B. To mała sztuczna klasyfikacja, nie prawdziwe modele 3B/2B ani językowy 9B.
+- **R12 HERKULES:** 10 rzeczywistych biegów małych sieci CPU. Marker+LoRA poprawił wynik względem random w 4/5 i 1/5 seedów zależnie od proporcji, ale przegrał z heurystyką w większości porównań. NanoBit POSTHOC zwiększał rozmiar: 930,2 B vs 886 B oraz 692,8 B vs 661,2 B — brak oszczędności w 10/10.
+- **R13 HERKULES:** sześć przebiegów (3 seedy × 2 miniaturowe sieci), wspólny codebook, adresy, wybór 25% Q4 i LoRA rank2. Wykonano testy i weryfikację dokładnego sześciobiegowego receipt w GitHub Actions; nie był to trening prawdziwego LLM ani modelu GGUF.
+- **Rozdział autorstwa:** R11–R13 to niezależny tor HERKULESA. T0-34N/T0-35/R12 codec-admission opisane w punktach 4.27–4.28 to odrębne prace SPLOTA. Nie łączyć ich kodu ani wyników.
+- **Status:** prototypy toy/offhost wykonane; przewaga nad heurystyką i oszczędność bajtów niepotwierdzone; realny 9B→3B/2B i produkcyjne użycie NOT_RUN.
+- **Źródła:** [HERKULES R11](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6659691653) · [HERKULES R12](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6662352238) · [R13 wykonanie i CI](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6662940187).
+
+### 4.41 Nano-Fusion 3×3B — inwentaryzacja trzech dawców i próbki GGUF
+
+- **Dawcy:** Qwen2.5-Coder 3.1B Q4_K_M, LFM2 d1:3b około 2.7B Q8_0 oraz Hermes3 3.2B Q4_K_M. Są to trzy różne rodziny i architektury; suma parametrów około 9B nie jest jednym scalonym modelem.
+- **F1-A:** operatorowy readback na VPS MODEL potwierdził indeksy GGUF v3: Qwen 434 tensory, LFM2 266, Hermes 255 — razem 955 wpisów. Odczyt manifestów i metadanych, bez inferencji i bez odczytu payloadu wag. Wcześniejszy HOLD wynikał z błędnego utożsamienia digestu API Ollama z SHA surowego manifestu; po rozdzieleniu trzech identyfikatorów metadane przeszły.
+- **F1-B:** operatorowy odczyt trzech fizycznych bloków: Q4_K 144 B / 256 wartości dla Qwen, Q8_0 34 B / 32 wartości dla LFM2, Q4_K 144 B / 256 wartości dla Hermes. Łącznie 322 B i 544 zdekodowane wartości. To próbki, nie pełny hash wag, nie 544 kompetencje i nie fuzja.
+- **Walidacja kodu:** F1-A/F1-B otrzymały testy syntetyczne CI (20/20 i 12/12 dla F1-B), ale nie są one równoważne pełnemu odczytowi ani referencyjnemu dekoderowi wszystkich wag. Operatorowy wynik F1-B nie był niezależnie atestowany.
+- **Granice:** pełny SHA wag NOT_COMPUTED; porównanie z drugim dekoderem NOT_RUN; semantyczne mapowanie tensor→skill NOT_PROVEN; physical cross-model merge, jakość i inferencja Nano NOT_RUN.
+- **Status:** F1-A metadane PASS w odczycie operatora; F1-B trzy próbki odczytane; fuzja trzech modeli NOT_RUN.
+- **Źródła:** [F1-A operatorowy odbiór 955 tensorów](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6729574986) · [F1-B kod i testy](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6729605233) · [F1-B trzy fizyczne próbki](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6729652794).
+
+### 4.42 SSI Hybrid 9B — trzy eksperckie modele, rzeczywiste smoke i korekta endpointu
+
+- **Pierwszy R1 smoke:** health PASS, lecz rzeczywista próba zatrzymała się po jednym wywołaniu Qwen2.5-Coder; drugi etap LFM2 zwrócił błąd, a Hermes nie został uruchomiony. Wynik 1/3, HOLD.
+- **Diagnostyka R2:** wykazano, że LFM2 d1:3b nie obsługuje generującego endpointu /api/generate. Jest modelem decyzyjnym i wymaga /v1/systemone; jego wynik to estymata prawdopodobieństwa, nie gwarancja poprawności. Kod skorygowano i 23/23 testy offline przeszły w CI, ale pełny realny R2 3/3 pozostał NOT_RUN w odczytanym wpisie.
+- **Qwen3.5 9B:** operator potwierdził pobranie Qwen3.5 9B Q4_K_M, 8 953 803 264 parametrów. Dostępność modelu na serwerze nie jest dowodem inferencji; dedykowany core-smoke i nowy hybrid-smoke pozostawały NOT_RUN w źródłowym raporcie.
+- **Istotna korekta nazewnictwa:** 9B oznaczało w R1/R2 pulę trzech ekspertów około 9B, nie dense merged model. Późniejszy plan z Qwen2.5-Coder + Hermes3 + Qwen3.5 9B ma pulę około 15,25B, z Qwen3.5 jako rdzeniem; to również nie jeden scalony model.
+- **Status:** R1 rzeczywisty smoke HOLD 1/3; R2 poprawka endpointu i mock CI PASS; pełny R2 3/3, nowy Qwen3.5 core smoke i fuzja Nano NOT_RUN.
+- **Źródła:** [R1 realny smoke HOLD](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6729747928) · [LFM2 endpoint i R2 23/23](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6729809675) · [Qwen3.5 9B pobrany](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6729872207) · [Qwen3.5 core source i mock CI](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6729886892).
+
+### 4.43 NanoTRS — kompilator tras PR233 i polski pakiet R1
+
+- **Cel:** zbudować własny kompilator jednoznacznych tras na oryginalnych typowanych krawędziach PR233, bez zgadywania forków i bez podnoszenia deklaracji MANAGES/CONTAINS do wykonania.
+- **Testy:** kompilator HERKULESA przeszedł 26/26 CI na oryginalnych przypiętych walidatorach PR233/R4 i syntetycznych danych. Polski pakiet R1 przeszedł 66/66 testów, w tym 40 nowych; to nadal testy źródłowe i syntetyczne, nie natywny runtime.
+- **Rzeczywisty pilot 9B R2:** operator wykonał jedną inferencję na zadaniu 17+25 i otrzymał 42. Czas wywołania 49,361661 s; ładowanie 40,992098 s; kontekst 7,651517 s; generowanie 0,649037 s. Trasa aplikacyjna była obserwowana, ale natywne SCC/ACL nie zostało poświadczone.
+- **Dwa kolejne wywołania:** 41,420895 s przy model_loaded_before=false i 1,603537 s przy true; druga próba miała również 55 tokenów promptu z cache. Różnica nie dowodzi przyspieszenia NanoBit ani samej generacji — główną część stanowiło ponowne użycie załadowanego modelu i cache promptu.
+- **Granice:** backend Ollama; własny wykonawca kafli niezaimplementowany; model 9B nie był uruchamiany przez natywny kernel Nano; brak dowodu przewagi jakości lub produkcyjnego GO.
+- **Status:** kompilator i polski pakiet source/test PASS; ograniczony operatorowy pilot jednej odpowiedzi PASS; własny wykonawca kafli NOT_IMPLEMENTED.
+- **Źródła:** [NanoTRS na oryginalnych trasach PR233](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6729992068) · [NanoTRS Polish 66/66](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6730125221) · [pilot 9B R2](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6735184271) · [dwa wywołania i cache](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6735348809).
+
+### 4.44 Edukacja tras hybrydy — pakiet R1, trening predyktora i granice wykonania
+
+- **Projekt:** sekwencja Qwen2.5-Coder → Hermes3 → Qwen3.5 9B, audytowana trasami aplikacyjnymi PR233. Nanosensory obserwują wyłącznie zdarzenia aplikacji, nie wewnętrzne neurony/warstwy LLM.
+- **Pakiet:** program przewidywał 18 pytań w 6 dziedzinach, maksymalnie 72 wywołania modeli i 120 kroków uczenia małego predyktora tras; osobne train/validation/test, checkpoint wybierany na walidacji i egzamin zamrażany przed oceną.
+- **Testy:** 68/68 testów lokalnych i po rozpakowaniu końcowego pakietu PASS, 32/32 sumy plików PASS. Testowe wywołania modeli korzystały z syntetycznego providera.
+- **Ograniczenia:** pakiet nie został zainstalowany na VPS w tym wpisie, nie wykonano realnych wywołań modeli ani treningu na rzeczywistych zadaniach; Ollama była jawnym backendem referencyjnym. Własny natywny generator i predyktor tras nie uzyskały produkcyjnego odbioru.
+- **Status:** paczka i testy source/offline PASS; SSH, instalacja, realna kampania i native generator NOT_RUN.
+- **Źródła:** [projekt edukacji tras](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6752024332) · [pakiet i 68/68 testów](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6752880652) · [ostateczne bajty i sumy](https://github.com/jankes72/SSI-Communications/pull/186#issuecomment-6752906641).
+
 ## 5. Mapa projektów i źródeł
 
 Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są punktami nawigacyjnymi, nie deklaracją, że każdy uczestnik danego wątku wykonał całość prac.
