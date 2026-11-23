@@ -293,6 +293,62 @@ Poniższe pozycje są skróconym indeksem potwierdzonych wyników. Szczegóły, 
 - **Status:** eksperyment R9–R11 zakończony; kryterium użycia kompetencji niezaliczone; brak autonomicznego GO.
 - **Źródło:** [PR #243 — Nano-Brain R9–R11](https://github.com/jankes72/SSI-Communications/pull/243#issuecomment-7026280271).
 
+
+### 4.27 NanoMarker / NanoBit / LoRA — T0-34N i R12
+
+- **T0-34N:** eksperyment OFFHOST na CPU i syntetycznych wagach. 30/30 testów jednostkowych PASS, pięć seedów, rozdzielone TRAIN/CAL/VAL/TEST/SHIFT. NanoBit+LoRA+heurystyka osiągnęły 2701 B i TEST MSE 0,001462824 wobec Q2 2721 B i MSE 0,014263527.
+- **Wynik negatywny:** uczona polityka NanoMarker nie pokonała heurystyki w głównym profilu 25% (0/5 seed wins). Na niestrukturalnych wagach wariant Nano miał MSE około 0,19186 wobec około 0,01359 dla Q2. Fallback pozostaje konieczny.
+- **R12:** osobna bramka codec-admission/fallback otrzymała 16/16 lokalnych testów PASS. Raport R12 wskazuje, że uczony NanoMarker przegrywał z heurystyką w 8/10 seed; NanoBit POSTHOC zwiększał rozmiar, a nie oszczędzał bajtów w 0/10 prób. Bramka nie była wpięta do treningu ani inferencji.
+- **Granica:** to małe syntetyczne sieci/formaty toy, nie testy natywnego GGUF, QAT, LLM 70B/9B ani jakości modelu klienta.
+- **Status:** testy syntetyczne i kod bramki PASS w ograniczonym zakresie; niezależna replikacja, live capsule binding i trening modelu 70B — NOT_RUN.
+- **Źródła:** [PR #185 — T0-34N](https://github.com/jankes72/SSI-Communications/pull/185#issuecomment-6660555573) · [source readback 8/8](https://github.com/jankes72/SSI-Communications/pull/185#issuecomment-6662354287) · [R12 codec gate](https://github.com/jankes72/SSI-Communications/pull/185#issuecomment-6662636717).
+
+### 4.28 NanoGate T0-35 — klasyfikator wyboru ścieżki
+
+- **Cel:** sprawdzić, czy klasyfikator 11 cech może wskazywać, kiedy warto rozważyć ścieżkę Nano, z bezpiecznym fallbackiem.
+- **Metoda:** 240 TRAIN, 80 TUNE, 80 TEST i 48 SHIFT_TEST na syntetycznych rodzinach, oddzielne seedy; drugi przebieg odtworzył identyczny model.
+- **Wynik:** znane rodziny TEST: learned 80/80 (TP48 FP0 FN0 TN32), heurystyka 64/80. Niewidziane rodziny SHIFT_TEST: learned 26/48, heurystyka 32/48; learned nie wygrał na SHIFT i wygenerował 22 fałszywe wskazania Nano.
+- **Ograniczenia:** ostateczna bramka VAL/SHIFT_VAL odrzuca niebezpieczne wskazania; NanoGate zwraca jedynie WORTH_TRY, nie ma władzy nad kodowaniem, ACL ani klientem. Koszt obliczania cech nie został zmierzony jako przyspieszenie.
+- **Status:** syntetyczny OFFHOST eksperyment zakończony; brak dowodu na przewagę poza rozkładem treningowym.
+- **Źródło:** [PR #185 — NanoGate T0-35](https://github.com/jankes72/SSI-Communications/pull/185#issuecomment-6663197847).
+
+### 4.29 Nano Full-Path / markery LEGO — PR #232
+
+- **Cel:** zapewnić collision-safe tożsamość markerów i sprawdzalną trasę od manifestu do komponentu, bez zgadywania przy kolizjach.
+- **Przegląd źródłowy:** 15 417 manifestów, 15 415 identyfikatorów i dwie grupy kolizji; resolver zwraca AMBIGUOUS zamiast arbitralnie wybierać wariant. Indeks dekodowany raz do RAM uzyskał w syntetycznych 100 lookup medianę około 1,669 ms vs 0,011 ms dla cache — metadane, nie throughput LLM.
+- **Eksperyment SPLOT:** pięć skonstruowanych par małych sieci ReLU 8→16→3, syntetyczne wagi int8 i 1024 wejścia testowe na seed. Wszystkie kryteria postawione dla tej tezy spełniono w 5/5 konstrukcji; wynik dotyczy adaptera/kontraktu na małych sieciach, nie natywnych LLM.
+- **FORK/JOIN:** 41 nowych testów PASS dla konkretnych fork_ref, portów JOIN, izolacji aktorów, scope, rewizji, luk w zdarzeniach i transportu. Odtworzono 7000 syntetycznych zdarzeń. Eksperymentalna ramka indeksów była większa od JSON+zlib we wszystkich czterech skalach; nie promować jej jako zwycięzcy kompresji.
+- **Rzeczywista partia LEGO na ROBERT:** zapisano 15 417 unikatowych markerów i readback PASS, ale 24 249 wystąpień zależności miało TARGET_UNRESOLVED. Nie oznacza to 24 249 brakujących modułów; nie utworzono krawędzi na podstawie podobieństwa nazw.
+- **Kontynuacja:** PR238 naprawił wymaganie ciągłych krawędzi i rodzica RESULT oraz rozszerzył fingerprint markerów warstwy; odczyt links wykazał 30 kontroli integralności PASS, ale 24 249 odwołań pozostało UNBOUND.
+- **Status:** source review, lokalne testy i zapis markerów wykonane; pełny semantyczny graph/host-native dispatch i pełny odbiór full-path niepotwierdzone.
+- **Źródła:** [PR #232 — source review](https://github.com/jankes72/SSI-Communications/pull/232#issuecomment-6727686453) · [lokalna próba SPLOT](https://github.com/jankes72/SSI-Communications/pull/232#issuecomment-6727903946) · [FORK/JOIN 41 testów](https://github.com/jankes72/SSI-Communications/pull/232#issuecomment-6728162400) · [realny zapis markerów](https://github.com/jankes72/SSI-Communications/pull/232#issuecomment-6728895842) · [PR238 / links](https://github.com/jankes72/SSI-Communications/pull/232#issuecomment-6748423728).
+
+### 4.30 SSI LLM Nano R11 / CpuLink — PR #233 i niezależny replay
+
+- **Cel:** połączyć istniejące trasy, markery i R11 bez nadpisywania oryginalnych źródeł ani mieszania kontekstów aktorów.
+- **Replay SPLOT:** 156 plików z Git blob SHA zgodnymi ze źródłami; 44/44 sum R11 PASS; 439/439 testów i 8/8 scenariuszy PASS. Na IPv4 localhost uruchomiono dwa rzeczywiste procesy OS. 81/81 żądań miało oczekiwane statusy: 55 JOINED, 13 PARTIAL i 13 STOP. To test syntetycznych wejść i procesów/TCP, nie produkcyjny runtime.
+- **Koszt:** mediana lokalnego TCP+prepare 18,707 ms; cache RAM 0,462 ms wobec baseline 0,622 ms, 24/24 cache hits. Nie są to czasy generacji LLM.
+- **Wkład HERKULESA obok PR233:** osobny NanoTRS compiler użył przypiętych źródeł PR233; 26/26, a po polskim interfejsie 66/66 testów PASS na syntetycznych trasach. Kompilator kończył na SOURCE_ROUTE_COMPILED_NO_DISPATCH; can_execute=false.
+- **F1-A/F1-B dawców GGUF:** na ssi-models-vps potwierdzono metadane trzech oddzielnych modeli: Qwen2.5-Coder 3B 434 tensory, LFM2 d1:3b 266, Hermes3 3B 255 — razem 955 wpisów. Odczytano trzy próbki bloków: 322 B i 544 zdekodowane wartości. To nie jest scalony model ani pełna atestacja bajtów wag; nie wykonano inferencji, treningu adaptera ani dispatchu kafli.
+- **Status:** replay i testy tras PASS w zakresie syntetycznym; metadane i małe próbki GGUF odczytane; semantyczne powiązanie skill→tensor, adapter i natywne wykonanie NOT_RUN/UNBOUND.
+- **Źródła:** [PR #233 — replay 81/81](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6728894653) · [HERKULES F1-A metadata](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6729608434) · [F1-B próbki 3 modeli](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6729654571) · [NanoTRS 26 testów](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6729993681) · [NanoTRS Polish 66/66](https://github.com/jankes72/SSI-Communications/pull/233#issuecomment-6730128301).
+
+### 4.31 LEGO 70B — NOUT1 T2F / T3A / T3B
+
+- **T2F:** złożono pierwszy pełny tensor 8192×28672 w Q8; 64/64 źródła, 236 716 032 B, niezależny read-only audyt 8192/8192 PASS.
+- **T3A:** fizyczny read-only preflight potwierdził indeks 723 tensorów i 30/30 nagłówków shardów BF16; 562 rank2 i 161 rank1. Teoretyczny rozmiar Q8 dla 2D + BF16 dla 1D wynosił 71 106 215 936 B (<80 GB). Porównanie 16 wierszy BF16 z T2F Q8 dało względny błąd Frobeniusa 0,00804899; proxy matvec były syntetyczne.
+- **Granica:** T3A nie wykonał pełnego 141 GB rehash, natywnego treningu ani inferencji 70B. T3B był przygotowany jako kontroler kampanii i audytor, 21/21 testów syntetycznych PASS, ale sam ten wynik nie oznacza uruchomienia kampanii na hoście.
+- **Status:** T2F fizyczny tensor i niezależny audyt PASS; T3A read-only PASS; T3B source-ready / synthetic PASS; pełny model i inferencja NOT_RUN.
+- **Źródła:** [PR #139 — T2F i plan T3A](https://github.com/jankes72/SSI-Communications/pull/139#issuecomment-6549190247) · [PR #139 — T3A fizyczny PASS i T3B source-ready](https://github.com/jankes72/SSI-Communications/pull/139#issuecomment-6549337060).
+
+### 4.32 MultiQuant L4 — formaty tensorów i ograniczenia loadera
+
+- **Zakres:** statyczny przegląd trzech trybów formatu tensorów i dodatkowe testy negatywne w odrębnym PR135; PR139 pozostaje planerem i audytorem artefaktów, nie pełnym loaderem.
+- **Testy źródłowe:** PR135 uzyskał 20/20 source tests PASS; adapter PR139 uzyskał 52/52 source/shadow tests PASS w opisanym HEAD.
+- **Ograniczenia:** testy nie były testami realnego loadera, native I/O ani pełnego modelu 70B. Brak potwierdzenia 30/30 shardów, natywnego odczytu wszystkich tensorów, lease/ACL/STOP i inferencji.
+- **Status:** source/shadow PASS; native full-model NOT_RUN.
+- **Źródła:** [PR #139 — L4 source handoff](https://github.com/jankes72/SSI-Communications/pull/139#issuecomment-6536881759) · [PR #139 — aktualizacja 52/52](https://github.com/jankes72/SSI-Communications/pull/139#issuecomment-6536915254) · [PR #139 — niezależny odbiór i braki](https://github.com/jankes72/SSI-Communications/pull/139#issuecomment-6536961088).
+
 ## 5. Mapa projektów i źródeł
 
 Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są punktami nawigacyjnymi, nie deklaracją, że każdy uczestnik danego wątku wykonał całość prac.
