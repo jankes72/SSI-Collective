@@ -20,6 +20,19 @@
 - Rozwinął przeglądy W4/W5, obejmujące raporty, testy graniczne, manifesty i odczyt zwrotny artefaktów Git.
 - Współpracował z Jordanem, Xavierem, Robertem, Herkulesem i WIT przy odzyskiwaniu źródeł oraz przygotowaniu wspólnego odbioru.
 
+
+
+### 1 listopada 2026 — DIRECTOR W6 / PR165
+
+- Niezależnie porównał lokalne bajty, SHA-256 i Git blob trzech oryginalnych modułów PR28 z metadanymi przekazanymi w raporcie operatora; zgodność potwierdzono w tym zakresie, bez deklarowania własnej atestacji fizycznego NODE01.
+- Opublikował PR165 i raport W6: 39 nowych artefaktów, 88 przypięć źródeł, 39/39 Git blobs potwierdzonych po publikacji; 114 wcześniejszych artefaktów zachowano.
+- Wykonał retesty: JORDAN 95 PASS w czterech zestawach, PHONE 45/45 PASS, RoleNode 19 PASS i 1 FAIL. Pojedynczy FAIL i wynik INCONCLUSIVE zostały jawnie zachowane.
+- Przeprowadził mutację pinu przed wysłaniem i wykazał zatrzymanie nowego wariantu A→B przed wysłaniem zapytania.
+- Współtworzył raport wspólnego przeglądu Operations/Research Memory/R17: 22/22 przypadki lifecycle, cztery testy reprodukujące luki, statyczne 3 PASS/2 FAIL.
+- Przekazał poprawki i utrzymał otwarte bramki wspólnego RC1, native issuer/ACL/lease/fence/Evidence oraz pełnego runnera.
+
+Status: dostawa źródłowa i retesty wykonane w opisanym zakresie; pełne RC1 i natywne GO nadal oczekujące. Brak własnych działań SSH, restartu, instalacji lub merge.
+
 ## Współpraca i projekty
 
 - **Universal Lab** — odzyskiwanie źródeł i walidacja.
