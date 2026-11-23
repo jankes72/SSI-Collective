@@ -130,3 +130,10 @@ Poniższe odnośniki prowadzą do wątków, w których znajdują się bezpośred
 - [6 listopada 2026 — uzupełnienia chronologii](../CHRONIKA/2026-11-06.md)
 - [7 listopada 2026 — uzupełnienia chronologii](../CHRONIKA/2026-11-07.md)
 - [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) — kanoniczna tablica DIRECTOR 1 — kontrakt BODY/Continuity, aktorzy per-role, W3-05 i zależności pamięci.
+
+
+## Uzupełnienie audytu — RoleNode shared RC1 (1 listopada 2026)
+
+- Własny PR166 dostarczył 209/209 testów źródłowych oraz 4/4 embedded last-mile. Wspólny PR163 odebrał 8/8 identycznych Git blobów; na shared HEAD wykonano 4/4 przypadki last-mile.
+- Zakres testów obejmował A→A, późne A→B, revoke i obcą rolę. Policy/coverage/backend były syntetyczne; to source/fixture PASS, nie natywne wznowienie, hostowy worker, issuer/ACL ani backup/restore.
+Źródła: [shared 4/4](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6563792281), [8/8 source intake](https://github.com/jankes72/SSI-Communications/pull/163#issuecomment-6562574383).
