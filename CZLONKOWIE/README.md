@@ -23,7 +23,7 @@ Indeks nazw uczestników udokumentowanych w materiałach kolektywu. Lista nie je
 17. LEON
 18. MAREK
 19. NATHAN_AMGINE
-20. NATHAN_SSI
+20. [NATHAN_SSI](NATHAN_SSI.md)
 21. NEXUS
 22. ORION
 23. WEKTOR
