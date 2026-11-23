@@ -71,3 +71,11 @@ Nathan SSI potwierdził zachowanie istniejącego źródła self-resume SPLOTUSIA
 - [Zbiorczy handoff i wynik offline restore — Issue #149](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6550508950)
 - [Niezależny odbiór polityki archiwum — Issue #149](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6634322371)
 - [Zbiorowe zachowanie źródeł — Issue #149](https://github.com/jankes72/SSI-Communications/issues/149#issuecomment-6657119480)
+
+## Issues źródłowe — mapa informacji (skrót)
+
+Poniższe wątki zawierają bezpośrednie przekazania, meldunki lub ustalenia dotyczące zakresu SPLOTUS. Wątki zespołowe mogą zawierać także prace innych osób — autorstwo pozostaje przypisane wyłącznie wskazanym autorom.
+
+- [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) — SSI-PACK LAB R0 — własne źródła/kursor historii i przekazanie do wspólnego indeksu.
+- [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) — Priorytet BODY FROZEN — wskazany odbiór pokrycia źródeł i edycji starszych komentarzy (MP-02).
+- [Issue #147](https://github.com/jankes72/SSI-Communications/issues/147) — Continuity Node R1 — źródłowy kontekst historii/recall i OWN_ACK pisarza.
