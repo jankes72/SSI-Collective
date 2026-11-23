@@ -109,3 +109,26 @@ Te materiały są odnotowane jako źródłowe dostawy i statusy projektu, ale ni
 - [Źródłowa kapsuła XAVIER R2](https://github.com/jankes72/SSI-Communications/blob/main/memory/checkpoints/current_r2/XAVIER_CAPSULE_R2.md)
 - [Kodex — katalog źródłowy](https://github.com/jankes72/SSI-Communications/tree/main/Kodex)
 - [PR22 — wspólny cykl wykonania roli](https://github.com/jankes72/SSI-Communications/pull/22)
+
+
+## Uzupełnienie wyników CODEX — szczegóły dostaw 30–31 października
+
+### PR81 — kolejne etapy wspólnej pętli CODEX
+
+W PR81 zapisano kolejne, narastające etapy integracji z zachowaniem istniejącego wykonania ról:
+- wspólny adapter przyjęcia PHONE/T4, kierujący wiadomość do istniejącej delegacji i RoleExecution, bez osobnej kolejki;
+- OneShotCodexPulse — pojedynczy krok wykonania oparty na zatwierdzonym zleceniu ROBERTA, z kontrolą zakresu, STOP, budżetu, lease i niepewnego skutku;
+- read-only adapter odczytu Operations/Research Memory/Source Pin do weryfikacji stanu przed wykonaniem;
+- adapter odpowiedzi PHONE/T4, który zachowuje NOT_SENT i brak automatycznego retry, dopóki rzeczywisty nadawca i autoryzacja nie potwierdzą dostarczenia.
+
+Historyczne wyniki CI dla kolejnych dokładnych HEAD obejmowały 77/77, 95/95, 109/109, 122/122 i finalnie 145/145 testów PASS. Są to osobne, kolejne zestawy/regresje, nie liczby do zsumowania. Testy korzystały z syntetycznych providerów/hostów; rzeczywisty issuer, lease, host, model, wysyłka PHONE/T4 i pełne E2E pozostawały niepotwierdzone. PR81 pozostawał otwartym draftem.
+
+### PR142 — 31 października, source handoff do DIRECTOR RC1
+
+Własne wpisy XAVIER na gałęzi PR142 dokumentują przekazanie source-only do jednego wydania RC1:
+- 16 dokładnych referencji repo/commit/blob, 10 historycznych SHA-256 źródeł natywnych, 23 mosty RC1, 24 odrębne role źródłowe, 7 kontraktów SCC, 14 pól zakresu roli, 4 akcje autoryzacji, 8 etapów ścieżki i 13 otwartych blokad natywnych;
+- osobny kontrakt STOP/cancel z 21 zdefiniowanymi scenariuszami negatywnymi; nie były to 21 testów hostowych;
+- źródłowy odbiór SSI-MEM/B1: oryginalnego encoder/decoder/wire/ABI nie odnaleziono w sprawdzonych referencjach; nie stworzono nowego kodeka;
+- późniejsze przekazanie CORE/ISKRA/skill topology: 24 role źródłowe, 6 wariantów ISKRA, 4 hosty i 8 bramek; 28 testów syntetycznych walidatora.
+
+Wskazane w materiałach CI 41/41 oraz 81/81 PASS dotycząło testów źródłowych/kontraktowych na określonych HEAD. Nie jest to odbiór natywny ani hostowy. Pozostawały: current SCC issuer/ACL, trwały lease/fencing/STOP, rzeczywiste Operations/Evidence readback, źródłowy kodek B1 i natywne wznowienie. PR142 był draftem, bez automatycznego merge i instalacji.
