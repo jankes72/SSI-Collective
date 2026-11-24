@@ -1,6 +1,6 @@
 # Mapa prac i eksperymentów Kolektywu SSI
 
-**Wersja:** 2.1 · **Aktualizacja:** 24 listopada 2026  
+**Wersja:** 2.2 · **Aktualizacja:** 24 listopada 2026  
 **Zakres:** publiczny indeks projektów, obszarów badawczych, eksperymentów, wyników i źródeł Kolektywu SSI.  
 **Charakter dokumentu:** mapa nawigacyjna i rejestr stanu wiedzy; nie jest specyfikacją techniczną, instrukcją wdrożenia ani potwierdzeniem produkcyjnej gotowości.
 
@@ -704,6 +704,43 @@ Poniższy rejestr wskazuje główne wątki źródłowe. Numery PR/Issues są pun
 | [Issue #7](https://github.com/jankes72/SSI-Communications/issues/7) | NOUT01 / bezpieczeństwo | izolacja, dostęp, restore i granice bezpieczeństwa |
 | [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) | DIRECTOR VPS / infrastruktura | role, hosty, ACL/STOP i warunki odbioru |
 
+
+### 5.1 Indeks Issue — w którym wątku znajdują się badania
+
+**Zasada:** Issue wskazuje główny wątek rozmowy, zgłoszenia i chronologii. PR wskazuje konkretną dostawę źródłową, raport albo test. Jeśli badanie jest opisane wyłącznie w PR, nie nazywamy tego PR-em „Issue”. Link do Issue nie oznacza, że każdy komentarz w wątku jest wynikiem eksperymentu.
+
+| Issue / wątek główny | Jakich badań i eksperymentów szukać | Powiązane źródła wykonawcze / dowody | Charakter wątku |
+|---|---|---|---|
+| [Issue #245](https://github.com/jankes72/SSI-Communications/issues/245) | SSI Small 0.5B/1.5B/3B; NANO-COMM R2; Maluch Coder R3; R4 benchmark; R7/R8/R9; Coder Terminal Stage R1 | [PR #243](https://github.com/jankes72/SSI-Communications/pull/243), [PR #244](https://github.com/jankes72/SSI-Communications/pull/244); raporty i wyniki operatorowe podlinkowane w Issue #245 | **Główny dziennik badań Maluchów.** Wpisy w Issue są aktualizacjami i korektami; raporty źródłowe pozostają w PR #243/#244. |
+| [Issue #195](https://github.com/jankes72/SSI-Communications/issues/195) | BODY FROZEN / CZARA / SSI V5 / ZeroLab / Micro-First; V10 E1; Context Fastpath; próby Pocket Micro + NanoBit T031; CODEX LEGO skill bindings; lokalny scenariusz SSI LLM R8 na dwóch węzłach; rachunek A/B/C | [ROBERT E1 — PR #198](https://github.com/jankes72/SSI-Communications/pull/198) i [ATLAS peer — PR #199](https://github.com/jankes72/SSI-Communications/pull/199); [LEON Fastpath — PR #196](https://github.com/jankes72/SSI-Communications/pull/196) i [PR #200](https://github.com/jankes72/SSI-Communications/pull/200); [LEON Micro/NanoBit — PR #202](https://github.com/jankes72/SSI-Communications/pull/202); [LEON CODEX/LEGO — PR #203](https://github.com/jankes72/SSI-Communications/pull/203); [LEON R8 two-host — PR #204](https://github.com/jankes72/SSI-Communications/pull/204); [ANDRZEJ A/B/C — PR #201](https://github.com/jankes72/SSI-Communications/pull/201); [HERKULES security — PR #179](https://github.com/jankes72/SSI-Communications/pull/179) | **Główny wątek zbiorczy i chronologia wkładów.** Konkretne eksperymenty są w oddzielnych PR-ach. Komentarze #37–40 opisują kolejno: wymagania realnego przebiegu, wykonane próby Micro/NanoBit z ograniczeniami, powiązania skilli CODEX/LEGO i lokalny R8. Komentarze #28–36 dokumentują E1/Fastpath oraz niezależne poprawki/peer review. Komentarze #41–47 są przede wszystkim dostawami źródeł i manifestów, nie osobnymi eksperymentami modelowymi. Komentarze #64–73 to propozycje konstytucyjne, nie testy techniczne. |
+| [Issue #44](https://github.com/jankes72/SSI-Communications/issues/44) | MultiQuant 70B; Tensor LEGO; T0-27/T0-28/T0-30; NanoBit/NanoLEGO T0-31/T0-32/T0-33; NanoGate T0-35; SSI Private AI Product A0; Llama 3.1 70B BF16 teacher/Q8 pilot | [PR #139](https://github.com/jankes72/SSI-Communications/pull/139), [PR #39](https://github.com/jankes72/SSI-Communications/pull/39), [PR #97](https://github.com/jankes72/SSI-Communications/pull/97), [PR #183](https://github.com/jankes72/SSI-Communications/pull/183), [PR #184](https://github.com/jankes72/SSI-Communications/pull/184), [PR #169](https://github.com/jankes72/SSI-Communications/pull/169) | **Główny wątek MultiQuant / 70B.** Poszczególne testy i wyniki są rozdzielone między PR-y; nie łączyć wyników syntetycznych z inferencją 70B. |
+| [Issue #170](https://github.com/jankes72/SSI-Communications/issues/170) | SSI-PACK LAB R0; odtwarzanie kontekstu z jednej wiadomości; komunikacja i szybki powrót ról | [Mapa SSI-PACK LAB w sekcji 4.36](https://github.com/jankes72/SSI-Collective/blob/main/MAPA-PRAC-I-EKSPERYMENTOWOW.md) oraz komentarze Issue #170 | **Główny dziennik eksperymentu Continuity / SSI-PACK LAB R0.** |
+| [Issue #149](https://github.com/jankes72/SSI-Communications/issues/149) | Qwen 0.8B na NOUT1 / Context Fastpath; Continuity / Role Resume; DIRECTOR RC1 i testy Operations/R17; MSI Launcher R2/R3; odczyty źródeł, role i bramki integracyjne | [PR #163](https://github.com/jankes72/SSI-Communications/pull/163), [PR #176](https://github.com/jankes72/SSI-Communications/pull/176), [PR #177](https://github.com/jankes72/SSI-Communications/pull/177), [PR #142](https://github.com/jankes72/SSI-Communications/pull/142), [PR #143](https://github.com/jankes72/SSI-Communications/pull/143), [PR #154](https://github.com/jankes72/SSI-Communications/pull/154), [PR #166](https://github.com/jankes72/SSI-Communications/pull/166) | **Wątek integracyjny i odbiorowy, nie jedno badanie.** Komentarze zawierają również odczyty operatorowe i wyniki testów źródłowych; nie traktować całego Issue jako jednego eksperymentu ani jako potwierdzenia wdrożenia. |
+| [Issue #116](https://github.com/jankes72/SSI-Communications/issues/116) | WIT R6; macierz 24 ról PHONE/MAIL/World; testy klienta i readback; DIRECTOR VPS, role i warunki migracji | [PR #95](https://github.com/jankes72/SSI-Communications/pull/95); komentarze [macierz/readback 3/3](https://github.com/jankes72/SSI-Communications/issues/116#issuecomment-6534526098) i [workflow 7/7](https://github.com/jankes72/SSI-Communications/issues/116#issuecomment-6534531372) | **Wątek infrastruktury i testów klienta.** Testy syntetyczne/offline nie potwierdzają aktywnych telefonów, skrzynek, 24 usług ani natywnego resume. |
+| [Issue #7](https://github.com/jankes72/SSI-Communications/issues/7) | NOUT01: izolacja, ścieżka dostępu, N0, backup/restore i bezpieczeństwo | Źródła i odbiory opisane w Issue #7 oraz powiązane PR-y wymienione w sekcjach Continuity | **Wątek bezpieczeństwa i restore.** Odróżniać plan, source review, test offline i rzeczywisty odczyt hosta. |
+| [Issue #3](https://github.com/jankes72/SSI-Communications/issues/3) oraz [Issue #4](https://github.com/jankes72/SSI-Communications/issues/4) | Komunikacja kolektywu, kolejność dostaw 70B, Continuity/NOUT01, wspólne źródła i odbiory zależności | Powiązane PR-y wskazane w sekcjach 4.31–4.32 i 5 | **Wątki koordynacyjne i źródłowe.** Nie są samodzielnym dowodem wykonania benchmarku lub eksperymentu modelowego. |
+| [Issue #214](https://github.com/jankes72/SSI-Communications/issues/214) | ReadIt — projekt i prototyp WORD, testy offline prototypu | [PR #216](https://github.com/jankes72/SSI-Communications/pull/216) | **Hub projektu, nie dziennik eksperymentów SSI LLM.** Testy prototypu ReadIt należy przypisywać do PR #216. |
+
+### 5.2 Eksperymenty opisane głównie w PR — nie mają odrębnego Issue badawczego w obecnym indeksie
+
+Poniższe pozycje mają jako główne źródło PR, a nie osobny Issue badawczy. Nie należy wpisywać numeru PR w kolumnie Issue:
+
+- **Universal Lab / pre-login / SSI Small R2 / test gościa:** PR #242.
+- **SSI Small R2, TEST20, MicroLEGO, V10 single-field, NanoMath 1.5B/3B, AVX2 i GPU, Armia Maluchów, EDU-A1, Atlas wiedzy/obliczeń i SSI Nano-Brain:** PR #243 (z dalszym dziennikiem wyników w Issue #245, gdy dany wpis został tam opublikowany).
+- **NANO-COMM R2, Maluch Coder R3 i runner/guardy R4:** PR #244 (dalsze obserwacje w Issue #245).
+- **NanoMarker/NanoBit/LoRA T0-34N i NanoGate T0-35:** PR #185.
+- **Nano Full-Path / markery LEGO:** PR #232.
+- **SSI LLM Nano R11 / CpuLink:** PR #233.
+- **LEGO 70B NOUT1 T2F/T3A/T3B i MultiQuant L4:** PR #139.
+- **NanoMarker R11–R13, Nano-Fusion 3×3B, SSI Hybrid 9B, NanoTRS i Hercules AI Backpack/Labyrinth:** PR #186.
+- **Q-SHADOW/BITCAP/native BF16:** PR #183 (zależny materiał Virtual Tile/Q-SHADOW w PR #184).
+- **Context Fastpath R4:** PR #196.
+- **S13–S26 / ZeroLab source intake:** PR #197.
+- **LEON CODEX/LEGO bindings i dwuwęzłowy R8:** PR #203 i PR #204, z chronologią w Issue #195.
+- **DIRECTOR RC1 W8/K3–K4:** PR #163 oraz wskazane w sekcji 4.61 PR-y zależne.
+
+**Kontrola kompletności:** sekcje 4.1–4.61 są teraz powiązane z głównym wątkiem Issue albo z konkretnym PR. Gdy brak odrębnego Issue, zapisujemy to jawnie jako „PR jako źródło główne”, zamiast tworzyć fikcyjny numer Issue. Wątki #149 i #195 są przekrojowe: mieszczą wiele odrębnych prac, dlatego dla każdego eksperymentu pozostaje wymagany link do właściwego PR lub komentarza źródłowego.
+
 ## 6. Udział członków — indeks do profili
 
 Poniższy indeks nie zastępuje profili. Pokazuje, gdzie szukać potwierdzonych zakresów i przypomina o rozdzieleniu autorstwa od udziału w projekcie.
@@ -742,7 +779,7 @@ Szczegółowa chronologia dzienna znajduje się w katalogu [CHRONIKA](CHRONIKA/)
 5. Uzupełniać wyniki liczbowe wyłącznie wtedy, gdy źródło podaje metrykę, środowisko, zakres prób i ograniczenia.
 6. Każdy wpis w mapie powinien prowadzić do źródła oraz — gdy dotyczy konkretnej osoby — do jej profilu.
 
-**Stan kompletności:** wersja 2.0 obejmuje 61 opisanych obszarów eksperymentów, prób i odrębnych odczytów źródłowych, w tym nowe uzupełnienia Issue #116, #149 i #195. To szeroki, nadal otwarty rejestr źródłowy: komentarze trzech wątków zostały przejrzane, ale wszystkie podlinkowane PR-y i pliki wymagają dalszego audytu źródło po źródle. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
+**Stan kompletności:** wersja 2.2 obejmuje 61 opisanych obszarów eksperymentów, prób i odrębnych odczytów źródłowych, w tym nowe uzupełnienia Issue #116, #149 i #195. To szeroki, nadal otwarty rejestr źródłowy: komentarze trzech wątków zostały przejrzane, ale wszystkie podlinkowane PR-y i pliki wymagają dalszego audytu źródło po źródle. Pozycje niezweryfikowane pozostają jawnie oznaczone jako otwarte, zamiast być uzupełniane domysłami.
 
 ## 9. Powiązana dokumentacja
 
